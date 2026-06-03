@@ -1,0 +1,50 @@
+<style>
+  #shopify-section-{{section.id}} {
+
+  }
+</style>
+
+<div
+  id="{{section.id}}"
+  class="
+    db-banner
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }} spacing-style
+    gap-style
+  "
+></div>
+
+{% schema %}
+{
+  "name": "",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}
