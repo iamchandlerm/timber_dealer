@@ -1,6 +1,35 @@
 <style>
-  #shopify-section-{{section.id}} {
+    #shopify-section-{{section.id}} {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
 
+    .db-banner__image--item{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 </style>
 
@@ -9,20 +38,16 @@
   class="
     db-banner
     section section--{{ section.settings.section_width }}
-    color-{{ section.settings.color_scheme }} spacing-style
+    color-{{ section.settings.color_scheme }}
     gap-style
   "
-></div>
+>
+
 
 {% schema %}
 {
-  "name": "",
+  "name": "Hero banner",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background image"
-    },
     {
       "type": "select",
       "id": "section_width",
@@ -44,6 +69,62 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_slider",
+      "name": "image Slider",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Image Slider:"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "hero banner:"
     }
   ]
 }
