@@ -1,0 +1,139 @@
+<style>
+    #shopify-section-{{ section.id }} {
+      height: 303px;
+      width: 100%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      background-color: {{ section.settings.background_color }};
+  }
+  .db-list-info__content-wrapper{
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-items: center;
+      gap: 20px;
+      align-items: center;
+      height: 100%;
+  }
+  .db-list-info__image-content{
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(255, 255, 255);
+
+  }
+  .db-list-info__image{
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      z-index: 1;
+  }
+  .db-list-info__item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+  }
+  .db-list-info__label {
+  color: #fff;
+  font-size: 20px;
+  font-family: "Roboto slab", serif;
+  line-height: 1.18;
+  font-weight: bold;
+  }
+</style>
+
+<div
+  id="shopify-section-{{section.id}}"
+  class="
+    db-list-info
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  "
+>
+  <div class="db-list-info__content-wrapper">
+    {% for block in section.blocks %}
+      <div class="db-list-info__item" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <div class="db-list-info__image-content">
+            {{
+              block.settings.image
+              | image_url: width: 400
+              | image_tag: loading: 'lazy', class: 'db-list-info__image'
+            }}
+          </div>
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+        {% endif %}
+        <h3 class="db-list-info__label">{{ block.settings.label }}</h3>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "db list info",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#C20502"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_info",
+      "name": "list info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label:"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "list info:"
+    }
+  ]
+}
+{% endschema %}
