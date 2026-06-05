@@ -60,9 +60,55 @@
         "section_width": "page-width",
         "color_scheme": ""
       }
+    },
+    "db_list_info_LWjQpR": {
+      "type": "db-list-info",
+      "blocks": {
+        "list_info_YFWXV7": {
+          "type": "list_info",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group.png",
+            "label": "BUILDING MATERIALS"
+          }
+        },
+        "list_info_nwj3kp": {
+          "type": "list_info",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_1.png",
+            "label": "FLOORING TIMBER"
+          }
+        },
+        "list_info_nRmqMx": {
+          "type": "list_info",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_2.png",
+            "label": "DECKING TIMBER"
+          }
+        },
+        "list_info_EXRWaL": {
+          "type": "list_info",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_3.png",
+            "label": "FENCING TIMBER"
+          }
+        }
+      },
+      "block_order": [
+        "list_info_YFWXV7",
+        "list_info_nwj3kp",
+        "list_info_nRmqMx",
+        "list_info_EXRWaL"
+      ],
+      "name": "list info:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "background_color": "#C20502"
+      }
     }
   },
   "order": [
-    "db_hero_banner_bpDPyi"
+    "db_hero_banner_bpDPyi",
+    "db_list_info_LWjQpR"
   ]
 }
