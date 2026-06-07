@@ -1,12 +1,13 @@
 <style>
     #shopify-section-{{ section.id }} {
         width: 100%;
+        --image-size: {{section.settings.section_size}}fr
   }
   .db-cover-banner{
     width: 100%;
     height: 500px;
     display:grid;
-    grid-template-columns: 4fr 6fr;
+    grid-template-columns: var(--image-size) minmax(0, 4fr);
     grid-template-areas: "main inquire";
   }
     .db-cover-banner__content{
@@ -35,12 +36,15 @@
     }
 
     .db-cover-banner__logo{
-        z-index: 1;
-        width: 340px;
-        height: 300px;
+      z-index: 1;
+    width: 340px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     }
     .db-cover-banner__inquire-content{
-        z-index: 1;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,7 +72,35 @@
         border: none;
 
     }
+
+    .db-cover-banner__content--left{
+      align-items: start;
+      text-align: left;
+      .db-cover-banner__inquire-heading{
+        text-align: start;
+      }
+    }
+    .db-cover-banner__content--center{
+      align-items: center;
+      text-align: center;
+      .db-cover-banner__inquire-heading{
+        text-align: center;
+      }
+    }
+    .db-cover-banner__content--right{
+      align-items: end;
+      text-align: right;
+      .db-cover-banner__inquire-heading{
+        text-align: end;
+      }
+    }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // const
+  });
+</script>
 
 <div
   id="shopify-section-{{section.id}}"
@@ -79,8 +111,9 @@
     gap-style
   "
 >
-  <div class="db-cover-banner__content db-cover-banner__content--main">
+  <div class="db-cover-banner__content db-cover-banner__content--main db-cover-banner">
     <!-- Content for the cover banner goes here -->
+
     {% if section.settings.image != blank %}
       {{
         section.settings.image
@@ -90,17 +123,27 @@
     {% else %}
       {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
     {% endif %}
-    <div class="db-cover-banner__logo">
+
+    <div class="db-cover-banner__logo db-cover-banner__content--{{section.settings.first_position}}">
       <!-- Logo content goes here -->
-      {% if section.settings.logo != blank %}
-        {{
-          section.settings.logo
-          | image_url: width: 400
-          | image_tag: loading: 'lazy', class: 'db-cover-banner__logo-image'
-        }}
-      {% else %}
-        {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
-      {% endif %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'first_logo' %}
+            {% if block.settings.first_logo != blank %}
+              {{
+                block.settings.first_logo
+                | image_url: width: 400
+                | image_tag: loading: 'lazy', class: 'db-cover-banner__logo-image'
+              }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+            {% endif %}
+          {% when 'first_heading' %}
+            <h2 class="db-cover-banner__inquire-heading">{{ block.settings.first_heading }}</h2>
+          {% when 'first_button' %}
+            <button class="db-cover-banner__inquire-button">{{ block.settings.first_button }}</button>
+        {% endcase %}
+      {% endfor %}
     </div>
   </div>
 
@@ -109,16 +152,33 @@
     {% if section.settings.inquire_background_image != blank %}
       {{
         section.settings.inquire_background_image
-        | image_url: width: 900
+        | image_url: width: 2000
         | image_tag: loading: 'lazy', class: 'db-cover-banner__image'
       }}
     {% else %}
       {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
     {% endif %}
-
-    <div class="db-cover-banner__inquire-content">
-      <h2 class="db-cover-banner__inquire-heading">{{ section.settings.inquire_heading }}</h2>
-      <button class="db-cover-banner__inquire-button">{{ section.settings.inquire_button_text }}</button>
+    <div class="db-cover-banner__inquire-content db-cover-banner__content--{{section.settings.second_position}}">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'second_logo' %}
+              {% if block.settings.second_logo != blank %}
+                {{
+                  block.settings.second_logo
+                  | image_url: width: 400
+                  | image_tag: loading: 'lazy', class: 'db-cover-banner__logo-image'
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+              {% endif %}
+            {% when 'second_heading' %}
+              <h2 class="db-cover-banner__inquire-heading">{{ block.settings.second_heading }}</h2>
+            {% when 'second_button' %}
+              <button class="db-cover-banner__inquire-button">{{ block.settings.second_button }}</button>
+          {% endcase %}
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </div>
@@ -150,14 +210,45 @@
       "default": "scheme-1"
     },
     {
+      "type": "range",
+      "id": "section_size",
+      "min": 1,
+      "max": 9,
+      "label": "section size",
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "First section"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "Background Image"
     },
     {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo Image"
+      "type": "select",
+      "id": "first_position",
+      "label": "first position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Second section"
     },
     {
       "type": "image_picker",
@@ -165,16 +256,91 @@
       "label": "'Inquire' Section Background Image"
     },
     {
-      "type": "text",
-      "id": "inquire_heading",
-      "label": "'Inquire' Section Heading",
-      "default": "Decking Timberin Aukland"
+      "type": "select",
+      "id": "second_position",
+      "label": "section position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_logo",
+      "name": "first logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "first_logo",
+          "label": "first section logo:"
+        }
+      ]
     },
     {
-      "type": "text",
-      "id": "inquire_button_text",
-      "label": "'Inquire' Section Button Text",
-      "default": "ENQUIRE NOW"
+      "type": "second_logo",
+      "name": "second logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "second_logo",
+          "label": "second section logo:"
+        }
+      ]
+    },
+    {
+      "type": "first_heading",
+      "name": "first heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "first_heading",
+          "label": "first section heading"
+        }
+      ]
+    },
+    {
+      "type": "second_heading",
+      "name": "second heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "second_heading",
+          "label": "second section heading"
+        }
+      ]
+    },
+    {
+      "type": "first_button",
+      "name": "first section button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "first_button",
+          "label": "first section button"
+        }
+      ]
+    },
+    {
+      "type": "second_button",
+      "name": "second section button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "second_button",
+          "label": "second section button"
+        }
+      ]
     }
   ],
   "presets": [
