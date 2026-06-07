@@ -24,4 +24,5 @@ button{
     width: 190px;
     height: 64px;
     border: none;
+    text-transform: uppercase;
 }

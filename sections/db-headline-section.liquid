@@ -63,11 +63,16 @@
     gap-style
   "
 >
-  {{
-    section.settings.background_image
-    | image_url: width: 900
-    | image_tag: loading: 'lazy', class: 'db-heading-section_image'
-  }}
+  {% if section.settings.background_image != blank %}
+    {{
+      section.settings.background_image
+      | image_url: width: 900
+      | image_tag: loading: 'lazy', class: 'db-heading-section_image'
+    }}
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+  {% endif %}
+
   <div class="db-headline-section__overlay"></div>
 
   <div class="db-headline-section__content">
