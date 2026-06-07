@@ -108,12 +108,40 @@
     },
     "db_cover_banner_a3HPet": {
       "type": "db-cover-banner",
+      "blocks": {
+        "second_heading_q4a34H": {
+          "type": "second_heading",
+          "settings": {
+            "second_heading": "Decking Timberin Aukland"
+          }
+        },
+        "second_button_3yhMr7": {
+          "type": "second_button",
+          "settings": {
+            "second_button": "ENQUIRE NOW"
+          }
+        },
+        "first_logo_aJeAXB": {
+          "type": "first_logo",
+          "settings": {
+            "first_logo": "shopify://shop_images/image_28_2.png"
+          }
+        }
+      },
+      "block_order": [
+        "second_heading_q4a34H",
+        "second_button_3yhMr7",
+        "first_logo_aJeAXB"
+      ],
       "name": "db cover banner",
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
+        "section_size": 3,
         "image": "shopify://shop_images/Rectangle_9_1.png",
-        "inquire_background_image": "shopify://shop_images/Rectangle_10_1.png"
+        "first_position": "center",
+        "inquire_background_image": "shopify://shop_images/Rectangle_10_1.png",
+        "second_position": "center"
       }
     },
     "db_headline_section_W7fqDQ": {
@@ -155,7 +183,7 @@
         "section_width": "page-width",
         "color_scheme": "",
         "background_image": "shopify://shop_images/Rectangle_83_2.png",
-        "overlay_color": "#C20502",
+        "overlay_color": "#c20502",
         "opacity": 8
       }
     }
