@@ -143,7 +143,7 @@
         "button_P3W6nA": {
           "type": "button",
           "settings": {
-            "button": ""
+            "button": "learn more"
           }
         }
       },
@@ -158,7 +158,7 @@
         "section_width": "page-width",
         "color_scheme": "",
         "background_image": "shopify://shop_images/Rectangle_83_2.png",
-        "overlay_color": "#C20502",
+        "overlay_color": "#c20502",
         "opacity": 5
       }
     }
