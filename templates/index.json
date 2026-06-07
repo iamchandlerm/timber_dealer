@@ -118,11 +118,55 @@
         "inquire_heading": "Decking Timberin Aukland",
         "inquire_button_text": "ENQUIRE NOW"
       }
+    },
+    "db_headline_section_W7fqDQ": {
+      "type": "db-headline-section",
+      "blocks": {
+        "heading_xK9Jrj": {
+          "type": "heading",
+          "settings": {
+            "heading": "GOOD QUALITY, GOOD PRICE GOOD JOB!"
+          }
+        },
+        "content_mcPj9D": {
+          "type": "content",
+          "settings": {
+            "content": "With over 60 years of combined experience in the timber industry, you’re guaranteed knowledgeable, practical advice, whether you’re a large commercial developer, tradesman or a weekend DIY warrior. Because we’re small, a personal, friendly service is also guaranteed."
+          }
+        },
+        "content_hBfYfH": {
+          "type": "content",
+          "settings": {
+            "content": "Whether you’re working indoors or outdoors, on decking, fencing, flooring or other, chances are we stock what you need. Have a browse through our website; click on our TradeMe link for our listings, or click on our blackboard specials to view our monthly super specials. If you still can’t find what you’re looking for, we’ll do our best to get it for you. Ring or email us with your requirements."
+          }
+        },
+        "button_NJHf4r": {
+          "type": "button",
+          "settings": {
+            "button": "learn more"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xK9Jrj",
+        "content_mcPj9D",
+        "content_hBfYfH",
+        "button_NJHf4r"
+      ],
+      "name": "db headline section:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "background_image": "shopify://shop_images/Rectangle_83_2.png",
+        "overlay_color": "#C20502",
+        "opacity": 5
+      }
     }
   },
   "order": [
     "db_hero_banner_bpDPyi",
     "db_list_info_LWjQpR",
-    "db_cover_banner_a3HPet"
+    "db_cover_banner_a3HPet",
+    "db_headline_section_W7fqDQ"
   ]
 }
