@@ -71,6 +71,12 @@
     font-weight: bold;
     line-height: 1.11;
   }
+  .db-item-showcase__heading_first--text-color{
+      color: var(--first-heading-color,#fff)
+  }
+  .db-item-showcase__heading_second--text-color{
+      color: var(--second-heading-color,#fff)
+  }
   .db-item-showcase__image-container{
     width: 100%;
     height: 100%;
@@ -159,8 +165,9 @@
               {% case block.type %}
                 {% when 'first_heading' %}
                   <h2
-                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.first_heading_position}}"
+                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.first_heading_position}} .db-item-showcase__heading_first--text-color"
                     {{ block.shopify_attributes }}
+                    style="--first-heading-color: {{block.settings.first_heading_color}}"
                   >
                     {{ block.settings.first_heading }}
                   </h2>
@@ -215,8 +222,9 @@
               {% case block.type %}
                 {% when 'second_heading' %}
                   <h2
-                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.second_heading_position}}"
+                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.second_heading_position}} .db-item-showcase__heading_second--text-color"
                     {{ block.shopify_attributes }}
+                    style="--second-heading-color: {{block.settings.second_heading_color}}"
                   >
                     {{ block.settings.second_heading }}
                   </h2>
@@ -362,6 +370,25 @@
           "label": "right"
         }
       ]
+    },
+    {
+      "type": "select",
+      "id": "second_content_position",
+      "label": "content position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -393,6 +420,11 @@
               "label": "right"
             }
           ]
+        },
+        {
+          "type": "color",
+          "id": "first_heading_color",
+          "label": "heading color"
         }
       ]
     },
@@ -494,6 +526,11 @@
               "label": "right"
             }
           ]
+        },
+        {
+          "type": "color",
+          "id": "second_heading_color",
+          "label": "heading color"
         }
       ]
     },
