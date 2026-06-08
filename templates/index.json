@@ -186,12 +186,47 @@
         "overlay_color": "#c20502",
         "opacity": 8
       }
+    },
+    "db_item_showcase_aWLABE": {
+      "type": "db-item-showcase",
+      "blocks": {
+        "first_heading_gM3FLb": {
+          "type": "first_heading",
+          "settings": {
+            "first_heading": "Can’t Beat A Timber Dealers Deal!",
+            "first_heading_position": "left"
+          }
+        },
+        "first_button_Y4z6Lr": {
+          "type": "first_button",
+          "settings": {
+            "first_button": "SHOP NOW",
+            "first_button_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "first_heading_gM3FLb",
+        "first_button_Y4z6Lr"
+      ],
+      "name": "db item showcase",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "first_color": "#000000",
+        "first_section_image": "shopify://shop_images/image_26.png",
+        "first_section_image_position": "left",
+        "first_content_position": "left",
+        "second_color": "",
+        "second_section_image_position": "left"
+      }
     }
   },
   "order": [
     "db_hero_banner_bpDPyi",
     "db_list_info_LWjQpR",
     "db_cover_banner_a3HPet",
-    "db_headline_section_W7fqDQ"
+    "db_headline_section_W7fqDQ",
+    "db_item_showcase_aWLABE"
   ]
 }
