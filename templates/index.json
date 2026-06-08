@@ -194,7 +194,7 @@
           "type": "second_image",
           "settings": {
             "second_image": "shopify://shop_images/image_7.png",
-            "second_image_position": "left",
+            "second_image_position": "center",
             "second_image_size": 350
           }
         },
