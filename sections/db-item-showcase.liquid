@@ -1,0 +1,332 @@
+<style>
+    #shopify-section-{{section.id}}{
+      width: 100%;
+    }
+    .db-item-showcase{
+        width: 100%;
+        height: 650px;
+        display: grid;
+        grid-template-columns: 6fr minmax(0, 4fr);
+        grid-template-areas: "first second";
+    }
+    .db-item-showcase__content{
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .db-item-showcase__background{
+      width: 100%;
+      height: 100%;
+    }
+    .db-item-showcase--first_item{
+      grid-area: first;
+      .db-item-showcase__background--color{
+          background-color: {{section.settings.first_color}};
+          position: absolute;
+      }
+    }
+    .db-item-showcase__background--color{
+      width: 100%;
+      height: 90%;
+    }
+    .db-item-showcase__background_image{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      /* change image position */
+      justify-content: start;
+      align-items: start;
+    }
+
+    .bd-item-showcase__bg-image{
+      width: 624px;
+      height: 557px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .db-item-showcase__items {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .db-item-showcase__items-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .db-item-showcase--second_item{
+      grid-area: second;
+      .db-item-showcase__background--color{
+          background-color: {{section.settings.second_color}};
+          position: absolute;
+      }
+    }
+</style>
+
+<div
+  id="shopify-section-{{section.id}}"
+  class="
+    db-item-showcase
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  "
+>
+  <div class="db-item-showcase__content db-item-showcase--first_item">
+    <div class="db-item-showcase__background">
+      <div class="db-item-showcase__background--color"></div>
+      <div class="db-item-showcase__background_image">
+        {{
+          section.settings.first_section_image
+          | image_url: width: 800
+          | image_tag: loading: 'lazy', class: 'bd-item-showcase__bg-image'
+        }}
+      </div>
+
+      <div class="db-item-showcase__items">
+        <div class="db-item-showcase__items-contents">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'first_heading' %}
+                  <h2 class="db-item-showcase__heading">{{ block.settings.first_heading }}</h2>
+                {% when 'first_image' %}
+                  {{
+                    block.settings.first_image
+                    | image_url: 'medium'
+                    | image_tag: loading: 'lazy', class: 'db-item-showcase__image'
+                  }}
+                {% when 'first_button' %}
+                  <button class="db-item-showcase__button">{{ block.settings.first_button }}</button>
+              {% endcase %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-item-showcase__content db-item-showcase--second_item">
+    <div class="db-item-showcase__background">
+      <div class="db-item-showcase__background--color"></div>
+      <div class="db-item-showcase__background_image">
+        {{ section.settings.second_section_image }}
+      </div>
+      <div class="db-item-showcase__items">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'second_heading' %}
+                <h2 class="db-item-showcase__heading">{{ block.settings.second_heading }}</h2>
+              {% when 'second_image' %}
+                {{
+                  block.settings.second_image
+                  | image_url: 'medium'
+                  | image_tag: loading: 'lazy', class: 'db-item-showcase__image'
+                }}
+              {% when 'second_button' %}
+                <button class="db-item-showcase__button">{{ block.settings.second_button }} sf</button>
+            {% endcase %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "db item showcase",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "first Section content"
+    },
+    {
+      "type": "color",
+      "id": "first_color",
+      "label": "first section background color:"
+    },
+    {
+      "type": "image_picker",
+      "id": "first_section_image",
+      "label": "first section image:"
+    },
+    {
+      "type": "select",
+      "id": "first_section_image_position",
+      "label": "image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fs_content_position",
+      "label": "content position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "second Section content"
+    },
+    {
+      "type": "color",
+      "id": "second_color",
+      "label": "second section background color:"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_section_image",
+      "label": "second section image:"
+    },
+    {
+      "type": "select",
+      "id": "second_section_image_position",
+      "label": "image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_heading",
+      "name": "first heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "first_heading",
+          "label": "first section heading",
+          "default": "heading"
+        }
+      ]
+    },
+    {
+      "type": "first_image",
+      "name": "first image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "first_image",
+          "label": "first section image"
+        }
+      ]
+    },
+    {
+      "type": "first_button",
+      "name": "first button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "first_button",
+          "label": "first section button"
+        }
+      ]
+    },
+    {
+      "type": "second_heading",
+      "name": "second heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "second_heading",
+          "label": "second section heading",
+          "default": "heading"
+        }
+      ]
+    },
+    {
+      "type": "second_image",
+      "name": "second image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "second_image",
+          "label": "second section image"
+        }
+      ]
+    },
+    {
+      "type": "second_button",
+      "name": "second button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "second_button",
+          "label": "second section button"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "db item showcase"
+    }
+  ]
+}
+{% endschema %}
