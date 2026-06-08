@@ -190,6 +190,21 @@
     "db_item_showcase_aWLABE": {
       "type": "db-item-showcase",
       "blocks": {
+        "second_image_BVCUNY": {
+          "type": "second_image",
+          "settings": {
+            "second_image": "shopify://shop_images/image_7.png",
+            "second_image_position": "left",
+            "second_image_size": 350
+          }
+        },
+        "second_heading_EHQrN6": {
+          "type": "second_heading",
+          "settings": {
+            "second_heading": "100 x 50mm x 6.0m H3.2 Fence Rail",
+            "second_heading_position": "center"
+          }
+        },
         "first_heading_gM3FLb": {
           "type": "first_heading",
           "settings": {
@@ -206,6 +221,8 @@
         }
       },
       "block_order": [
+        "second_image_BVCUNY",
+        "second_heading_EHQrN6",
         "first_heading_gM3FLb",
         "first_button_Y4z6Lr"
       ],
@@ -217,7 +234,7 @@
         "first_section_image": "shopify://shop_images/image_26.png",
         "first_section_image_position": "left",
         "first_content_position": "right",
-        "second_color": "",
+        "second_color": "#ffffff",
         "second_section_image_position": "left"
       }
     }
