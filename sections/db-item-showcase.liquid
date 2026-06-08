@@ -71,6 +71,22 @@
     font-weight: bold;
     line-height: 1.11;
   }
+  .db-item-showcase__image-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .db-item-showcase__first-image--modifier{
+    width: var(--first_image_size);
+    height: auto;
+  }
+  .db-item-showcase__second-image--modifier{
+    width: var(--second_image_size);
+    height: auto;
+  }
+
 
   .db-item-showcase__button{
     width: 100%;
@@ -94,18 +110,18 @@
 
 
 
-  .db-item-showcase__items--left, .db-item-showcase__button--left{
+  .db-item-showcase__items--left, .db-item-showcase__button--left, .db-item-showcase__image--left{
     justify-content: start;
   }
-  .db-item-showcase__items--center, .db-item-showcase__button--center{
+  .db-item-showcase__items--center, .db-item-showcase__button--center, .db-item-showcase__image--center{
     justify-content: center;
   }
-  .db-item-showcase__items--right, .db-item-showcase__button--right{
+  .db-item-showcase__items--right, .db-item-showcase__button--right, .db-item-showcase__image--right{
     justify-content: end;
   }
 
 
-    .db-item-showcase--sec  ond_item{
+    .db-item-showcase--second_item{
       grid-area: second;
       .db-item-showcase__background--color{
           background-color: {{section.settings.second_color}};
@@ -126,13 +142,15 @@
   <div class="db-item-showcase__content db-item-showcase--first_item">
     <div class="db-item-showcase__background">
       <div class="db-item-showcase__background--color"></div>
-      <div class="db-item-showcase__background_image">
-        {{
-          section.settings.first_section_image
-          | image_url: width: 800
-          | image_tag: loading: 'lazy', class: 'bd-item-showcase__bg-image'
-        }}
-      </div>
+      {% if section.settings.first_section_image != blank %}
+        <div class="db-item-showcase__background_image">
+          {{
+            section.settings.first_section_image
+            | image_url: width: 800
+            | image_tag: loading: 'lazy', class: 'bd-item-showcase__bg-image'
+          }}
+        </div>
+      {% endif %}
 
       <div class="db-item-showcase__items db-item-showcase__items--{{section.settings.first_content_position}}">
         <div class="db-item-showcase__items-contents">
@@ -140,17 +158,31 @@
             {% for block in section.blocks %}
               {% case block.type %}
                 {% when 'first_heading' %}
-                  <h2 class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.first_heading_position}}">
+                  <h2
+                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.first_heading_position}}"
+                    {{ block.shopify_attributes }}
+                  >
                     {{ block.settings.first_heading }}
                   </h2>
                 {% when 'first_image' %}
-                  {{
-                    block.settings.first_image
-                    | image_url: 'medium'
-                    | image_tag: loading: 'lazy', class: 'db-item-showcase__image'
-                  }}
+                  <div
+                    class="db-item-showcase__image-container db-item-showcase__image--{{block.settings.first_image_position}}"
+                    {{ block.shopify_attributes }}
+                    style="--first_image_size: {{block.settings.first_image_size}}px"
+                  >
+                    {{
+                      block.settings.first_image
+                      | image_url: width: 400
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'db-item-showcase__image db-item-showcase__first-image--modifier'
+                    }}
+                  </div>
                 {% when 'first_button' %}
-                  <div class="db-item-showcase__button db-item-showcase__button--{{block.settings.first_button_position}}">
+                  <div
+                    class="db-item-showcase__button db-item-showcase__button--{{block.settings.first_button_position}}"
+                    {{ block.shopify_attributes }}
+                  >
                     <button>
                       {{ block.settings.first_button }}
                     </button>
@@ -166,26 +198,55 @@
   <div class="db-item-showcase__content db-item-showcase--second_item">
     <div class="db-item-showcase__background">
       <div class="db-item-showcase__background--color"></div>
-      <div class="db-item-showcase__background_image">
-        {{ section.settings.second_section_image }}
-      </div>
-      <div class="db-item-showcase__items">
-        {% if section.blocks.size > 0 %}
-          {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'second_heading' %}
-                <h2 class="db-item-showcase__heading">{{ block.settings.second_heading }}</h2>
-              {% when 'second_image' %}
-                {{
-                  block.settings.second_image
-                  | image_url: 'medium'
-                  | image_tag: loading: 'lazy', class: 'db-item-showcase__image'
-                }}
-              {% when 'second_button' %}
-                <button class="db-item-showcase__button">{{ block.settings.second_button }}</button>
-            {% endcase %}
-          {% endfor %}
-        {% endif %}
+      {% if section.settings.second_section_image != blank %}
+        <div class="db-item-showcase__background_image">
+          {{
+            section.settings.second_section_image
+            | image_url: width: 800
+            | image_tag: loading: 'lazy', class: 'bd-item-showcase__bg-image'
+          }}
+        </div>
+      {% endif %}
+
+      <div class="db-item-showcase__items db-item-showcase__items--{{section.settings.second_content_position}}">
+        <div class="db-item-showcase__items-contents">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'second_heading' %}
+                  <h2
+                    class="db-item-showcase__heading db-item-showcase__heading--{{block.settings.second_heading_position}}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.second_heading }}
+                  </h2>
+                {% when 'second_image' %}
+                  <div
+                    class="db-item-showcase__image-container db-item-showcase__image--{{block.settings.second_image_position}}"
+                    {{ block.shopify_attributes }}
+                    style="--second_image_size: {{block.settings.second_image_size}}px"
+                  >
+                    {{
+                      block.settings.second_image
+                      | image_url: width: 400
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'db-item-showcase__image db-item-showcase__second-image--modifier'
+                    }}
+                  </div>
+                {% when 'second_button' %}
+                  <div
+                    class="db-item-showcase__button db-item-showcase__button--{{block.settings.second_button_position}}"
+                    {{ block.shopify_attributes }}
+                  >
+                    <button>
+                      {{ block.settings.second_button }}
+                    </button>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
@@ -343,6 +404,35 @@
           "type": "image_picker",
           "id": "first_image",
           "label": "first section image"
+        },
+        {
+          "type": "select",
+          "id": "first_image_position",
+          "label": "image position",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "first_image_size",
+          "min": 250,
+          "max": 450,
+          "step": 2,
+          "label": "size (px)",
+          "unit": "px",
+          "default": 350
         }
       ]
     },
@@ -385,6 +475,25 @@
           "id": "second_heading",
           "label": "second section heading",
           "default": "heading"
+        },
+        {
+          "type": "select",
+          "id": "second_heading_position",
+          "label": "heading position",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ]
         }
       ]
     },
@@ -396,6 +505,35 @@
           "type": "image_picker",
           "id": "second_image",
           "label": "second section image"
+        },
+        {
+          "type": "select",
+          "id": "second_image_position",
+          "label": "image position",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "second_image_size",
+          "min": 250,
+          "max": 450,
+          "step": 2,
+          "label": "size (px)",
+          "unit": "px",
+          "default": 350
         }
       ]
     },
@@ -407,6 +545,25 @@
           "type": "text",
           "id": "second_button",
           "label": "second section button"
+        },
+        {
+          "type": "select",
+          "id": "second_button_position",
+          "label": "button position",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ]
         }
       ]
     }
