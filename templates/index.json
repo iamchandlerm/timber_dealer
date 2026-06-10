@@ -186,78 +186,12 @@
         "overlay_color": "#c20502",
         "opacity": 8
       }
-    },
-    "db_item_showcase_DxUHbq": {
-      "type": "db-item-showcase",
-      "blocks": {
-        "second_image_VmdTxD": {
-          "type": "second_image",
-          "settings": {
-            "second_image": "shopify://shop_images/image_7.png",
-            "second_image_position": "left",
-            "second_image_size": 350
-          }
-        },
-        "second_text_yL7phU": {
-          "type": "second_text",
-          "settings": {
-            "second_text": "INSTORE PICK UP TODAY!",
-            "second_text_position": "left",
-            "second_text_color": ""
-          }
-        },
-        "second_heading_UE4UDf": {
-          "type": "second_heading",
-          "settings": {
-            "second_heading": "100 x 50mm x 6.0m H3.2 Fence Rail",
-            "second_heading_position": "center",
-            "second_heading_width": 450,
-            "second_heading_color": ""
-          }
-        },
-        "first_heading_4K8Jmh": {
-          "type": "first_heading",
-          "settings": {
-            "first_heading": "Can’t Beat A Timber Dealers Deal!",
-            "first_heading_position": "left",
-            "first_heading_width": 300,
-            "first_heading_color": "#ffffff"
-          }
-        },
-        "first_button_8MWVh9": {
-          "type": "first_button",
-          "settings": {
-            "first_button": "shop now",
-            "first_button_position": "left"
-          }
-        }
-      },
-      "block_order": [
-        "second_image_VmdTxD",
-        "second_text_yL7phU",
-        "second_heading_UE4UDf",
-        "first_heading_4K8Jmh",
-        "first_button_8MWVh9"
-      ],
-      "name": "db item showcase",
-      "settings": {
-        "section_width": "page-width",
-        "color_scheme": "",
-        "first_color": "#000000",
-        "first_section_image": "shopify://shop_images/image_26.png",
-        "first_section_image_position": "left",
-        "first_content_position": "right",
-        "second_color": "",
-        "second_section_image_position": "left",
-        "second_content_position": "center"
-      }
     }
   },
   "order": [
     "db_hero_banner_bpDPyi",
     "db_list_info_LWjQpR",
     "db_cover_banner_a3HPet",
-    "db_headline_section_W7fqDQ",
-    "db_item_showcase_DxUHbq"
+    "db_headline_section_W7fqDQ"
   ]
 }

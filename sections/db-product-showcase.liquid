@@ -1,0 +1,108 @@
+{% assign selected_product = section.settings.featured_product %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100%;
+  }
+
+  .db-product-showcase__content {
+    width: 1187px;
+    height: 525px;
+
+    align-self: center;
+    justify-self: center;
+  }
+
+  .db-product-showcase__content-header {
+    align-items: center;
+  }
+
+  .db-product-showcase__content-items {
+    display: flex;
+    gap: 30px;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .db-product-showcase__product-image {
+    width: 282px;
+    height: 225px;
+    object-fit: contain;
+  }
+
+  .
+
+
+</style>
+
+<div id="shopify-section-{{section.id}}" class="
+    db-product-showcase
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  ">
+
+  <div class="db-product-showcase__content">
+
+    <div class="db-product-showcase__content-header">
+      <h1>{{ selected_product.title }}</h1>
+    </div>
+
+    <div class="db-product-showcase__content-items">
+
+      {% if selected_product.available %}
+
+        {% for variant in selected_product.variants %}
+
+          <div class="db-product-showcase__product-container">
+            {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
+
+            <p>Aucland</p>
+
+            <h2 class="db-product-showcase__product-title">{{ variant.title }}</h2>
+
+            <p class="db-product-showcase__product-price">{{ variant.price | money }}</p>
+
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "db product showcase",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "section width",
+        "options": [
+          {
+            "value": "full",
+            "label": "full width"
+          }, {
+            "value": "narrow",
+            "label": "narrow"
+          }
+        ]
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "color scheme"
+      }, {
+        "type": "product",
+        "id": "featured_product",
+        "label": "product to feature"
+      }
+    ],
+    "presets": [
+      {
+        "name": "db product showcase"
+      }
+    ]
+  }
+{% endschema %}
