@@ -1,0 +1,470 @@
+<style>
+  #shopify-section-{{ section.id }} {
+  }
+  .db-order-now-section{
+    width: 100%;
+    height: 600px;
+    margin: 10% 0;  
+  }
+
+  .order-now-section__content_wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .order-now-section_content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+  }
+
+  .order-now-section__content__items{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 0 10%;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .order-now-section__image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+
+  .db-order-now__header, .db-order-now__text, .db-order-now__button{
+    width: 100%;
+    height: auto;
+  }
+
+  .db-order-now__header{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+
+  }
+  .order-now-section__second_background-color, .order-now-section__first_background-color{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .order-now-section__first_background-color{
+      background-color: {{section.settings.first_background_color}}
+  }
+  .order-now-section__second_background-color{
+      background-color: {{section.settings.second_background_color}}
+  }
+    .db-order-now__header, .db-order-now__text, .db-order-now__button button{
+        color: var(--color)
+    }
+.db-order-now__text_position--left{
+    text-align: left;
+}
+.db-order-now__text_position--center{
+    text-align: center;
+}
+.db-order-now__text_position--right{
+    text-align: right;
+}
+
+</style>
+
+<div id="shopify-section-{{section.id}}" class="
+    db-order-now-section
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  ">
+
+  <div class="order-now-section__content_wrapper">
+
+    <div class="order-now-section_content order-now-section__first-background--color">
+      {% if section.settings.first_background_option == 'image' %}
+        {% if section.settings.first_image != blank %}
+          {{ section.settings.first_image 
+            | image_url: width: 500
+            | image_tag: loading: 'lazy', class: 'order-now-section__image'
+          }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+        {% endif %}
+      {% else %}
+        <div class="order-now-section__first_background-color"></div>
+      {% endif %}
+
+      <div class="order-now-section__content__items">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'first_header' %}
+                <div class="db-order-now__header db-order-now__text_position--{{block.settings.first_header_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.first_header_color}}">
+                    <h1>{{ block.settings.first_header }}</h1>
+                </div>
+              {% when 'first_text' %}
+                <div class="db-order-now__text db-order-now__text_position--{{block.settings.first_text_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.first_text_color}}">
+                <p>{{ block.settings.first_text }}</p>
+                </div>
+              {% when 'first_button' %}
+                <div class="db-order-now__button db-order-now__text_position--{{block.settings.first_button_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.first_button_color}}">
+                <button>{{ block.settings.first_button_text }}</button>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="order-now-section_content .order-now-section__secoond-background--color">
+        {% if section.settings.second_background_option == 'image' %}
+          {% if section.settings.second_image != blank %}
+            {{ section.settings.second_image
+            | image_url: width: 500
+            | image_tag: loading: 'lazy', class: 'order-now-section__image'
+            }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+          {% endif %}
+        {% else %}
+          <div class="order-now-section__second_background-color"></div>
+        {% endif %}
+    
+        <div class="order-now-section__content__items">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'second_header' %}
+                    <div class="db-order-now__header db-order-now__text_position--{{block.settings.second_header_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.second_header_color}}">
+                        <h1>{{ block.settings.second_header }}</h1>   
+                    </div>
+                {% when 'second_text' %}
+                    <div class="db-order-now__text db-order-now__text_position--{{block.settings.second_text_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.second_text_color}}">
+                  <p>{{ block.settings.second_text }}</p>
+                    </div>
+                {% when 'second_button' %}
+                <div class="db-order-now__button db-order-now__text_position--{{block.settings.second_button_position}}" {{block.shopify_attributes}} style="--color: {{block.settings.second_button_color}}">
+                    <button>{{ block.settings.second_button_text }}</button>
+                </div>
+              {% endcase %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+  </div>
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "db order now section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "page-width"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "first section option: " 
+      },
+      {
+        "type": "select",
+        "id": "first_background_option",
+        "label": "background option",
+        "options": [
+          {
+            "value": "image",
+            "label": "image"
+          }, {
+            "value": "color",
+            "label": "color"
+          }
+        ],
+        "default": "color"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "first_image",
+        "label": "first section image"
+      },
+      {
+        "type": "color",
+        "id": "first_background_color",
+        "label": "first section background color:"
+      },
+      {
+        "type": "header",
+        "content": "second section option: " 
+      },    {
+        "type": "select",
+        "id": "second_background_option",
+        "label": "background option",
+        "options": [
+          {
+            "value": "image",
+            "label": "image"
+          }, {
+            "value": "color",
+            "label": "color"
+          }
+        ],
+        "default": "image"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "second_image",
+        "label": "second image",
+      },      {
+        "type": "color",
+        "id": "second_background_color",
+        "label": "second section background color:"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "first_header",
+        "name": "first header",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_header",
+            "label": "first section heading",
+            "default": "Order Now"
+          },
+          {
+            "type": "color",
+            "id": "first_header_color",
+            "label": "first section heading color"
+          },
+          {
+            "type": "select",
+            "id": "first_header_position",
+            "label": "first section text position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "first_text",
+        "name": "first text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_text",
+            "label": "text content",
+            "default": "add text here!"
+          },{
+            "type": "color",
+            "id": "first_text_color",
+            "label": "text color"
+          },
+          {
+            "type": "select",
+            "id": "first_text_position",
+            "label": "text position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, 
+              {
+                "value": "center",
+                "label": "center"
+              }, 
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+
+        ]
+      },
+      {
+        "type": "first_button",
+        "name": "first button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_button_text",
+            "label": "button text",
+            "default": "Order Now"
+          },
+          {
+            "type": "color",
+            "id": "first_button_text_color",
+            "label": "button textcolor"
+          },
+          {
+            "type": "select",
+            "id": "first_button_position",
+            "label": "button position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "second_header",
+        "name": "second header",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_header",
+            "label": "text",
+            "default": "Order Now"
+          },
+          {
+            "type": "color",
+            "id": "second_header_color",
+            "label": "text color"
+          },
+          {
+            "type": "select",
+            "id": "second_header_position",
+            "label": "heading position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      }, {
+        "type": "second_text",
+        "name": "second text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_text",
+            "label": "text",
+            "default": "add text here!"
+          },
+          {
+            "type": "color",
+            "id": "second_text_color",
+            "label": "text color"
+          },
+          {
+            "type": "select",
+            "id": "second_text_position",
+            "label": "text position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      }, {
+        "type": "second_button",
+        "name": "second button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_button_text",
+            "label": "button text",
+            "default": "Order Now"
+          },
+          {
+            "type": "color",
+            "id": "second_button_color",
+            "label": "button text color"
+          },
+          {
+            "type": "select",
+            "id": "second_button_position",
+            "label": "button position",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "db order now section:"
+      }
+    ]
+  }
+{% endschema %}
