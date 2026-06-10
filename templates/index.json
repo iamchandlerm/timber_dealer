@@ -260,6 +260,41 @@
         "color_scheme": "",
         "featured_product": "timber"
       }
+    },
+    "db_order_now_section_kCgTAU": {
+      "type": "db-order-now-section",
+      "blocks": {
+        "second_header_fRjRmN": {
+          "type": "second_header",
+          "settings": {
+            "second_header": "Responssible Forestry.Quality Timber.",
+            "second_header_color": "#ffffff",
+            "second_header_position": "left"
+          }
+        },
+        "second_button_qXHFRH": {
+          "type": "second_button",
+          "settings": {
+            "second_button_text": "Order Now",
+            "second_button_color": "#c20502",
+            "second_button_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "second_header_fRjRmN",
+        "second_button_qXHFRH"
+      ],
+      "name": "db order now section:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "first_background_option": "image",
+        "first_image": "shopify://shop_images/Rectangle_84.png",
+        "first_background_color": "",
+        "second_background_option": "color",
+        "second_background_color": "#c20502"
+      }
     }
   },
   "order": [
@@ -268,6 +303,7 @@
     "db_cover_banner_a3HPet",
     "db_headline_section_W7fqDQ",
     "db_item_showcase_aEgqcq",
-    "db_product_showcase_ErJMxH"
+    "db_product_showcase_ErJMxH",
+    "db_order_now_section_kCgTAU"
   ]
 }
