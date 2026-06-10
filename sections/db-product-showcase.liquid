@@ -3,18 +3,21 @@
 <style>
   #shopify-section-{{ section.id }} {
     width: 100%;
+    height: 100%;
+    padding-top: 50px;
   }
 
   .db-product-showcase__content {
     width: 1187px;
-    height: 525px;
+    height: 100%;
 
     align-self: center;
     justify-self: center;
   }
 
   .db-product-showcase__content-header {
-    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
   }
 
   .db-product-showcase__content-items {
@@ -26,12 +29,45 @@
   }
 
   .db-product-showcase__product-image {
-    width: 282px;
+    width: 100%;
     height: 225px;
     object-fit: contain;
+    background-color: #F5F5F5;
   }
 
-  .
+  .db-product-showcase__product-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+  }
+
+  .db-product-showcase__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .db-product-showcase__product-info p {
+    color: #888888;
+    font-size: 16px;
+    font-family: 'Poppins'
+    , sans-serif;
+  }
+
+  .db-product-showcase__heading {
+    font-size: 20px;
+    font-family: "Roboto Slab";
+    color: #292733;
+    height: 52px;
+    width: 100%;
+  }
+
+  .db-product-showcase__heading--red {
+    color: #C20502;
+  }
 
 
 </style>
@@ -53,16 +89,23 @@
 
       {% if selected_product.available %}
 
-        {% for variant in selected_product.variants %}
+        {% for variant in selected_product.variants limit: 4 %}
 
           <div class="db-product-showcase__product-container">
-            {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
 
-            <p>Aucland</p>
+            <div class="db-product-showcase__image_container">
 
-            <h2 class="db-product-showcase__product-title">{{ variant.title }}</h2>
+              {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
 
-            <p class="db-product-showcase__product-price">{{ variant.price | money }}</p>
+            </div>
+
+            <div class="db-product-showcase__product-info">
+              <p>Aucland</p>
+
+              <h2 class="db-product-showcase__heading">{{ variant.title }}</h2>
+
+              <h2 class="db-product-showcase__heading db-product-showcase__heading--red">{{ variant.price | money }}</h2>
+            </div>
 
           </div>
         {% endfor %}
