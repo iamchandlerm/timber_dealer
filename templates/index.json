@@ -365,6 +365,63 @@
         "inquire_background_image": "shopify://shop_images/Rectangle_18.png",
         "second_position": "left"
       }
+    },
+    "db_headline_section_za6eKg": {
+      "type": "db-headline-section",
+      "blocks": {
+        "content_wxQEE6": {
+          "type": "content",
+          "settings": {
+            "content": "FEATURED PRODUCT"
+          }
+        },
+        "heading_bKjzLM": {
+          "type": "heading",
+          "settings": {
+            "heading": "TIMBER RETAINING WALLS AND ROUNDWOOD"
+          }
+        },
+        "content_LPF9hn": {
+          "type": "content",
+          "settings": {
+            "content": "Building a timber retaining wall is a popular and easy DIY project. Perfect for turning that sloping, unusable yard space into a level, erosion free masterpiece! If done properly, they do a good job of tidying up the place and make mowing the lawns a cinch."
+          }
+        },
+        "content_qL9VR7": {
+          "type": "content",
+          "settings": {
+            "content": "We stock a large selection of round and square posts, TG&V, and standard retaining boards, as well as all that other important stuff like drainage, nails and concrete – yup we have you covered if you’re building retaining walls in Auckland!"
+          }
+        },
+        "content_Ykw6AY": {
+          "type": "content",
+          "settings": {
+            "content": "Whether you’re a seasoned professional or have no idea where to start, come and see us. We can set you up with all the equipment and advice you need to get started."
+          }
+        },
+        "content_cMPY64": {
+          "type": "content",
+          "settings": {
+            "content": "See our Trade Me specials below and get cracking on your new retaining wall"
+          }
+        }
+      },
+      "block_order": [
+        "content_wxQEE6",
+        "heading_bKjzLM",
+        "content_LPF9hn",
+        "content_qL9VR7",
+        "content_Ykw6AY",
+        "content_cMPY64"
+      ],
+      "name": "db headline section:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "background_image": "shopify://shop_images/Rectangle_2_1.png",
+        "overlay_color": "rgba(0,0,0,0)",
+        "opacity": 5
+      }
     }
   },
   "order": [
@@ -375,6 +432,7 @@
     "db_item_showcase_aEgqcq",
     "db_product_showcase_ErJMxH",
     "db_order_now_section_kCgTAU",
-    "db_cover_banner_Fin3MQ"
+    "db_cover_banner_Fin3MQ",
+    "db_headline_section_za6eKg"
   ]
 }
