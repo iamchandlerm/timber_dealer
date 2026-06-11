@@ -112,13 +112,16 @@
         "second_heading_q4a34H": {
           "type": "second_heading",
           "settings": {
-            "second_heading": "Decking Timberin Aukland"
+            "second_heading": "Decking Timberin Aukland",
+            "second_heading_color": "#ffffff"
           }
         },
         "second_button_3yhMr7": {
           "type": "second_button",
           "settings": {
-            "second_button": "ENQUIRE NOW"
+            "second_button": "ENQUIRE NOW",
+            "second_button_color": "#ffffff",
+            "second_button_bg_color": "#c20502"
           }
         },
         "first_logo_aJeAXB": {
@@ -295,6 +298,73 @@
         "second_background_option": "color",
         "second_background_color": "#c20502"
       }
+    },
+    "db_cover_banner_Fin3MQ": {
+      "type": "db-cover-banner",
+      "blocks": {
+        "second_text_DbypEY": {
+          "type": "second_text",
+          "settings": {
+            "second_text": "TAKE A LOOK",
+            "second_text_color": "#ffffff"
+          }
+        },
+        "second_heading_NwXt6j": {
+          "type": "second_heading",
+          "settings": {
+            "second_heading": "Rift Sawn Soft Maple",
+            "second_heading_color": "#ffffff"
+          }
+        },
+        "second_button_4AnyYU": {
+          "type": "second_button",
+          "settings": {
+            "second_button": "Shop now",
+            "second_button_color": "#c20502",
+            "second_button_bg_color": "#ffffff"
+          }
+        },
+        "first_text_i7mQM6": {
+          "type": "first_text",
+          "settings": {
+            "first_text": "BROWSE NOW",
+            "first_text_color": "#ffffff"
+          }
+        },
+        "first_heading_wYE4ne": {
+          "type": "first_heading",
+          "settings": {
+            "first_heading": "Hardwares",
+            "first_heading_color": "#ffffff"
+          }
+        },
+        "first_button_ya9UFt": {
+          "type": "first_button",
+          "settings": {
+            "first_button": "SHOP NOW",
+            "first_button_color": "#c20502",
+            "first_button_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "second_text_DbypEY",
+        "second_heading_NwXt6j",
+        "second_button_4AnyYU",
+        "first_text_i7mQM6",
+        "first_heading_wYE4ne",
+        "first_button_ya9UFt"
+      ],
+      "name": "db cover banner",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "section_size": 4,
+        "image": "shopify://shop_images/Rectangle_17.png",
+        "first_position": "left",
+        "inquire_background_image": "shopify://shop_images/Rectangle_18.png",
+        "second_position": "left"
+      }
     }
   },
   "order": [
@@ -304,6 +374,7 @@
     "db_headline_section_W7fqDQ",
     "db_item_showcase_aEgqcq",
     "db_product_showcase_ErJMxH",
-    "db_order_now_section_kCgTAU"
+    "db_order_now_section_kCgTAU",
+    "db_cover_banner_Fin3MQ"
   ]
 }
