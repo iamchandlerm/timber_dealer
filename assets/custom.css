@@ -1,0 +1,152 @@
+/* :root{
+	--db-primary: #1f6feb;
+	--db-secondary: #0f1724;
+	--db-muted: #6b7280;
+	--db-success: #10b981;
+	--db-danger: #ef4444;
+	--db-radius: 8px;
+	--db-gap: 1rem;
+} */
+
+/* Fonts */
+
+.db-heading{
+}
+
+.db-body{
+}
+
+/* Container */
+.db-container{
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 1rem;
+	box-sizing: border-box;
+}
+
+.db-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+}
+
+.db-overlay-0 {
+	background: rgba(0,0,0,0);
+}
+
+.db-overlay-10 {
+	background: rgba(0,0,0,0.1);
+}
+
+.db-overlay-20 {
+	background: rgba(0,0,0,0.2);
+}
+
+.db-overlay-30 {
+	background: rgba(0,0,0,0.3);
+}
+
+.db-overlay-50 {
+	background: rgba(0,0,0,0.5);
+}
+
+.db-overlay-60 {
+	background: rgba(0,0,0,0.6);
+}
+
+.db-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--db-gap);
+    flex-wrap: wrap;
+}
+
+.db-flex-start {
+    justify-content: flex-start;
+	text-align: left;
+}
+
+.db-flex-center {
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+}
+
+.db-flex-end {
+    justify-content: flex-end;
+	text-align: right;
+}
+
+.db-flex-top {
+    align-items: flex-start;
+}
+
+.db-flex-bottom {
+    align-items: flex-end;
+}
+
+.db-flex-between {
+    justify-content: space-between;
+}
+
+.db-flex-around {
+    justify-content: space-around;
+}
+
+.db-flex-even {
+    justify-content: space-evenly;
+}
+
+/* Card */
+/* .db-card{
+	background: #fff;
+	border: 1px solid rgba(15,23,36,0.06);
+	border-radius: var(--db-radius);
+	padding: 1rem;
+	box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+} */
+
+/* Buttons */
+/* .db-btn{
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--db-primary);
+	color: #fff;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+}
+.db-btn:disabled{opacity:0.6;cursor:not-allowed}
+.db-btn-ghost{background:transparent;color:var(--db-primary);border:1px solid rgba(31,111,235,0.12)} */
+
+/* Text utilities */
+/* .db-text-muted{color:var(--db-muted)}
+.db-text-center{text-align:center}
+.db-text-right{text-align:right} */
+
+/* Grid */
+/* .db-grid{display:grid;grid-gap:var(--db-gap)}
+.db-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.db-grid.cols-3{grid-template-columns:repeat(3,1fr)} */
+
+/* Form elements */
+/* .db-input{padding:0.5rem;border:1px solid #e6eef8;border-radius:6px;width:100%;box-sizing:border-box}
+.db-label{display:block;margin-bottom:0.35rem;font-weight:600;color:var(--db-secondary)} */
+
+/* Helpers */
+/* .db-hidden{display:none !important}
+.db-flex{display:flex;align-items:center}
+.db-gap{gap:var(--db-gap)} */
+
+/* Responsive small tweaks */
+/* @media (max-width:600px){
+	.db-container{padding:0.75rem}
+	.db-grid.cols-3{grid-template-columns:1fr}
+} */
