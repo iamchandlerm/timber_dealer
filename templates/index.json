@@ -23,10 +23,36 @@
             "overlay_opacity": "db-overlay-0",
             "content_position": "db-flex-end"
           }
+        },
+        "banner_slide_BLyYVn": {
+          "type": "banner_slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/Rectangle_83_2.png",
+            "heading": "<p>QUALITY TIMBER IN<br/>AUCKLAND<br/>LOWER PRICES</p>",
+            "description": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
+            "heading_color": "",
+            "description_color": "",
+            "overlay_opacity": "db-overlay-0",
+            "content_position": "db-flex-end"
+          }
+        },
+        "banner_slide_HRYtPb": {
+          "type": "banner_slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/Rectangle_9_1.png",
+            "heading": "<p>QUALITY TIMBER IN<br/>AUCKLAND<br/>LOWER PRICES</p>",
+            "description": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
+            "heading_color": "",
+            "description_color": "",
+            "overlay_opacity": "db-overlay-0",
+            "content_position": "db-flex-end"
+          }
         }
       },
       "block_order": [
-        "banner_slide_WBEndN"
+        "banner_slide_WBEndN",
+        "banner_slide_BLyYVn",
+        "banner_slide_HRYtPb"
       ],
       "name": "DB Banner",
       "settings": {
