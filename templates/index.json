@@ -17,7 +17,7 @@
           "settings": {
             "slide_image": "shopify://shop_images/Rectangle_2.png",
             "heading": "<p>QUALITY TIMBER IN<br/>AUCKLAND<br/>LOWER PRICES</p>",
-            "description": "Welcome to Timber Dealers – a small, independent, family-<br>owned and operated timber supplier in Auckland (East Tamaki), <br>committed to bringing you quality timber at lower prices!",
+            "description": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
             "heading_color": "",
             "description_color": "",
             "overlay_opacity": "db-overlay-0",
@@ -59,12 +59,59 @@
         "custom_id": "",
         "section_height": 740,
         "section_width": "full-width",
-        "color_scheme": "none",
         "overlay_opacity": "db-overlay-40"
+      }
+    },
+    "db_logo_list_7W6H6Q": {
+      "type": "db-logo-list",
+      "blocks": {
+        "logo_BpbkMn": {
+          "type": "Logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo-1.png",
+            "text": "BUILDING MATERIALS"
+          }
+        },
+        "logo_DMWk7i": {
+          "type": "Logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo-2.png",
+            "text": "FLOORING TIMBER"
+          }
+        },
+        "logo_zT6ykt": {
+          "type": "Logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo-3.png",
+            "text": "DECKING TIMBER"
+          }
+        },
+        "logo_Acd4Hf": {
+          "type": "Logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo-4.png",
+            "text": "FENCING TIMBER"
+          }
+        }
+      },
+      "block_order": [
+        "logo_BpbkMn",
+        "logo_DMWk7i",
+        "logo_zT6ykt",
+        "logo_Acd4Hf"
+      ],
+      "name": "DB Logo List",
+      "settings": {
+        "custom_id": "",
+        "section_width": "full-width",
+        "background_color": "#C20502",
+        "text_color": "#FFFFFF",
+        "overlay_opacity": "db-overlay-0"
       }
     }
   },
   "order": [
-    "db_banner_VGyYYy"
+    "db_banner_VGyYYy",
+    "db_logo_list_7W6H6Q"
   ]
 }
