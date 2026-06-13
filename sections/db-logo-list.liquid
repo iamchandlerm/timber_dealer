@@ -1,0 +1,194 @@
+<style>
+    #shopify-section-{{ section.id }} {
+        min-height: initial;
+        position: relative;
+        width: 100%;
+        padding: 54px 0;
+        {% if section.settings.background_color != blank %}
+            background-color: {{ section.settings.background_color }};
+        {% endif %}
+    }
+
+    #shopify-section-{{ section.id }} .db-logo-list__inner {
+        margin: auto;
+        width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .db-logo-list__logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 54px;
+    }
+    
+    #shopify-section-{{ section.id }} .db-logo-list__logo {
+        flex: 1 1 184px;
+        max-width: 184px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 32px 13px 32px;
+    }
+
+    #shopify-section-{{ section.id }} .db-logo-list__logo img {
+        width: 120px;
+        height: 120px;
+    }
+
+    #shopify-section-{{ section.id }} .db-logo-list__logo .db-heading {
+        margin-top: 16px;
+        {% if section.settings.text_color != blank %}
+            color: {{ section.settings.text_color }};
+        {% endif %}
+    }
+</style>
+
+
+<div id="{{ section.settings.custom_id }}" class="db-logo-list section section--{{ section.settings.section_width }} spacing-style gap-style">
+    <div class="db-overlay {{ section.settings.overlay_opacity }}"></div>
+    <div class="db-logo-list__inner">
+        <div class="db-logo-list__logos">
+            {% for block in section.blocks %}
+                <div class="db-logo-list__logo" {{ block.shopify_attributes }}>
+                    {% if block.settings.logo != blank %}
+                        <img src="{{ block.settings.logo | img_url: '200x' }}" alt="{{ block.settings.text | escape }}">
+                        {% if block.settings.text != blank %}
+                            <h4 class="db-heading">{{ block.settings.text }}</h4>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %} 
+   {
+        "name": "DB Logo List",
+        "settings": [
+            {
+                "type": "text",
+                "id": "custom_id",
+                "label": "Custom ID"
+            },
+            {
+                "type": "select",
+                "id": "section_width",
+                "label": "Width",
+                "options": [
+                    {
+                        "value": "full-width",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "page-width",
+                        "label": "Page width"
+                    }
+                ],
+                "default": "full-width"
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background color"
+            },
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text color"
+            },
+            {
+                "type": "select",
+                "id": "overlay_opacity",
+                "label": "Overlay opacity",
+                "options": [
+                    {
+                        "value": "db-overlay-0",
+                        "label": "0%"
+                    },
+                    {
+                        "value": "db-overlay-10",
+                        "label": "10%"
+                    },
+                    {
+                        "value": "db-overlay-20",
+                        "label": "20%"
+                    },
+                    {
+                        "value": "db-overlay-30",
+                        "label": "30%"
+                    },
+                    {
+                        "value": "db-overlay-40",
+                        "label": "40%"
+                    },
+                    {
+                        "value": "db-overlay-50",
+                        "label": "50%"
+                    },
+                    {
+                        "value": "db-overlay-60",
+                        "label": "60%"
+                    }
+                ],
+                "default": "db-overlay-0"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "Logo",
+                "name": "Logo",
+                "limit": 4,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "logo",
+                        "label": "Logo"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Logo text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "DB Logo List",
+                "blocks": [
+                    {
+                        "type": "Logo",
+                        "settings": {
+                            "logo": "shopify:\/\/shop_images\/placeholder-logo-1.png",
+                            "text": "Logo 1"
+                        }
+                    },
+                    {
+                        "type": "Logo",
+                        "settings": {
+                            "logo": "shopify:\/\/shop_images\/placeholder-logo-2.png",
+                            "text": "Logo 2"
+                        }
+                    },
+                    {
+                        "type": "Logo",
+                        "settings": {
+                            "logo": "shopify:\/\/shop_images\/placeholder-logo-3.png",
+                            "text": "Logo 3"
+                        }
+                    },
+                    {
+                        "type": "Logo",
+                        "settings": {
+                            "logo": "shopify:\/\/shop_images\/placeholder-logo-4.png",
+                            "text": "Logo 4"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
