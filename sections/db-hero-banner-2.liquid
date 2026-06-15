@@ -1,44 +1,40 @@
 <style>
-  #shopify-section-{{ section.id }} {
-    position: relative;
+  .db-banner {
+    width: 100%;
     height: 837px;
-    width: 100%;
   }
 
-  .swiper {
-    width: 100%;
-  }
 
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #444;
-    display: flex;
-    padding: 120px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .swiper-slide img {
-    display: block;
+  .db-banner__image--item {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   .db-banner__content {
-    z-index: 2;
-    color: #292733;
-    width: 717px;
-    text-align: right;
-    display: grid;
-    gap: 20px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    padding: 0 128px;
+    align-items: center;
   }
-  .db-banner__content h1 {
+
+  .db-banner__content-items {
+    max-width: 516px;
+  }
+
+  .db-banner__paragraph {
+    margin-top: 17px;
+    font-family: 'Poppins'
+    , sans-serif;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .db-banner__content h1 p {
     font-size: 49px;
     font-family: "Roboto slab"
     , serif;
@@ -46,46 +42,39 @@
   }
 
   .swiper-slide--left {
-    justify-content: flex-start;
-    text-align: left;
-    .db-banner__content {
+    justify-content: start;
+    .db-banner__content-items {
       text-align: left;
     }
   }
 
   .swiper-slide--center {
     justify-content: center;
-    text-align: center;
-    .db-banner__content {
+    .db-banner__content-items {
       text-align: center;
     }
   }
 
   .swiper-slide--right {
-    justify-content: flex-end;
-    text-align: right;
-    .db-banner__content {
-      justify-items: end;
+    justify-content: end;
+    .db-banner__content-items {
       text-align: right;
     }
   }
 
-  .db-banner__paragraph {
-    font-family: 'Poppins'
-    , sans-serif;
-    font-size: 16px;
-    width: 460px;
-  }
   .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
     top: 90%;
     left: 85%;
     width: 100px;
   }
   .swiper-pagination-progressbar {
+    background-color: rgb(194, 5, 2, 0.5);
     .swiper-pagination-progressbar-fill {
       background-color: #C20502;
     }
   }
+
+
 </style>
 
 <div
@@ -101,7 +90,7 @@
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
       {% if block.type == 'image_slider' %}
-        <div class="swiper-slide swiper-slide--{{ block.settings.text_alignment }}">
+        <div class="swiper-slide">
           {% if block.settings.slide_image != blank %}
             {{
               block.settings.slide_image | image_url: width: 1441 | image_tag: class: 'db-banner__image--item', loading: 'lazy'
@@ -109,9 +98,11 @@
           {% else %}
             {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
           {% endif %}
-          <div class="db-banner__content">
-            <h1>{{ block.settings.slide_text }}</h1>
-            <p class="db-banner__paragraph">{{ block.settings.paragraph }}</p>
+          <div class="db-banner__content swiper-slide--{{ block.settings.text_alignment }}">
+            <div class="db-banner__content-items">
+              <h1>{{ block.settings.slide_text }}</h1>
+              <p class="db-banner__paragraph">{{ block.settings.paragraph }}</p>
+            </div>
           </div>
         </div>
       {% endif %}
@@ -203,7 +194,7 @@
     ],
     "presets": [
       {
-        "name": "hero banner:"
+        "name": "hero banner: copy"
       }
     ]
   }
