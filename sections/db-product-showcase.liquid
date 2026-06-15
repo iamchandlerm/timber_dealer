@@ -1,0 +1,151 @@
+{% assign selected_product = section.settings.featured_product %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+  }
+
+  .db-product-showcase__content {
+    width: 1187px;
+    height: 100%;
+
+    align-self: center;
+    justify-self: center;
+  }
+
+  .db-product-showcase__content-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .db-product-showcase__content-items {
+    display: flex;
+    gap: 30px;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .db-product-showcase__product-image {
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+    background-color: #F5F5F5;
+  }
+
+  .db-product-showcase__product-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+  }
+
+  .db-product-showcase__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .db-product-showcase__product-info p {
+    color: #888888;
+    font-size: 16px;
+    font-family: 'Poppins'
+    , sans-serif;
+  }
+
+  .db-product-showcase__heading {
+    font-size: 20px;
+    font-family: "Roboto Slab";
+    color: #292733;
+    height: 52px;
+    width: 100%;
+  }
+
+  .db-product-showcase__heading--red {
+    color: #C20502;
+  }
+
+
+</style>
+
+<div id="shopify-section-{{section.id}}" class="
+    db-product-showcase
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  ">
+
+  <div class="db-product-showcase__content">
+
+    <div class="db-product-showcase__content-header">
+      <h1>{{ selected_product.title }}</h1>
+    </div>
+
+    <div class="db-product-showcase__content-items">
+
+      {% if selected_product.available %}
+
+        {% for variant in selected_product.variants limit: 4 %}
+
+          <div class="db-product-showcase__product-container">
+
+            <div class="db-product-showcase__image_container">
+
+              {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
+
+            </div>
+
+            <div class="db-product-showcase__product-info">
+              <p>Aucland</p>
+
+              <h2 class="db-product-showcase__heading">{{ variant.title }}</h2>
+
+              <h2 class="db-product-showcase__heading db-product-showcase__heading--red">{{ variant.price | money }}</h2>
+            </div>
+
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "db product showcase",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "section width",
+        "options": [
+          {
+            "value": "full",
+            "label": "full width"
+          }, {
+            "value": "narrow",
+            "label": "narrow"
+          }
+        ]
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "color scheme"
+      }, {
+        "type": "product",
+        "id": "featured_product",
+        "label": "product to feature"
+      }
+    ],
+    "presets": [
+      {
+        "name": "db product showcase"
+      }
+    ]
+  }
+{% endschema %}

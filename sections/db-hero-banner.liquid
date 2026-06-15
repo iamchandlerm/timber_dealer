@@ -1,89 +1,91 @@
 <style>
-    #shopify-section-{{section.id}} {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-          }
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
 
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #444;
-      display: flex;
-      padding: 120px;
-      justify-content: center;
-      align-items: center;
-      position: relative;;
-    }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #444;
+    display: flex;
+    padding: 120px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
+  .db-banner__content {
+    z-index: 2;
+    color: #292733;
+    width: 717px;
+    text-align: right;
+    display: grid;
+    gap: 20px;
+  }
+  .db-banner__content h1 {
+    font-size: 49px;
+    font-family: "Roboto slab"
+    , serif;
+    line-height: 1.05;
+  }
+
+  .swiper-slide--left {
+    justify-content: flex-start;
+    text-align: left;
     .db-banner__content {
-      z-index: 2;
-      color: #292733;
-      width: 717px;
-      text-align: right;
-      display: grid;
-      gap: 20px;
-    }
-    .db-banner__content h1 {
-      font-size: 49px;
-      font-family: "Roboto slab", serif;
-      line-height: 1.05;
-    }
-
-    .swiper-slide--left{
-      justify-content: flex-start;
       text-align: left;
-      .db-banner__content {
-        text-align: left;
-      }
     }
+  }
 
-    .swiper-slide--center{
-      justify-content: center;
+  .swiper-slide--center {
+    justify-content: center;
+    text-align: center;
+    .db-banner__content {
       text-align: center;
-      .db-banner__content {
-        text-align: center;
-      }
     }
+  }
 
-    .swiper-slide--right{
-      justify-content: flex-end;
+  .swiper-slide--right {
+    justify-content: flex-end;
+    text-align: right;
+    .db-banner__content {
+      justify-items: end;
       text-align: right;
-      .db-banner__content {
-        justify-items: end;
-        text-align: right;
-      }
     }
+  }
 
-    .db-banner__paragraph{
-        font-family: 'Poppins', sans-serif;
-        font-size: 16px;
-        width: 460px;
-      }
-    .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
-      top: 90%;
-        left: 85%;
-        width: 100px;
+  .db-banner__paragraph {
+    font-family: 'Poppins'
+    , sans-serif;
+    font-size: 16px;
+    width: 460px;
+  }
+  .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
+    top: 90%;
+    left: 85%;
+    width: 100px;
+  }
+  .swiper-pagination-progressbar {
+    .swiper-pagination-progressbar-fill {
+      background-color: #C20502;
     }
-    .swiper-pagination-progressbar {
-      .swiper-pagination-progressbar-fill {
-        background-color: #C20502;
-      }
   }
 </style>
 
@@ -96,16 +98,14 @@
     gap-style
     swiper mySwiper
   "
->
+  data-pagination:="{{section.settings.pagination}}">
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
       {% if block.type == 'image_slider' %}
         <div class="swiper-slide swiper-slide--{{ block.settings.text_alignment }}">
           {% if block.settings.slide_image != blank %}
             {{
-              block.settings.slide_image
-              | image_url: width: 1441
-              | image_tag: class: 'db-banner__image--item', loading: 'lazy'
+              block.settings.slide_image | image_url: width: 1441 | image_tag: class: 'db-banner__image--item', loading: 'lazy'
             }}
           {% else %}
             {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
@@ -123,96 +123,89 @@
   <div class="swiper-pagination"></div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.mySwiper', {
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
 
 {% schema %}
-{
-  "name": "Hero banner",
-  "settings": [
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "image_slider",
-      "name": "image Slider",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "slide_image",
-          "label": "Image Slider:"
-        },
-        {
-          "type": "richtext",
-          "id": "slide_text",
-          "label": "Heading Text",
-          "default": "<h1>Heading Text</h1>"
-        },
-        {
-          "type": "text",
-          "id": "paragraph",
-          "label": "paragraph"
-        },
-        {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "right"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "hero banner:"
-    }
-  ]
-}
+  {
+    "name": "Hero banner",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "page-width"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      }, {
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination",
+        "options": [
+          {
+            "value": "true",
+            "label": "progres bar"
+          }, {
+            "value": "false",
+            "label": "bullets"
+          }
+        ],
+        "default": "true"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_slider",
+        "name": "image Slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Image Slider:"
+          }, {
+            "type": "richtext",
+            "id": "slide_text",
+            "label": "Heading Text",
+            "default": "<h1>Heading Text</h1>"
+          }, {
+            "type": "text",
+            "id": "paragraph",
+            "label": "paragraph"
+          }, {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text Alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "right"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "hero banner:"
+      }
+    ]
+  }
 {% endschema %}

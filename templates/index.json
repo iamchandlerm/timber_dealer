@@ -112,13 +112,16 @@
         "second_heading_q4a34H": {
           "type": "second_heading",
           "settings": {
-            "second_heading": "Decking Timberin Aukland"
+            "second_heading": "Decking Timberin Aukland",
+            "second_heading_color": "#ffffff"
           }
         },
         "second_button_3yhMr7": {
           "type": "second_button",
           "settings": {
-            "second_button": "ENQUIRE NOW"
+            "second_button": "ENQUIRE NOW",
+            "second_button_color": "#ffffff",
+            "second_button_bg_color": "#c20502"
           }
         },
         "first_logo_aJeAXB": {
@@ -186,12 +189,250 @@
         "overlay_color": "#c20502",
         "opacity": 8
       }
+    },
+    "db_item_showcase_aEgqcq": {
+      "type": "db-item-showcase",
+      "blocks": {
+        "second_image_iVcfVW": {
+          "type": "second_image",
+          "settings": {
+            "second_image": "shopify://shop_images/image_7.png",
+            "second_image_position": "left",
+            "second_image_size": 350
+          }
+        },
+        "second_text_M9WpY8": {
+          "type": "second_text",
+          "settings": {
+            "second_text": "INSTORE PICK UP TODAY!",
+            "second_text_position": "left",
+            "second_text_color": ""
+          }
+        },
+        "second_heading_dTBxiD": {
+          "type": "second_heading",
+          "settings": {
+            "second_heading": "100 x 50mm x 6.0m H3.2 Fence Rail",
+            "second_heading_position": "center",
+            "second_heading_width": 450,
+            "second_heading_color": ""
+          }
+        },
+        "first_heading_eN7Pky": {
+          "type": "first_heading",
+          "settings": {
+            "first_heading": "Can’t Beat A Timber Dealers Deal!",
+            "first_heading_position": "left",
+            "first_heading_width": 300,
+            "first_heading_color": "#ffffff"
+          }
+        },
+        "first_button_V7XNn8": {
+          "type": "first_button",
+          "settings": {
+            "first_button": "Shop now",
+            "first_button_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "second_image_iVcfVW",
+        "second_text_M9WpY8",
+        "second_heading_dTBxiD",
+        "first_heading_eN7Pky",
+        "first_button_V7XNn8"
+      ],
+      "name": "db item showcase",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "first_color": "#000000",
+        "first_section_image": "shopify://shop_images/image_26.png",
+        "first_section_image_position": "left",
+        "first_content_position": "right",
+        "second_color": "",
+        "second_section_image_position": "left",
+        "second_content_position": "center"
+      }
+    },
+    "db_product_showcase_ErJMxH": {
+      "type": "db-product-showcase",
+      "name": "db product showcase",
+      "settings": {
+        "section_width": "full",
+        "color_scheme": "",
+        "featured_product": "timber"
+      }
+    },
+    "db_order_now_section_kCgTAU": {
+      "type": "db-order-now-section",
+      "blocks": {
+        "second_header_fRjRmN": {
+          "type": "second_header",
+          "settings": {
+            "second_header": "Responssible Forestry.Quality Timber.",
+            "second_header_color": "#ffffff",
+            "second_header_position": "left"
+          }
+        },
+        "second_button_qXHFRH": {
+          "type": "second_button",
+          "settings": {
+            "second_button_text": "Order Now",
+            "second_button_color": "#c20502",
+            "second_button_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "second_header_fRjRmN",
+        "second_button_qXHFRH"
+      ],
+      "name": "db order now section:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "first_background_option": "image",
+        "first_image": "shopify://shop_images/Rectangle_84.png",
+        "first_background_color": "",
+        "second_background_option": "color",
+        "second_background_color": "#c20502"
+      }
+    },
+    "db_cover_banner_Fin3MQ": {
+      "type": "db-cover-banner",
+      "blocks": {
+        "second_text_DbypEY": {
+          "type": "second_text",
+          "settings": {
+            "second_text": "TAKE A LOOK",
+            "second_text_color": "#ffffff"
+          }
+        },
+        "second_heading_NwXt6j": {
+          "type": "second_heading",
+          "settings": {
+            "second_heading": "Rift Sawn Soft Maple",
+            "second_heading_color": "#ffffff"
+          }
+        },
+        "second_button_4AnyYU": {
+          "type": "second_button",
+          "settings": {
+            "second_button": "Shop now",
+            "second_button_color": "#c20502",
+            "second_button_bg_color": "#ffffff"
+          }
+        },
+        "first_text_i7mQM6": {
+          "type": "first_text",
+          "settings": {
+            "first_text": "BROWSE NOW",
+            "first_text_color": "#ffffff"
+          }
+        },
+        "first_heading_wYE4ne": {
+          "type": "first_heading",
+          "settings": {
+            "first_heading": "Hardwares",
+            "first_heading_color": "#ffffff"
+          }
+        },
+        "first_button_ya9UFt": {
+          "type": "first_button",
+          "settings": {
+            "first_button": "SHOP NOW",
+            "first_button_color": "#c20502",
+            "first_button_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "second_text_DbypEY",
+        "second_heading_NwXt6j",
+        "second_button_4AnyYU",
+        "first_text_i7mQM6",
+        "first_heading_wYE4ne",
+        "first_button_ya9UFt"
+      ],
+      "name": "db cover banner",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "section_size": 4,
+        "image": "shopify://shop_images/Rectangle_17.png",
+        "first_position": "left",
+        "inquire_background_image": "shopify://shop_images/Rectangle_18.png",
+        "second_position": "left"
+      }
+    },
+    "db_headline_section_za6eKg": {
+      "type": "db-headline-section",
+      "blocks": {
+        "content_wxQEE6": {
+          "type": "content",
+          "settings": {
+            "content": "FEATURED PRODUCT"
+          }
+        },
+        "heading_bKjzLM": {
+          "type": "heading",
+          "settings": {
+            "heading": "TIMBER RETAINING WALLS AND ROUNDWOOD"
+          }
+        },
+        "content_LPF9hn": {
+          "type": "content",
+          "settings": {
+            "content": "Building a timber retaining wall is a popular and easy DIY project. Perfect for turning that sloping, unusable yard space into a level, erosion free masterpiece! If done properly, they do a good job of tidying up the place and make mowing the lawns a cinch."
+          }
+        },
+        "content_qL9VR7": {
+          "type": "content",
+          "settings": {
+            "content": "We stock a large selection of round and square posts, TG&V, and standard retaining boards, as well as all that other important stuff like drainage, nails and concrete – yup we have you covered if you’re building retaining walls in Auckland!"
+          }
+        },
+        "content_Ykw6AY": {
+          "type": "content",
+          "settings": {
+            "content": "Whether you’re a seasoned professional or have no idea where to start, come and see us. We can set you up with all the equipment and advice you need to get started."
+          }
+        },
+        "content_cMPY64": {
+          "type": "content",
+          "settings": {
+            "content": "See our Trade Me specials below and get cracking on your new retaining wall"
+          }
+        }
+      },
+      "block_order": [
+        "content_wxQEE6",
+        "heading_bKjzLM",
+        "content_LPF9hn",
+        "content_qL9VR7",
+        "content_Ykw6AY",
+        "content_cMPY64"
+      ],
+      "name": "db headline section:",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "background_image": "shopify://shop_images/Rectangle_2_1.png",
+        "overlay_color": "rgba(0,0,0,0)",
+        "opacity": 5
+      }
     }
   },
   "order": [
     "db_hero_banner_bpDPyi",
     "db_list_info_LWjQpR",
     "db_cover_banner_a3HPet",
-    "db_headline_section_W7fqDQ"
+    "db_headline_section_W7fqDQ",
+    "db_item_showcase_aEgqcq",
+    "db_product_showcase_ErJMxH",
+    "db_order_now_section_kCgTAU",
+    "db_cover_banner_Fin3MQ",
+    "db_headline_section_za6eKg"
   ]
 }

@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5% 0;
   }
   .db-heading-section_image {
     height: 100%;
@@ -13,14 +14,14 @@
     object-fit: cover;
     position: absolute;
   }
-  .db-headline-section__overlay{
+  .db-headline-section__overlay {
     height: 100%;
     width: 100%;
-    background-color: {{section.settings.overlay_color}};
-    opacity: calc({{section.settings.opacity}}/10);
+    background-color: {{ section.settings.overlay_color }};
+    opacity: calc({{section.settings.opacity}} / 10);
     position: absolute;
   }
-  .db-headline-section__content{
+  .db-headline-section__content {
     z-index: 1;
     width: 900px;
     height: 100%;
@@ -31,10 +32,11 @@
     gap: 17px;
   }
 
-  .db-headline-section__heading{
+  .db-headline-section__heading {
     width: 829px;
     font-size: 49px;
-    font-family: "Roboto slab", serif;;
+    font-family: "Roboto slab"
+    , serif;
     line-height: 1.05;
     font-weight: bold;
     color: #fff;
@@ -42,32 +44,29 @@
 
   }
 
-  .db-headline-section__content-text{
+  .db-headline-section__content-text {
     color: #fff;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins'
+    , sans-serif;
     font-size: 16px;
     font-weight: 200;
   }
-  .db-headline-section__button{
+  .db-headline-section__button {
     color: #C20502;
   }
 </style>
 
-<div
-  id="shopify-section-{{section.id}}"
-  class="
+<div id="shopify-section-{{section.id}}" class="
     db-headline-section
     section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
     gap-style
-  "
->
+  ">
   {% if section.settings.background_image != blank %}
-    {{
-      section.settings.background_image
-      | image_url: width: 900
-      | image_tag: loading: 'lazy', class: 'db-heading-section_image'
+    {{ section.settings.background_image
+ | image_url: width: 900
+ | image_tag: loading: 'lazy', class: 'db-heading-section_image'
     }}
   {% else %}
     {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
@@ -81,8 +80,7 @@
         <div
           id="block-{{ block.id }}"
           class="db-headline-section__block db-headline-section__block--{{ block.type }}"
-          {{ block.shopify_attributes }}
-        >
+          {{ block.shopify_attributes }}>
           {% case block.type %}
             {% when 'heading' %}
               <h2 class="db-headline-section__heading">{{ block.settings.heading }}</h2>
@@ -100,94 +98,90 @@
 </div>
 
 {% schema %}
-{
-  "name": "db headline section",
-  "settings": [
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "background image:"
-    },
-    {
-      "type": "color",
-      "id": "overlay_color",
-      "label": "overlay color",
-      "default": "#C20502"
-    },
-    {
-      "type": "range",
-      "id": "opacity",
-      "min": 0,
-      "max": 10,
-      "step": 1,
-      "default": 5,
-      "label": "opacity"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "heading",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "heading:",
-          "default": "heading text!"
-        }
-      ]
-    },
-    {
-      "type": "content",
-      "name": "content",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "content",
-          "label": "content:",
-          "default": "content text!"
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "button",
-      "settings": [
-        {
-          "type": "text",
-          "id": "button",
-          "label": "button text:",
-          "default": "button"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "db headline section:"
-    }
-  ]
-}
+  {
+    "name": "db headline section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "page-width"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "background image:"
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "overlay color",
+        "default": "#C20502"
+      }, {
+        "type": "range",
+        "id": "opacity",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 5,
+        "label": "opacity"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "heading:",
+            "default": "heading text!"
+          }
+        ]
+      }, {
+        "type": "content",
+        "name": "content",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "content:",
+            "default": "content text!"
+          }
+        ]
+      }, {
+        "type": "button",
+        "name": "button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button",
+            "label": "button text:",
+            "default": "button"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "db headline section:"
+      }
+    ]
+  }
 {% endschema %}
