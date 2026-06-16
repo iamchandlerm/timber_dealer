@@ -1,12 +1,116 @@
+<style>
+  img.db-bulk-products__product-image {
+    width: 282px;
+    height: 285px;
+    position: relative;
+  }
+
+  .db-bulk-products__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .db-bulk-products__product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 270px;
+
+    .db-bluk-products__product-name {
+      font-size: 10px;
+      font-family: 'Roboto Slab';
+      font-weight: bold;
+    }
+    .db-bulk-products__product-price {
+      font-size: 20px;
+      font-family: 'Roboto Slab';
+      font-weight: bold;
+      color: #C20502;
+    }
+  }
+
+  .db-bulk-products__container {
+    width: 100%;
+  }
+
+  .swiper-wrapper .swiper-slide {
+    background-color: #fff;
+  }
+
+
+</style>
+
 <div id="{{section.id}}" class="
-    db-banner
+    db-bulk-product
     section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
     gap-style
     swiper mySwiper
   ">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"></div>
-  </div>
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        {% assign selected_product = block.settings.selected_product %}
+        <div class="db-bulk-products__container" {{ block.shopify_attributes }}>
+          <div class="db-bulk-products__heading">{{ block.settings.heading }}</div>
+          <div class="db-bulk-products__content">
 
+            {% for variant in selected_product.variants limit: block.settings.max_products %}
+
+              <div class="db-bulk-products__product">
+                {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-bulk-products__product-image' }}
+                <p class="db-bulk-products__product-address">
+                  {{ variant.metafields.custom.location }}</p>
+                <h2 class="db-bluk-products__product-name">{{ variant.title }}</h2>
+                <p class="db-bulk-products__product-price">{{ variant.price | money }}</p>
+              </div>
+
+            {% endfor %}
+          </div>
+
+        </div>
+
+
+      </div>
+    {% endfor %}
+
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
 </div>
+
+{% schema %}
+  {
+    "name": "bulk product section",
+
+    "blocks": [
+      {
+        "type": "product_items",
+        "name": "product items",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "slide title"
+          }, {
+            "type": "product",
+            "id": "selected_product",
+            "label": "product to feature"
+          }, {
+            "type": "number",
+            "id": "max_products",
+            "label": "max products to show"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "huge product page"
+      }
+    ]
+  }
+{% endschema %}

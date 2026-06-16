@@ -1,4 +1,4 @@
-const initializeSwiper = ( container = document , line = false ) => {
+const initializeSwiper = ( container = document ) => {
     
         container
         .querySelectorAll('.mySwiper')

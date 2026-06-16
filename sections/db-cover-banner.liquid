@@ -3,6 +3,7 @@
     width: 100%;
     --image-size: {{ section.settings.section_size }}fr
   }
+
   .db-cover-banner {
     width: 100%;
     height: 500px;
@@ -34,6 +35,7 @@
     height: 100%;
     object-fit: cover;
     position: absolute;
+    object-position: left;
   }
 
   .db-cover-banner__logo {
@@ -63,7 +65,7 @@
     line-height: 1.11;
   }
   .db-cover-banner__inquire-button {
-    width: 191px;
+    width: 168px;
     height: 64px;
     background-color: #C20502;
     color: #F1F3F4;
@@ -105,8 +107,9 @@
   .db-cover-banner__inquire-text {
     font-family: "Rajdhani"
     , sans-serif;
-    font-size: 20px
-  },
+    font-size: 20px;
+    font-weight: 500;
+  }
 
 </style>
 
@@ -148,11 +151,20 @@
               {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
             {% endif %}
           {% when 'first_text' %}
-            <p class="db-cover-banner__inquire-text bd-cover-banner--text-color" style="--text-color: {{block.settings.first_text_color}}">{{ block.settings.first_text }}</p>
+            <p
+              class="db-cover-banner__inquire-text bd-cover-banner--text-color"
+              style="--text-color: {{block.settings.first_text_color}}"
+              {{ block.shopify_attributes }}>{{ block.settings.first_text }}</p>
           {% when 'first_heading' %}
-            <h2 class="db-cover-banner__inquire-heading bd-cover-banner--text-color" style="--text-color: {{block.settings.first_heading_color}}">{{ block.settings.first_heading }}</h2>
+            <h2
+              class="db-cover-banner__inquire-heading bd-cover-banner--text-color"
+              style="--text-color: {{block.settings.first_heading_color}}"
+              {{ block.shopify_attributes }}>{{ block.settings.first_heading }}</h2>
           {% when 'first_button' %}
-            <button class="db-cover-banner__inquire-button bd-cover-banner--text-color bg-cover-banner--button-color" style="--text-color: {{block.settings.first_button_color}}; --button-color: {{block.settings.first_button_bg_color}}">{{ block.settings.first_button }}</button>
+            <button
+              class="db-cover-banner__inquire-button bd-cover-banner--text-color bg-cover-banner--button-color"
+              style="--text-color: {{block.settings.first_button_color}}; --button-color: {{block.settings.first_button_bg_color}}"
+              {{ block.shopify_attributes }}>{{ block.settings.first_button }}</button>
         {% endcase %}
       {% endfor %}
     </div>
@@ -182,11 +194,20 @@
                 {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
               {% endif %}
             {% when 'second_heading' %}
-              <h2 class="db-cover-banner__inquire-heading bd-cover-banner--text-color" style="--text-color: {{block.settings.second_heading_color}}">{{ block.settings.second_heading }}</h2>
+              <h2
+                class="db-cover-banner__inquire-heading bd-cover-banner--text-color"
+                style="--text-color: {{block.settings.second_heading_color}}"
+                {{ block.shopify_attributes }}>{{ block.settings.second_heading }}</h2>
             {% when 'second_text' %}
-              <p class="db-cover-banner__inquire-text bd-cover-banner--text-color" style="--text-color: {{block.settings.second_text_color}}">{{ block.settings.second_text }}</p>
+              <p
+                class="db-cover-banner__inquire-text bd-cover-banner--text-color"
+                style="--text-color: {{block.settings.second_text_color}}"
+                {{ block.shopify_attributes }}>{{ block.settings.second_text }}</p>
             {% when 'second_button' %}
-              <button class="db-cover-banner__inquire-button bd-cover-banner--text-color bg-cover-banner--button-color" style="--text-color: {{block.settings.second_button_color}}; --button-color: {{block.settings.second_button_bg_color}} ">{{ block.settings.second_button }}</button>
+              <button
+                class="db-cover-banner__inquire-button bd-cover-banner--text-color bg-cover-banner--button-color"
+                style="--text-color: {{block.settings.second_button_color}}; --button-color: {{block.settings.second_button_bg_color}} "
+                {{ block.shopify_attributes }}>{{ block.settings.second_button }}</button>
           {% endcase %}
         {% endfor %}
       {% endif %}
