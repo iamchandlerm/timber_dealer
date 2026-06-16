@@ -4,24 +4,27 @@ const initializeSwiper = ( container = document ) => {
         .querySelectorAll('.mySwiper')
         .forEach((slider) => {
 
-           
-                
-            if(slider.swiper) {
-                return
+            if (slider.swiper) {
+                slider.swiper.destroy();
             }
 
+            const paginationType = slider.getAttribute('data-pagination') || 'bullets';
+
+            const localPagination =slider.querySelector('.swiper-pagination');
+            const localNextbtn = slider.querySelector('.swiper-button-next');
+            const localPrevbtn = slider.querySelector('.swiper-button-prev');
 
             new Swiper('.mySwiper', {
                 loop: true,
                 pagination: {
                     clickable: true,
-                    el: ".swiper-pagination",
-                    type: "progressbar",
+                    el: localPagination,
+                    type: paginationType
 
                 },
                 navigation: {
-                  nextEl: '.swiper-button-next',
-                  prevEl: '.swiper-button-prev',
+                  nextEl: localNextbtn,
+                  prevEl: localPrevbtn,
                 },
               });
         });

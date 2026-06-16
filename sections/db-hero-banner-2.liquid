@@ -87,7 +87,7 @@
     gap-style
     swiper mySwiper
   "
-  data-pagination:="{{section.settings.pagination}}">
+  data-pagination="{{section.settings.pagination}}">
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
       {% if block.type == 'image_slider' %}
@@ -142,14 +142,14 @@
         "label": "Pagination",
         "options": [
           {
-            "value": "true",
+            "value": "progressbar",
             "label": "progres bar"
           }, {
-            "value": "false",
+            "value": "bullets",
             "label": "bullets"
           }
         ],
-        "default": "true"
+        "default": "progressbar"
       }
     ],
     "blocks": [

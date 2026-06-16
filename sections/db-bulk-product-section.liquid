@@ -1,54 +1,82 @@
 <style>
-  img.db-bulk-products__product-image {
-    width: 282px;
-    height: 285px;
-    position: relative;
+  #{{section.id}}
+{
+  margin-top: 100px;
+}
+img.db-bulk-products__product-image {
+  width: 282px;
+  height: 285px;
+  position: relative;
+  background-color: #F5F5F5;
+}
+
+.db-bulk-products__content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 41px;
+  column-gap: 17px;
+  justify-content: center;
+  padding: 0 128px;
+}
+
+.db-bulk-products__product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 270px;
+
+  .db-bulk-products__product-address {
+    font-size: 16px;
+    font-family: 'Roboto Slab';
+    color: #888888;
   }
 
-  .db-bulk-products__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  .db-bluk-products__product-name {
+    font-size: 20px;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
   }
-
-  .db-bulk-products__product {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 270px;
-
-    .db-bluk-products__product-name {
-      font-size: 10px;
-      font-family: 'Roboto Slab';
-      font-weight: bold;
-    }
-    .db-bulk-products__product-price {
-      font-size: 20px;
-      font-family: 'Roboto Slab';
-      font-weight: bold;
-      color: #C20502;
-    }
+  .db-bulk-products__product-price {
+    font-size: 20px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #C20502;
   }
+}
 
-  .db-bulk-products__container {
-    width: 100%;
-  }
+.db-bulk-products__heading {
+  width: 377px;
+  color: #000;
+  font-size: 64px;
+  font-family: "Roboto Slab";
+  font-weight: bold;
+  line-height: 1.055;
+  text-align: center;
+  margin: 41px auto;
 
-  .swiper-wrapper .swiper-slide {
-    background-color: #fff;
-  }
+}
+
+.db-bulk-products__container {
+  width: 100%;
+}
+
+.swiper-wrapper .swiper-slide {
+  background-color: #fff;
+}
 
 
 </style>
 
-<div id="{{section.id}}" class="
+<div
+  id="{{section.id}}"
+  class="
     db-bulk-product
     section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
     gap-style
     swiper mySwiper
-  ">
+  "
+  data-pagination="{{section.settings.pagination}}">
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
       <div class="swiper-slide">
@@ -85,6 +113,42 @@
 {% schema %}
   {
     "name": "bulk product section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "page-width"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      }, {
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination",
+        "default": "progressbar",
+        "options": [
+          {
+            "value": "progressbar",
+            "label": "progres bar"
+          }, {
+            "value": "bullets",
+            "label": "bullets"
+          }
+        ]
+      }
+    ],
 
     "blocks": [
       {
@@ -109,7 +173,18 @@
     ],
     "presets": [
       {
-        "name": "huge product page"
+        "name": "huge product page",
+        "blocks": [
+          {
+            "type": "product_items",
+            "settings": {
+              "heading": "Bulk Products",
+              "selected_product": "product-1",
+              "max_products": 8
+            }
+          }
+        ]
+
       }
     ]
   }
