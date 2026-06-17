@@ -64,6 +64,31 @@ img.db-bulk-products__product-image {
   background-color: #fff;
 }
 
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-pagination-bullet:not(:last-child)::after {
+  content: "|";
+  margin: 0 8px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0.2;
+}
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  position: relative;
+  height: 100px;
+  font-size: 20px;
+  font-family: 'Poppins';
+  font-weight: bold;
+  justify-content: center;
+}
 
 </style>
 
@@ -76,7 +101,7 @@ img.db-bulk-products__product-image {
     gap-style
     swiper mySwiper
   "
-  data-pagination="{{section.settings.pagination}}">
+  data-pagination-type="{{section.settings.pagination}}">
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
       <div class="swiper-slide">
@@ -105,9 +130,9 @@ img.db-bulk-products__product-image {
     {% endfor %}
 
   </div>
+  <div class="swiper-pagination"></div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
 </div>
 
 {% schema %}
