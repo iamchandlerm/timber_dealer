@@ -97,9 +97,7 @@
     <div class="order-now-section_content order-now-section__first-background--color">
       {% if section.settings.first_background_option == 'image' %}
         {% if section.settings.first_image != blank %}
-          {{ section.settings.first_image 
- | image_url: width: 500
- | image_tag: loading: 'lazy', class: 'order-now-section__image'
+          {{ section.settings.first_image  | image_url: width: 500 | image_tag: loading: 'lazy', class: 'order-now-section__image'
           }}
         {% else %}
           {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
@@ -142,9 +140,7 @@
     <div class="order-now-section_content .order-now-section__secoond-background--color">
       {% if section.settings.second_background_option == 'image' %}
         {% if section.settings.second_image != blank %}
-          {{ section.settings.second_image
- | image_url: width: 500
- | image_tag: loading: 'lazy', class: 'order-now-section__image'
+          {{ section.settings.second_image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'order-now-section__image'
           }}
         {% else %}
           {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
