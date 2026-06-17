@@ -64,32 +64,84 @@ img.db-bulk-products__product-image {
   background-color: #fff;
 }
 
-.swiper-pagination {
-  display: flex;
-  align-items: center;
-}
-
-.swiper-pagination-bullet:not(:last-child)::after {
-  content: "|";
-  margin: 0 8px;
+.db_pagination {
+  padding: 40px 0;
 }
 
 .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  background-color: #000;
-  opacity: 0.2;
+  border-radius: 0;
+  opacity: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  padding: 5px;
 }
+span .swiper-pagination-bullet {
+  margin: 0;
+}
+.db-arrows,
+.swiper-pagination-bullet {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.db-pagination__first {
+  border-radius: 8px 0 0 8px;
+}
+.db-pagination__last {
+  border-radius: 0 8px 8px 0;
+}
+
+
+.db-arrows {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-size: 25px;
+  margin: 0 7px;
+}
+
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  --swiper-pagination-bullet-horizontal-gap: 7px;
   position: relative;
-  height: 100px;
   font-size: 20px;
   font-family: 'Poppins';
   font-weight: bold;
   justify-content: center;
+  gap: 7px;
+  width: auto;
+  top: initial;
+  left: initial;
+  bottom: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.swiper-pagination-bullet-active {
+  background-color: #C20502;
+  color: #fff;
+  text-align: center;
 }
 
+
+/*
+
+   .swiper-pagination-bullet { 
+   background-color: #fff; 
+   opacity: 1; 
+   width: 8px; 
+   height: 8px; 
+   } 
+*/
+
+.db_pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 
 <div
@@ -130,9 +182,16 @@ img.db-bulk-products__product-image {
     {% endfor %}
 
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+  <div class="db_pagination">
+    <div class="db-pagination__first db-arrows">
+      &laquo;
+    </div>
+    <div class="db-pagination__prev db-arrows">&lsaquo;</div>
+    <div class="swiper-pagination"></div>
+    <div class="db-pagination__next db-arrows">&rsaquo;</div>
+    <div class="db-pagination__last db-arrows">&raquo;</div>
+  </div>
+
 </div>
 
 {% schema %}
