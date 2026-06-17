@@ -1,7 +1,7 @@
 <style>
   .db-banner {
     width: 100%;
-    height: 837px;
+    height: 741px;
   }
 
 
@@ -63,9 +63,11 @@
   }
 
   .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
-    top: 90%;
-    left: 85%;
-    width: 100px;
+    top: initial;
+    left: initial;
+    bottom: 72px;
+    right: 128px;
+    width: 158px;
   }
   .swiper-pagination-progressbar {
     background-color: rgb(194, 5, 2, 0.5);
@@ -92,8 +94,7 @@
       {% if block.type == 'image_slider' %}
         <div class="swiper-slide">
           {% if block.settings.slide_image != blank %}
-            {{
-              block.settings.slide_image | image_url: width: 1441 | image_tag: class: 'db-banner__image--item', loading: 'lazy'
+            {{ block.settings.slide_image | image_url: width: 1441 | image_tag: class: 'db-banner__image--item', loading: 'lazy'
             }}
           {% else %}
             {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
@@ -108,8 +109,6 @@
       {% endif %}
     {% endfor %}
   </div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
   <div class="swiper-pagination"></div>
 </div>
 
