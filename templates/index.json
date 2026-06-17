@@ -58,7 +58,8 @@
       "name": "hero banner:",
       "settings": {
         "section_width": "page-width",
-        "color_scheme": ""
+        "color_scheme": "",
+        "pagination": "true"
       }
     },
     "db_list_info_LWjQpR": {
@@ -101,7 +102,7 @@
       ],
       "name": "list info:",
       "settings": {
-        "section_width": "page-width",
+        "section_width": "full-width",
         "color_scheme": "",
         "background_color": "#c20502"
       }
