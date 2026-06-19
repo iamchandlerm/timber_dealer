@@ -25,6 +25,8 @@ img.db-bulk-products__product-image {
   flex-direction: column;
   gap: 10px;
   max-width: 270px;
+  padding: 10px;
+  transition: 0.5s ease;
 
   .db-bulk-products__product-address {
     font-size: 16px;
@@ -127,6 +129,16 @@ span .swiper-pagination-bullet {
   text-align: center;
 }
 
+.db-bulk-products__product:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(1.03);
+}
+
+.db-bulk-products__content a {
+  height: fit-content;
+  width: 100%;
+}
+
 
 /*
 
@@ -165,14 +177,15 @@ span .swiper-pagination-bullet {
 
             {% for variant in selected_product.variants limit: block.settings.max_products %}
 
-              <div class="db-bulk-products__product">
-                {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-bulk-products__product-image' }}
-                <p class="db-bulk-products__product-address">
-                  {{ variant.metafields.custom.location }}</p>
-                <h2 class="db-bluk-products__product-name">{{ variant.title }}</h2>
-                <p class="db-bulk-products__product-price">{{ variant.price | money }}</p>
-              </div>
-
+              <a href="{{ variant.url }}">
+                <div class="db-bulk-products__product">
+                  {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-bulk-products__product-image' }}
+                  <p class="db-bulk-products__product-address">
+                    {{ variant.metafields.custom.location }}</p>
+                  <h2 class="db-bluk-products__product-name">{{ variant.title }}</h2>
+                  <p class="db-bulk-products__product-price">{{ variant.price | money }}</p>
+                </div>
+              </a>
             {% endfor %}
           </div>
 
@@ -222,7 +235,7 @@ span .swiper-pagination-bullet {
         "type": "select",
         "id": "pagination",
         "label": "Pagination",
-        "default": "progressbar",
+        "default": "bullets",
         "options": [
           {
             "value": "progressbar",
