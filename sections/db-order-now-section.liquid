@@ -32,7 +32,7 @@
   flex-direction: column;
   justify-content: center;
 
-  padding: 0 10%;
+  padding: 0 72px;
   align-items: center;
   gap: 40px;
 }
@@ -53,8 +53,12 @@
 
 .db-order-now__header {
   text-align: center;
-  font-size: 40px;
-  font-weight: bold;
+
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: normal;
+  }
 
 }
 .order-now-section__second_background-color,
@@ -63,6 +67,7 @@
   height: 100%;
   position: absolute;
 }
+
 
 .order-now-section__first_background-color {
   background-color: {{ section.settings.first_background_color }}
@@ -73,7 +78,8 @@
 .db-order-now__header,
 .db-order-now__text,
 .db-order-now__button button {
-  color: var(--color)
+  color: var(--color);
+  font-weight: 500;
 }
 .db-order-now__text_position--left {
   text-align: left;

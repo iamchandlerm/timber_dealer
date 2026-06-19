@@ -42,6 +42,7 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 10px;
 
   }
 
@@ -69,6 +70,15 @@
     color: #C20502;
   }
 
+  .db-product-showcase__product-container:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    transform: scale(1.03);
+  }
+
+  .db-product-showcase__content-items a {
+    height: fit-content;
+    width: 100%;
+  }
 
 </style>
 
@@ -90,24 +100,25 @@
       {% if selected_product.available %}
 
         {% for variant in selected_product.variants limit: 4 %}
+          <a href="{{variant.url}}">
+            <div class="db-product-showcase__product-container">
 
-          <div class="db-product-showcase__product-container">
+              <div class="db-product-showcase__image_container">
 
-            <div class="db-product-showcase__image_container">
+                {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
 
-              {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-product-showcase__product-image' }}
+              </div>
+
+              <div class="db-product-showcase__product-info">
+                <p>Aucland</p>
+
+                <h2 class="db-product-showcase__heading">{{ variant.title }}</h2>
+
+                <h2 class="db-product-showcase__heading db-product-showcase__heading--red">{{ variant.price | money }}</h2>
+              </div>
 
             </div>
-
-            <div class="db-product-showcase__product-info">
-              <p>Aucland</p>
-
-              <h2 class="db-product-showcase__heading">{{ variant.title }}</h2>
-
-              <h2 class="db-product-showcase__heading db-product-showcase__heading--red">{{ variant.price | money }}</h2>
-            </div>
-
-          </div>
+          </a>
         {% endfor %}
       {% endif %}
 

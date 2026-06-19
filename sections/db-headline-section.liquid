@@ -14,16 +14,18 @@
     object-fit: cover;
     position: absolute;
   }
+  #shopify-section-{{ section.id }}
   .db-headline-section__overlay {
     height: 100%;
     width: 100%;
-    background-color: {{ section.settings.overlay_color }};
-    opacity: calc({{section.settings.opacity}} / 10);
+    background-color: var(--color_overlay);
+    opacity: calc(var(--opacity) / 10);
     position: absolute;
   }
+
   .db-headline-section__content {
     z-index: 1;
-    width: 900px;
+    width: 880px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -50,10 +52,13 @@
     font-family: 'Poppins'
     , sans-serif;
     font-size: 16px;
-    font-weight: 200;
+    font-weight: 300;
   }
   .db-headline-section__button {
     color: #C20502;
+
+    width: 178px;
+    font-weight: 500;
   }
 </style>
 
@@ -72,7 +77,7 @@
     {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
   {% endif %}
 
-  <div class="db-headline-section__overlay"></div>
+  <div class="db-headline-section__overlay" style="--opacity: {{section.settings.opacity}}; --color_overlay: {{section.settings.overlay_color}}"></div>
 
   <div class="db-headline-section__content">
     {% if section.blocks.size > 0 %}
