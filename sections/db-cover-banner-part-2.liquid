@@ -1,0 +1,526 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100%;
+    --image-size: {{ section.settings.section_size }}fr
+  }
+
+  .db-cover-banner-two {
+    width: 100%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: var(--image-size) minmax(0, 4fr);
+    grid-template-areas: "main inquire";
+  }
+  .db-cover-banner-two__content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .db-cover-banner-two__content--main {
+    grid-area: main;
+  }
+
+
+  .db-cover-banner-two__content--inquire {
+    grid-area: inquire;
+  }
+
+  .db-cover-banner-two__image,
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    object-position: left;
+  }
+
+  .db-cover-banner-two__logo {
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .db-cover-banner-two__logo-image {
+    width: 340px;
+    height: 299px;
+  }
+  .db-cover-banner-two__inquire-content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    gap: 11px;
+  }
+
+  .db-cover-banner-two__content-left--width {
+    width: var(--content-width, 364px);
+  }
+  .db-cover-banner-two__content-right--width {
+    width: var(--content-width, 364px);
+  }
+
+  h2.db-cover-banner-two__inquire-heading.bd-cover-banner-two--text-color {
+    font-family: "Roboto slab"
+    , serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.11;
+  }
+  .db-cover-banner-two__inquire-button {
+    width: 168px;
+    height: 64px;
+    background-color: #C20502;
+    color: #F1F3F4;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Poppins'
+    , sans-serif;
+    border: none;
+    font-weight: 500;
+
+  }
+
+  .db-cover-banner-two__inquire-button--first {
+    width: var(--button-size1, 191px);
+  }
+  .db-cover-banner-two__inquire-button--second {
+    width: var(--button-size2, 191px);
+  }
+
+  .db-cover-banner-two__content--left {
+    align-items: start;
+    text-align: left;
+    .db-cover-banner-two__inquire-heading {
+      text-align: start;
+    }
+  }
+  .db-cover-banner-two__content--center {
+    align-items: center;
+    text-align: center;
+    .db-cover-banner-two__inquire-heading {
+      text-align: center;
+    }
+  }
+  .db-cover-banner-two__content--right {
+    align-items: end;
+    text-align: right;
+    .db-cover-banner-two__inquire-heading {
+      text-align: end;
+    }
+  }
+  .bd-cover-banner-two--text-color {
+    color: var(--text-color)
+  }
+  .bg-cover-banner-two--button-color {
+    background-color: var(--button-color);
+  }
+  .db-cover-banner-two__inquire-text {
+    font-family: "Rajdhani"
+    , sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .db-cover-banner-two__content--main--left {
+    justify-content: start;
+    .db-cover-banner-two__logo {
+      padding-left: 150px;
+    }
+  }
+
+  .db-cover-banner-two__content--main--center {
+    justify-content: center;
+  }
+
+  .db-cover-banner-two__content--main--right {
+    justify-content: end;
+  }
+
+  .db-cover-banner-two__content--inquire--left {
+    justify-content: start;
+    .db-cover-banner-two__inquire-content {
+      padding-left: 70px;
+    }
+  }
+
+  .db-cover-banner-two__content--inquire--center {
+    justify-content: center;
+  }
+
+  .db-cover-banner-two__content--inquire--right {
+    justify-content: end;
+  }
+
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // const
+  });
+</script>
+
+<div id="shopify-section-{{section.id}}" class="
+    db-cover-banner-two
+    section section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    gap-style
+  ">
+  <div class="db-cover-banner-two__content db-cover-banner-two__content--main db-cover-banner-two db-cover-banner-two__content--main--{{section.settings.first_position}}">
+    <!-- Content for the cover banner goes here -->
+
+    {% if section.settings.image != blank %}
+      {{ section.settings.image
+ | image_url: width: 2000
+ | image_tag: loading: 'lazy', class: 'db-cover-banner__image'
+      }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+    {% endif %}
+
+    <div class="db-cover-banner-two__logo db-cover-banner-two__content-left--width db-cover-banner-two__content--{{section.settings.first_items_position}}" style="--content-width: {{section.settings.first_items_width}}px">
+      <!-- Logo content goes here -->
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'first_logo' %}
+            {% if block.settings.first_logo != blank %}
+              {{ block.settings.first_logo
+ | image_url: width: 400
+ | image_tag: loading: 'lazy', class: 'db-cover-banner-two__logo-image'
+              }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+            {% endif %}
+          {% when 'first_text' %}
+            <p
+              class="db-cover-banner-two__inquire-text bd-cover-banner-two--text-color"
+              style="--text-color: {{block.settings.first_text_color}}"
+              {{ block.shopify_attributes }}>{{ block.settings.first_text }}</p>
+          {% when 'first_heading' %}
+            <h2
+              class="db-cover-banner-two__inquire-heading bd-cover-banner-two--text-color"
+              style="--text-color: {{block.settings.first_heading_color}}"
+              {{ block.shopify_attributes }}>{{ block.settings.first_heading }}</h2>
+          {% when 'first_button' %}
+            <button
+              class="db-cover-banner-two__inquire-button db-cover-banner-two__inquire-button--first bd-cover-banner-two--text-color bg-cover-banner-two--button-color"
+              style="--text-color: {{block.settings.first_button_color}}; --button-color: {{block.settings.first_button_bg_color}}; --button-size1: {{block.settings.first_button_width}}px"
+              {{ block.shopify_attributes }}>{{ block.settings.first_button }}</button>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="db-cover-banner-two__content db-cover-banner-two__content--inquire db-cover-banner-two__content--inquire--{{section.settings.second_position}}">
+    <!-- Content for the cover banner goes here -->
+    {% if section.settings.inquire_background_image != blank %}
+      {{ section.settings.inquire_background_image
+ | image_url: width: 2000
+ | image_tag: loading: 'lazy', class: 'db-cover-banner__image'
+      }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+    {% endif %}
+    <div class="db-cover-banner-two__inquire-content db-cover-banner-two__content-right--width db-cover-banner-two__content--{{section.settings.second_items_position}}" style="--content-width: {{section.settings.second_items_width}}px">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'second_logo' %}
+              {% if block.settings.second_logo != blank %}
+                {{ block.settings.second_logo
+ | image_url: width: 400
+ | image_tag: loading: 'lazy', class: 'db-cover-banner-two__logo-image'
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-image' }}
+              {% endif %}
+            {% when 'second_heading' %}
+              <h2
+                class="db-cover-banner-two__inquire-heading bd-cover-banner-two--text-color"
+                style="--text-color: {{block.settings.second_heading_color}}"
+                {{ block.shopify_attributes }}>{{ block.settings.second_heading }}</h2>
+            {% when 'second_text' %}
+              <p
+                class="db-cover-banner-two__inquire-text bd-cover-banner-two--text-color"
+                style="--text-color: {{block.settings.second_text_color}}"
+                {{ block.shopify_attributes }}>{{ block.settings.second_text }}</p>
+            {% when 'second_button' %}
+              <button
+                class="db-cover-banner-two__inquire-button db-cover-banner-two__inquire-button--second bd-cover-banner-two--text-color bg-cover-banner-two--button-color"
+                style="--text-color: {{block.settings.second_button_color}}; --button-color: {{block.settings.second_button_bg_color}}; --button-size2: {{block.settings.second_button_width}}px"
+                {{ block.shopify_attributes }}>{{ block.settings.second_button }}</button>
+          {% endcase %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "db-cover-banner",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "page-width"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      },
+      {
+        "type": "range",
+        "id": "section_size",
+        "min": 1,
+        "max": 9,
+        "label": "section size",
+        "step": 1,
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "First section"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      }, {
+        "type": "select",
+        "id": "first_position",
+        "label": "first content position",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "center",
+            "label": "center"
+          }, {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      }, {
+        "type": "text",
+        "id": "first_items_width",
+        "label": "first item width",
+        "default": "400"
+      }, {
+        "type": "select",
+        "id": "first_items_position",
+        "label": "first item position",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "center",
+            "label": "center"
+          }, {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Second section"
+      }, {
+        "type": "image_picker",
+        "id": "inquire_background_image",
+        "label": "'Inquire' Section Background Image"
+      }, {
+        "type": "select",
+        "id": "second_position",
+        "label": "section content position",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "center",
+            "label": "center"
+          }, {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      }, {
+        "type": "text",
+        "id": "second_items_width",
+        "label": "section item width",
+        "default": "400"
+      }, {
+        "type": "select",
+        "id": "second_items_position",
+        "label": "section item position",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "center",
+            "label": "center"
+          }, {
+            "value": "right",
+            "label": "right"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "first_logo",
+        "name": "first logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "first_logo",
+            "label": "first section logo:"
+          }
+        ]
+      },
+      {
+        "type": "second_logo",
+        "name": "second logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "second_logo",
+            "label": "second section logo:"
+          }
+        ]
+      },
+      {
+        "type": "first_heading",
+        "name": "first heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_heading",
+            "label": "first section heading"
+          }, {
+            "type": "color",
+            "id": "first_heading_color",
+            "label": "text color"
+          }
+        ]
+      },
+      {
+        "type": "second_heading",
+        "name": "second heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_heading",
+            "label": "second section heading"
+          }, {
+            "type": "color",
+            "id": "second_heading_color",
+            "label": "text color"
+          }
+        ]
+      }, {
+        "type": "first_text",
+        "name": "first text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_text",
+            "label": "first section text"
+          }, {
+            "type": "color",
+            "id": "first_text_color",
+            "label": "text color"
+          }
+        ]
+      }, {
+        "type": "second_text",
+        "name": "second text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_text",
+            "label": "second section text"
+          }, {
+            "type": "color",
+            "id": "second_text_color",
+            "label": "text color"
+          }
+        ]
+      }, {
+        "type": "first_button",
+        "name": "first section button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_button",
+            "label": "first section button"
+          }, {
+            "type": "color",
+            "id": "first_button_color",
+            "label": "button text color"
+          }, {
+            "type": "color",
+            "id": "first_button_bg_color",
+            "label": "button backgroun color"
+          }, {
+            "type": "text",
+            "id": "first_button_width",
+            "label": "button width",
+            "default": "191"
+          }
+        ]
+      }, {
+        "type": "second_button",
+        "name": "second section button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "second_button",
+            "label": "second section button"
+          }, {
+            "type": "color",
+            "id": "second_button_color",
+            "label": "button text color"
+          }, {
+            "type": "color",
+            "id": "second_button_bg_color",
+            "label": "button backgroun color"
+          }, {
+            "type": "text",
+            "id": "second_button_width",
+            "label": "button width",
+            "default": "191"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "db cover banner part 2"
+      }
+    ]
+  }
+{% endschema %}
