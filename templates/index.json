@@ -423,6 +423,15 @@
         "overlay_color": "rgba(0,0,0,0)",
         "opacity": 5
       }
+    },
+    "db_product_showcase_giNfPe": {
+      "type": "db-product-showcase",
+      "name": "db product showcase",
+      "settings": {
+        "section_width": "full",
+        "color_scheme": "",
+        "featured_product": "timber"
+      }
     }
   },
   "order": [
@@ -434,6 +443,7 @@
     "db_product_showcase_ErJMxH",
     "db_order_now_section_kCgTAU",
     "db_cover_banner_Fin3MQ",
-    "db_headline_section_za6eKg"
+    "db_headline_section_za6eKg",
+    "db_product_showcase_giNfPe"
   ]
 }
