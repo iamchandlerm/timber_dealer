@@ -1,0 +1,195 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+    height: {{ section.settings.section_height }}px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .db-banner
+  , #shopify-section-{{ section.id }}
+  .db-banner__content
+  , #shopify-section-{{ section.id }}
+  .swiper
+  , #shopify-section-{{ section.id }}
+  .swiper-wrapper
+  , #shopify-section-{{ section.id }}
+  .swiper-slide {
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }}
+  .swiper-slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }}
+  .db-banner__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  #shopify-section-{{ section.id }}
+  .db-banner__title
+  , #shopify-section-{{ section.id }}
+  .db-banner__description {
+    position: relative;
+    z-index: 1;
+    color: white;
+  }
+
+  .db-banner,
+  .db-banner__content {
+    height: 100%;
+  }
+</style>
+
+<div id="{{ section.settings.custom_id }}" class="db-banner section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} spacing-style gap-style">
+  <div class="db-banner__content">
+    {% case section.settings.layout %}
+
+      {% when 'slider' %}
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+
+            {% for block in section.blocks %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <img
+                  src="{{ block.settings.image | img_url: 'master' }}"
+                  alt="{{ block.settings.title }}"
+                  class="db-banner__image">
+
+                <div class="db-banner__text">
+                  <h1 class="db-banner__title">{{ block.settings.title }}</h1>
+                  <p class="db-banner__description">{{ block.settings.description }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+    {% endcase %}
+  </div>
+</div>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        hide: true,
+      },
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "DB Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "custom_id",
+        "label": "Custom ID"
+      },
+      {
+        "type": "range",
+        "id": "section_height",
+        "label": "Section height (px)",
+        "min": 400,
+        "max": 800,
+        "step": 20,
+        "default": 740
+      },
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "Width",
+        "options": [
+          {
+            "value": "full-width",
+            "label": "Full width"
+          }, {
+            "value": "page-width",
+            "label": "Page width"
+          }
+        ],
+        "default": "full-width"
+      },
+      {
+        "type": "select",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "secondary",
+            "label": "Secondary"
+          },
+          {
+            "value": "accent",
+            "label": "Accent"
+          }, {
+            "value": "base-100",
+            "label": "Base"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "slider",
+            "label": "Slider"
+          }
+        ],
+        "default": "slider"
+      }
+    ],
+
+    "blocks": [
+      {
+        "type": "slider",
+        "name": "Slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        ]
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "DB Banner",
+        "blocks": [
+          {
+            "type": "slider"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
