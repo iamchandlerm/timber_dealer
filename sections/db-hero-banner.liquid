@@ -47,6 +47,51 @@
   .db-banner__content {
     height: 100%;
   }
+
+  .db-banner__text {
+    display: flex;
+    flex-direction: column;
+    width: 717px;
+    height: 245px;
+    position: absolute;
+    top: 207px;
+    left: 595px;
+    gap: 17px;
+    align-items: flex-end;
+  }
+
+  .db-banner__title,
+  .db-banner__description {
+    text-align: right;
+    margin: 0;
+    color: #292733 !important;
+  }
+
+  .db-banner__title {
+    font-size: 49px;
+  }
+
+  .db-banner__description {
+    font-size: 16px;
+    width: 516px;
+  }
+  
+  .swiper-scrollbar {
+    opacity: 1 !important;
+    display: flex !important;
+    position: absolute  !important;
+    width: 158px  !important;
+    height: 5px !important;
+    left: 1154px !important;
+    top: 647px !important;
+    background: #c205025a !important;
+    border-radius: 0 !important;
+  }
+
+  .swiper-scrollbar-drag {
+    background: #c20502 !important;
+    border-radius: 0 !important;
+  }
 </style>
 
 <div id="{{ section.settings.custom_id }}" class="db-banner section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} spacing-style gap-style">
@@ -168,7 +213,7 @@
             "id": "image",
             "label": "Image"
           }, {
-            "type": "text",
+            "type": "richtext",
             "id": "title",
             "label": "Title"
           }, {

@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Roboto Slab", serif !important;
 }
 
 body {
@@ -4213,3 +4214,4 @@ product-recommendations:has([data-has-recommendations='false']) {
     translate: 0px var(--atc-destination, 0px);
   }
 }
+
