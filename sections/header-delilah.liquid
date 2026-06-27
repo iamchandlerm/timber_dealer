@@ -1,0 +1,64 @@
+<div id="header-delilah" class="header-delilah__container">
+
+        {% comment %}
+            add render later for practice
+        {% endcomment %}
+    <div class="header-delilah__content">
+        <div class="header-delilah__logo">
+            {%
+                render 'header-logo-test', 
+                header_image: section.settings.header_logo, 
+                logo_class: 'header-delilah__logo-image' 
+            %}
+        </div>
+
+        {% comment %}
+            add render later for practice
+        {% endcomment %}
+        <div class="header-delilah__menu">
+                {% render 'header-link-test', 
+                header_link: section.settings.menu_link, 
+                link_class_name: 'header-delilah__menu-list' %}
+        </div>
+
+        {% comment %}
+            add render later for practice
+        {% endcomment %}
+        <div class="header-delilah__actions">
+                {% comment %}
+                    render svg here add links too and actions
+                {% endcomment %}
+
+                
+        </div>
+    </div>
+
+</div>
+
+
+{% schema %} 
+    {
+        "name": "header display",
+        "settings": [
+            {
+                "type": "header",
+                "content": "header settings"
+            },
+            {
+                "type": "image_picker",
+                "id": "header_logo",
+                "label": "header logo"
+            },
+            {
+                "type": "link_list",
+                "id": "menu_link",
+                "label": "menu link",
+            }
+        ],
+        "presets": [
+            {
+                "name": "header sample"
+            }
+        ]
+    }
+ {% endschema %}

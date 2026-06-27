@@ -28,3 +28,26 @@ button{
     border: none;
     text-transform: uppercase;
 }
+
+
+/* this is for header display */
+
+.db-button--custom{
+    width: 20px;
+    height: 20px;
+}
+
+/* .db-header__right--width{
+    width: 80px;
+} */
+
+/* .header__columns.spacing-style{
+    --header-right: max-content;
+    --header-left: max-content;
+    justify-content: center;
+    gap: 50px;
+    .header__column--left, .header__column--center{
+        gap: 50px;
+    }
+
+} */

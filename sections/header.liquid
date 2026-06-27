@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign order = 'logo,menu,localization,search,drawer_search,actions'
 
@@ -106,14 +104,14 @@
   # Always render if search_row is bottom
   # Don't render when shop.customer_accounts_enabled is false and search_position is left and search_style is not none
   assign skip_drawer_search = false
-  if shop.customer_accounts_enabled == false and section.settings.search_position == 'left' and search_style != 'none'
+  if shop.customer_accounts_enabled == false and section.settings.search_position == ' l eft' and search_style != ' n one'
     assign skip_drawer_search = true
   endif
 
-  if section.settings.search_row == 'bottom' or search_style != 'none' and skip_drawer_search == false
+  if section.settings.search_row == ' b ottom' or search_style != ' n one' and skip_drawer_search == false
     # Mobile search duplicate for when search is not in the right order for mobile layout
     capture drawer_search
-      render 'search', class: 'search-action--hidden-on-menu', style: search_style, display_style: section.settings.actions_display_style
+      render 'search', class: ' s earch-action--hidden-on-menu', style: search_style, display_style: section.settings.actions_display_style
     endcapture
   endif
 
@@ -130,32 +128,32 @@
   assign bottom_row_blocks = ''
 
   if section.settings.menu_row == 'bottom'
-    assign bottom_row_blocks = bottom_row_blocks | append: 'menu,'
+    assign bottom_row_blocks = bottom_row_blocks | append: 'menu, '
   endif
 
-  if section.settings.search_style != 'none'
-    if section.settings.search_row == 'bottom'
+  if section.settings.search_style != ' n one'
+    if section.settings.search_row == ' b ottom'
       assign bottom_row_blocks = bottom_row_blocks | append: 'search,'
     endif
   endif
 
   if section.settings.show_country or section.settings.show_language
     if section.settings.localization_row == 'bottom'
-      assign bottom_row_blocks = bottom_row_blocks | append: 'localization,'
+      assign bottom_row_blocks = bottom_row_blocks | append: ' l ocalization, '
     endif
   endif
 
-  assign bottom_row_blocks = bottom_row_blocks | split: ',' | compact
+  assign bottom_row_blocks = bottom_row_blocks | split: ', ' | compact
 
-  if section.settings.section_height == 'compact'
+  if section.settings.section_height == ' c ompact'
     assign header_height_class = ' header--compact'
   endif
 
   if bottom_row_blocks.size > 0 and section.settings.color_scheme_top.settings.background.rgb == section.settings.color_scheme_bottom.settings.background.rgb and section.settings.divider_width == 0
-    assign collapse_header_paddings_class = 'header--collapse-row-paddings'
+    assign collapse_header_paddings_class = ' h eader--collapse-row-paddings'
   endif
 
-  assign class = 'header'
+  assign class = ' h eader'
 
   if transparent_color_scheme
     assign class = class | append: ' ' | append: transparent_color_scheme
@@ -182,333 +180,333 @@
   endif
 
   if top_transparent and bottom_transparent
-    assign transparent_color_scheme_value = 'both'
+    assign transparent_color_scheme_value = ' b oth'
   elsif top_transparent
-    assign transparent_color_scheme_value = 'top'
+    assign transparent_color_scheme_value = ' t op'
   elsif bottom_transparent
-    assign transparent_color_scheme_value = 'bottom'
+    assign transparent_color_scheme_value = ' b ottom'
   endif
-%}
+  %}
 
-{% capture localization_markup %}
+  {% capture localization_markup %}
   {% liquid
-    assign localization_font = '--menu-localization-font: var(--font-[localization_font]--family); ' | replace: '[localization_font]', section.settings.localization_font
-    assign localization_font_size = '--menu-localization-font-size: [localization_font_size]; ' | replace: '[localization_font_size]', section.settings.localization_font_size
-    assign color_shadow = '--color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
-    assign form_style = localization_font | append: localization_font_size | append: color_shadow
+  assign localization_font = ' - -menu-localization-font: var(--font-[localization_font]--family); ' | replace: ' [ localization_font]', section.settings.localization_font
+  assign localization_font_size = ' - -menu-localization-font-size:[localization_font_size]; ' | replace: ' [ localization_font_size]', section.settings.localization_font_size
+  assign color_shadow = ' - -color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
+  assign form_style = localization_font | append: localization_font_size | append: color_shadow
   %}
   {% if show_language and show_country == false %}
-    <div class="dropdown-localization mobile:hidden">
-      {% render 'localization-form',
-        show_country: show_country,
-        show_language: show_language,
-        localization_style: 'dropdown',
-        form_style: form_style,
-        form_id: section.id
-      %}
-    </div>
+  <div class="dropdown-localization mobile:hidden">
+  {% render 'localization-form',
+  show_country: show_country,
+  show_language: show_language,
+  localization_style: ' d ropdown',
+  form_style: form_style,
+  form_id: section.id
+  %}
+  </div>
   {% elsif show_country %}
-    <dropdown-localization-component
-      class="dropdown-localization mobile:hidden"
-    >
-      <button
-        type="button"
-        class="button dropdown-localization__button localization-selector header-actions__action"
-        aria-expanded="false"
-        aria-controls="dropdown-localization-results"
-        ref="button"
-        on:click="/toggleSelector"
-        style="{{ localization_font }} {{ localization_font_size }}"
-      >
-        {% if show_country %}
-          {% if section.settings.country_selector_style == true %}
-            {% liquid
-              assign background_brightness = section.settings.color_scheme.settings.background | color_brightness
-              if background_brightness < 64
-                assign shadow_size = 4
-              else
-                assign shadow_size = 2
-              endif
-            %}
-            <span
-              class="icon-flag"
-              style="
-                background-image: url({{- localization.country | image_url: width: 32 }});
-                --size-shadow: {{ shadow_size }}px;
-                --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
-              "
-            ></span>
-          {% endif %}
-          <span
-            class="currency-code"
-            data-testid="localization-currency-code"
-          >
-            {{- localization.country.currency.iso_code -}}
-          </span>
-        {% endif %}
-        <span
-          class="visually-hidden"
-          data-testid="localization-visually-hidden"
-        >
-          {{- 'accessibility.localization_region_and_language' | t -}}
-        </span>
-
-        {%- if show_country and show_language -%}
-          <span>/</span>
-        {%- endif -%}
-
-        {%- if show_language -%}
-          <span>
-            {{ localization.language.iso_code | upcase }}
-          </span>
-        {%- endif -%}
-        <span class="svg-wrapper icon-caret">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
-        </span>
-      </button>
-
-      <div
-        class="localization-wrapper {{ section.settings.localization_position }}-bound color-{{ settings.popover_color_scheme }}"
-        hidden
-        ref="panel"
-      >
-        {% render 'localization-form',
-          show_country: show_country,
-          show_language: show_language,
-          localization_style: 'dropdown',
-          form_style: form_style,
-          form_id: section.id
-        %}
-      </div>
-    </dropdown-localization-component>
+  <dropdown-localization-component
+  class="dropdown-localization mobile:hidden"
+  >
+  <button
+  type="button"
+  class="button dropdown-localization__button localization-selector header-actions__action"
+  aria-expanded="false"
+  aria-controls="dropdown-localization-results"
+  ref="button"
+  on:click="/toggleSelector"
+  style="{{ localization_font }} {{ localization_font_size }}"
+  >
+  {% if show_country %}
+  {% if section.settings.country_selector_style == true %}
+  {% liquid
+  assign background_brightness = section.settings.color_scheme.settings.background | color_brightness
+  if background_brightness < 64
+    assign shadow_size = 4
+  else
+    assign shadow_size = 2
+  endif
+  %}
+  <span
+  class="icon-flag"
+  style="
+  background-image: url({{- localization.country | image_url: width: 32 }});
+  --size-shadow: {{ shadow_size }}px;
+  --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
+  "
+  ></span>
   {% endif %}
-{% endcapture %}
+  <span
+  class="currency-code"
+  data-testid="localization-currency-code"
+  >
+  {{- localization.country.currency.iso_code -}}
+  </span>
+  {% endif %}
+  <span
+  class="visually-hidden"
+  data-testid="localization-visually-hidden"
+  >
+  {{- 'accessibility.localization_region_and_language' | t -}}
+  </span>
 
-<script type="application/ld+json">
+  {%- if show_country and show_language -%}
+  <span>/</span>
+  {%- endif -%}
+
+  {%- if show_language -%}
+  <span>
+  {{ localization.language.iso_code | upcase }}
+  </span>
+  {%- endif -%}
+  <span class="svg-wrapper icon-caret">
+  {{- ' i con-caret.svg' | inline_asset_content -}}
+  </span>
+  </button>
+
+  <div
+  class="localization-wrapper {{ section.settings.localization_position }}-bound color-{{ settings.popover_color_scheme }}"
+  hidden
+  ref="panel"
+  >
+  {% render 'localization-form',
+  show_country: show_country,
+  show_language: show_language,
+  localization_style: ' d ropdown',
+  form_style: form_style,
+  form_id: section.id
+  %}
+  </div>
+  </dropdown-localization-component>
+  {% endif %}
+  {% endcapture %}
+
+  <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "url": {{ request.origin | append: page.url | json }}
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if settings.logo %}
+  "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+  {% endif %}
+  "url": {{ request.origin | append: page.url | json }}
   }
-</script>
+  </script>
 
-<header-component
+  <header-component
   id="header-component"
   class="{{ class }}"
   data-theme-color="rgb({{ section.settings.color_scheme_top.settings.background.rgb }})"
   {% if transparent %}
-    transparent="{{ transparent }}"
+  transparent="{{ transparent }}"
   {% endif %}
   {% if sticky %}
-    sticky="{{ sticky }}"
+  sticky="{{ sticky }}"
   {% endif %}
   data-skip-node-update
   data-scroll-direction="none"
-  {% if section.settings.menu_row == 'top' and bottom_row_blocks.size > 0 %}
-    data-submenu-overlap-bottom-row
+  {% if section.settings.menu_row == ' t op' and bottom_row_blocks.size > 0 %}
+  data-submenu-overlap-bottom-row
   {% endif %}
   {% if transparent_color_scheme_value %}
-    data-transparent-color-scheme="{{ transparent_color_scheme_value }}"
+  data-transparent-color-scheme="{{ transparent_color_scheme_value }}"
   {% endif %}
   style="
-    --color-scheme-top-row: rgba({{ section.settings.color_scheme_top.settings.background.rgba }});
-    --color-scheme-bottom-row: rgba({{ section.settings.color_scheme_bottom.settings.background.rgba }});
-    {% if section.settings.actions_display_style == 'text' %}
-      --header-actions-font-size: {{ section.settings.actions_font_size | default: '1rem' }};
-      --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: 'heading' }}--family);
-      --header-actions-font-weight: var(--font-{{ section.settings.actions_font | default: 'heading' }}--weight);
-      --header-actions-text-case: {{ section.settings.actions_text_case | default: 'none' }};
-    {% endif %}
+  --color-scheme-top-row: rgba({{ section.settings.color_scheme_top.settings.background.rgba }});
+  --color-scheme-bottom-row: rgba({{ section.settings.color_scheme_bottom.settings.background.rgba }});
+  {% if section.settings.actions_display_style == ' t ext' %}
+  --header-actions-font-size: {{ section.settings.actions_font_size | default: ' 1 rem' }};
+  --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: ' h eading' }}--family);
+  --header-actions-font-weight: var(--font-{{ section.settings.actions_font | default: ' h eading' }}--weight);
+  --header-actions-text-case: {{ section.settings.actions_text_case | default: ' n one' }};
+  {% endif %}
   "
->
+  >
   <div class="header__underlay header__underlay-closed"></div>
   <div
-    class="header__underlay header__underlay-open"
+  class="header__underlay header__underlay-open"
   ></div>
-  {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+  {%- if request.page_type == ' i ndex' -%}
+  <h1 class="visually-hidden">{{ shop.name }}</h1>
   {%- endif -%}
   {% for row in rows %}
-    {% liquid
-      assign scheme = 'color_scheme_' | append: row
-      assign class = 'header__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: '[row]', row | replace: '[row_scheme]', section.settings[scheme] | replace: '[section-width]', section.settings.section_width
+  {% liquid
+  assign scheme = ' c olor_scheme_' | append: row
+  assign class = ' h eader__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: ' [ row]', row | replace: ' [ row_scheme]', section.settings[scheme] | replace: ' [ section-width]', section.settings.section_width
 
-      case row
-        when 'top'
-          assign first = drawer_menu
+  case row
+    when ' t op'
+      assign first = drawer_menu
 
-          if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
-            assign class = class | append: ' divider--page-width'
-          endif
-
-          if bottom_row_blocks.size > 0
-            assign border_bottom_setting_id = 'divider_width'
-          else
-            assign border_bottom_setting_id = 'border_width'
-          endif
-        when 'bottom'
-          assign first = ''
-          assign class = class | append: ' mobile:hidden'
-
-          assign border_bottom_setting_id = 'border_width'
-      endcase
-
-      assign style = '--border-bottom-width: [width]px; ' | replace: '[width]', section.settings[border_bottom_setting_id]
-
-      if row == 'top'
-        assign style = style | append: '--border-bottom-width-mobile: [width]px; ' | replace: '[width]', section.settings.border_width
+      if bottom_row_blocks.size > 0 and section.settings.divider_size == ' p age-width'
+        assign class = class | append: ' divider--page-width'
       endif
-    %}
 
-    {% capture content %}
-      {% render 'header-row',
-        row: row,
-        order: order,
-        settings: section.settings,
-        first: first,
-        logo: logo,
-        menu: menu,
-        actions: actions,
-        localization: localization_markup,
-        search: search,
-        drawer_search: drawer_search
-      %}
-    {% endcapture %}
+      if bottom_row_blocks.size > 0
+        assign border_bottom_setting_id = ' d ivider_width'
+      else
+        assign border_bottom_setting_id = ' b order_width'
+      endif
+    when ' b ottom'
+      assign first = ''
+      assign class = class | append: ' mobile: hidden'
 
-    {% assign content = content | strip %}
-    {% if content != blank %}
-      <div
-        class="{{ class | strip }}"
-        ref="headerRowTop"
-        {%- if style != blank -%}
-          style="{{ style | strip }}"
-        {%- endif -%}
-      >
-        <div class="header__columns spacing-style">
-          {{ content }}
-        </div>
-      </div>
-    {% endif %}
+      assign border_bottom_setting_id = ' b order_width'
+  endcase
+
+  assign style = '--border-bottom-width: [width]px;'|replace:' [ width]', section.settings[border_bottom_setting_id]
+
+  if row == 'top'
+    assign style = style | append: '--border-bottom-width-mobile:[width]px;' | replace:'[ width]', section.settings.border_width
+  endif
+  %}
+
+  {% capture content %}
+  {% render 'header-row',
+  row: row,
+  order: order,
+  settings: section.settings,
+  first: first,
+  logo: logo,
+  menu: menu,
+  actions: actions,
+  localization: localization_markup,
+  search: search,
+  drawer_search: drawer_search
+  %}
+  {% endcapture %}
+
+  {% assign content = content | strip %}
+  {% if content != blank %}
+  <div
+  class="{{ class | strip }}"
+  ref="headerRowTop"
+  {%- if style != blank -%}
+  style="{{ style | strip }}"
+  {%- endif -%}
+  >
+  <div class="header__columns spacing-style">
+  {{ content }}
+  </div>
+  </div>
+  {% endif %}
   {% endfor %}
 
   {% if navigation_bar != blank %}
-    <div class="header__row header__navigation-bar-row color-{{ section.settings.color_scheme_bottom }}">
-      {{ navigation_bar }}
-    </div>
+  <div class="header__row header__navigation-bar-row color-{{ section.settings.color_scheme_bottom }}">
+  {{ navigation_bar }}
+  </div>
   {% endif %}
-</header-component>
+  </header-component>
 
-<script
+  <script
   src="{{ 'header.js' | asset_url }}"
   type="module"
-></script>
+  ></script>
 
-{% stylesheet %}
+  {% stylesheet %}
   body {
-    --header-height: 60px;
-    --header-group-height: var(--header-height);
-    --transparent-header-offset-boolean: 0; /* stylelint-disable-line declaration-property-value-disallowed-list */
+  --header-height: 60px;
+  --header-group-height: var(--header-height);
+  --transparent-header-offset-boolean: 0; /* stylelint-disable-line declaration-property-value-disallowed-list */
   }
 
   .header {
-    /* Set header paddings based on height setting */
-    --header-padding: var(--padding-sm);
-    --font-paragraph--line-height: 1;
-    --header-content-transition-timing: 0s;
+  /* Set header paddings based on height setting */
+  --header-padding: var(--padding-sm);
+  --font-paragraph--line-height: 1;
+  --header-content-transition-timing: 0s;
 
-    display: block;
-    contain: layout style;
-    background: transparent;
+  display: block;
+  contain: layout style;
+  background: transparent;
 
-    a,
-    .button,
-    .button-secondary,
-    .header-actions__action {
-      /* reset style from base.css */
-      transition: color var(--header-content-transition-timing), border-color var(--header-content-transition-timing);
-    }
+  a,
+  .button,
+  .button-secondary,
+  .header-actions__action {
+  /* reset style from base.css */
+  transition: color var(--header-content-transition-timing), border-color var(--header-content-transition-timing);
+  }
   }
 
   #header-component :is(.header-menu, .dropdown-localization) {
-    display: none;
+  display: none;
   }
 
   @media screen and (min-width: 750px) {
-    #header-component[data-menu-style='menu'] :is(.header-menu, .dropdown-localization) {
-      display: flex;
-    }
+  #header-component[data-menu-style='menu'] :is(.header-menu, .dropdown-localization) {
+  display: flex;
+  }
   }
 
   #header-component[data-menu-style='drawer'] .header__column {
-    display: contents;
+  display: contents;
   }
 
   @media screen and (min-width: 750px) {
-    #header-component[data-menu-style='menu'] .header__navigation-bar-row {
-      display: none;
-    }
+  #header-component[data-menu-style='menu'] .header__navigation-bar-row {
+  display: none;
+  }
   }
 
   .header[transparent] {
-    --language-button-background-color: transparent;
-    --language-button-border-color: transparent;
-    --header-content-transition-timing: calc(var(--submenu-animation-speed) - var(--animation-speed-fast))
-      var(--animation-speed-fast) var(--ease-out-cubic);
+  --language-button-background-color: transparent;
+  --language-button-border-color: transparent;
+  --header-content-transition-timing: calc(var(--submenu-animation-speed) - var(--animation-speed-fast))
+  var(--animation-speed-fast) var(--ease-out-cubic);
 
-    --closed-underlay-height: 0px;
+  --closed-underlay-height: 0px;
 
-    /* used to display the appropriate logo based on transparency state */
-    --header-logo-display: none;
-    --header-logo-inverse-display: block;
+  /* used to display the appropriate logo based on transparency state */
+  --header-logo-display: none;
+  --header-logo-inverse-display: block;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 
-    z-index: var(--layer-overlay);
+  z-index: var(--layer-overlay);
 
-    &[transparent='not-sticky'][data-sticky-state='active'],
-    &:has(.menu-list__link:not([aria-haspopup]):hover) {
-      --header-logo-display: unset;
-      --header-logo-inverse-display: unset;
-      --color-foreground: inherit;
-      --color-foreground-rgb: inherit;
-      --color-background: inherit;
-      --color-background-rgb: inherit;
-      --color-border: inherit;
-      --color-border-rgb: inherit;
-      --closed-underlay-height: 100%;
-    }
+  &[transparent='not-sticky'][data-sticky-state='active'],
+  &:has(.menu-list__link:not([aria-haspopup]):hover) {
+  --header-logo-display: unset;
+  --header-logo-inverse-display: unset;
+  --color-foreground: inherit;
+  --color-foreground-rgb: inherit;
+  --color-background: inherit;
+  --color-background-rgb: inherit;
+  --color-border: inherit;
+  --color-border-rgb: inherit;
+  --closed-underlay-height: 100%;
+  }
 
-    /** For transparent header, apply inherit to rows when menu is not hovered */
-    &:not([data-sticky-state='active']):not(:has(.menu-list__link:is(:hover, [aria-expanded='true']))) .header__row {
-      --color-foreground: inherit;
-      --color-foreground-rgb: inherit;
-      --color-border: inherit;
-      --color-border-rgb: inherit;
-      --color-primary-button-background: inherit;
-      --color-primary-button-text: inherit;
-    }
+  /** For transparent header, apply inherit to rows when menu is not hovered */
+  &:not([data-sticky-state='active']):not(:has(.menu-list__link:is(:hover, [aria-expanded='true']))) .header__row {
+  --color-foreground: inherit;
+  --color-foreground-rgb: inherit;
+  --color-border: inherit;
+  --color-border-rgb: inherit;
+  --color-primary-button-background: inherit;
+  --color-primary-button-text: inherit;
+  }
 
-    /* Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
-    &:has(.mega-menu__list:hover),
-    &:has(.menu-list__link:is(:hover, [aria-expanded='true'])),
-    &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
-      --header-logo-display: unset;
-      --header-logo-inverse-display: unset;
-      --color-foreground: inherit;
-      --color-foreground-rgb: inherit;
-      --color-background: inherit;
-      --color-background-rgb: inherit;
-      --color-border: inherit;
-      --color-border-rgb: inherit;
-      --header-content-transition-timing: var(--submenu-animation-speed) var(--ease-out-cubic);
-    }
+  /* Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
+  &:has(.mega-menu__list:hover),
+  &:has(.menu-list__link:is(:hover, [aria-expanded='true'])),
+  &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
+  --header-logo-display: unset;
+  --header-logo-inverse-display: unset;
+  --color-foreground: inherit;
+  --color-foreground-rgb: inherit;
+  --color-background: inherit;
+  --color-background-rgb: inherit;
+  --color-border: inherit;
+  --color-border-rgb: inherit;
+  --header-content-transition-timing: var(--submenu-animation-speed) var(--ease-out-cubic);
+  }
   }
 
   /* When top row has transparent background, make it inherit colors from header component */
@@ -516,12 +514,12 @@
   [data-transparent-color-scheme='top']:focus-within .header__row--top,
   [data-transparent-color-scheme='both']:hover .header__row--top,
   [data-transparent-color-scheme='both']:focus-within .header__row--top {
-    --color-foreground: inherit;
-    --color-foreground-rgb: inherit;
-    --color-border: inherit;
-    --color-border-rgb: inherit;
-    --color-primary-button-background: inherit;
-    --color-primary-button-text: inherit;
+  --color-foreground: inherit;
+  --color-foreground-rgb: inherit;
+  --color-border: inherit;
+  --color-border-rgb: inherit;
+  --color-primary-button-background: inherit;
+  --color-primary-button-text: inherit;
   }
 
   /* When bottom row has transparent background, make it inherit colors from header component */
@@ -529,93 +527,93 @@
   [data-transparent-color-scheme='bottom']:focus-within .header__row--bottom,
   [data-transparent-color-scheme='both']:hover .header__row--bottom,
   [data-transparent-color-scheme='both']:focus-within .header__row--bottom {
-    --color-foreground: inherit;
-    --color-foreground-rgb: inherit;
-    --color-border: inherit;
-    --color-border-rgb: inherit;
-    --color-primary-button-background: inherit;
-    --color-primary-button-text: inherit;
+  --color-foreground: inherit;
+  --color-foreground-rgb: inherit;
+  --color-border: inherit;
+  --color-border-rgb: inherit;
+  --color-primary-button-background: inherit;
+  --color-primary-button-text: inherit;
   }
 
   .header-section {
-    position: relative;
-    z-index: var(--layer-heightened);
+  position: relative;
+  z-index: var(--layer-heightened);
   }
 
   /* need default values for non-flash transitions on first overflow menu open */
   #header-component {
-    --submenu-height: 0px;
-    --full-open-header-height: 0px;
+  --submenu-height: 0px;
+  --full-open-header-height: 0px;
   }
 
   #header-group:has(#header-component[sticky]) {
-    display: contents;
+  display: contents;
   }
 
   .header-section:has(> #header-component[sticky='always']),
   .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
-    position: sticky;
+  position: sticky;
 
-    /* Use -1 instead of 0 so intersection observer can track sticky state */
-    top: -1px;
-    z-index: var(--layer-sticky);
+  /* Use -1 instead of 0 so intersection observer can track sticky state */
+  top: -1px;
+  z-index: var(--layer-sticky);
   }
 
   .header[data-sticky-state] {
-    transition: opacity var(--animation-speed) var(--animation-easing);
-    opacity: 1;
+  transition: opacity var(--animation-speed) var(--animation-easing);
+  opacity: 1;
   }
 
   .header[data-sticky-state='active'] {
-    view-transition-name: sticky-header;
+  view-transition-name: sticky-header;
   }
 
   :active-view-transition-type(empty-cart-drawer) {
-    .header[data-sticky-state='active'] {
-      view-transition-name: none;
-    }
+  .header[data-sticky-state='active'] {
+  view-transition-name: none;
+  }
   }
 
   .header[data-sticky-state='idle'] {
-    opacity: 0;
+  opacity: 0;
   }
 
   /* ================================
-     * Underlays
-     * ================================ */
+  * Underlays
+  * ================================ */
   .header__underlay {
-    position: absolute;
-    inset: 0;
+  position: absolute;
+  inset: 0;
   }
 
   .header__underlay-closed {
-    height: var(--closed-underlay-height, 100%);
-    z-index: var(--layer-lowest);
-    background: linear-gradient(
-      var(--color-scheme-top-row) 0 var(--top-row-height),
-      var(--color-scheme-bottom-row) var(--top-row-height) var(--header-height)
-    );
-    transition: height var(--animation-speed-slow) var(--ease-out-cubic);
+  height: var(--closed-underlay-height, 100%);
+  z-index: var(--layer-lowest);
+  background: linear-gradient(
+  var(--color-scheme-top-row) 0 var(--top-row-height),
+  var(--color-scheme-bottom-row) var(--top-row-height) var(--header-height)
+  );
+  transition: height var(--animation-speed-slow) var(--ease-out-cubic);
   }
 
   .header__underlay-open {
-    height: var(--full-open-header-height);
-    background: linear-gradient(
-      var(--color-scheme-top-row) 0 var(--top-row-height),
-      var(--color-scheme-bottom-row) var(--top-row-height) var(--header-height),
-      var(--color-submenu) var(--header-height) 100%
-    );
-    /* header-height is updated via js, the transition works automagically */
-    transition: height var(--submenu-animation-speed) var(--ease-out-cubic);
+  height: var(--full-open-header-height);
+  background: linear-gradient(
+  var(--color-scheme-top-row) 0 var(--top-row-height),
+  var(--color-scheme-bottom-row) var(--top-row-height) var(--header-height),
+  var(--color-submenu) var(--header-height) 100%
+  );
+  /* header-height is updated via js, the transition works automagically */
+  transition: height var(--submenu-animation-speed) var(--ease-out-cubic);
   }
 
   .header__underlay-open::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    box-shadow: var(--shadow-popover);
-    clip-path: inset(var(--header-height) 0 -100px 0); /* stylelint-disable-line */
-    transition: height var(--submenu-animation-speed) var(--ease-out-cubic);
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: var(--shadow-popover);
+  clip-path: inset(var(--header-height) 0 -100px 0); /* stylelint-disable-line */
+  transition: height var(--submenu-animation-speed) var(--ease-out-cubic);
   }
 
   /* When top row has transparent background, make underlay inherit colors from header component */
@@ -623,9 +621,9 @@
   [data-transparent-color-scheme='top']:focus-within,
   [data-transparent-color-scheme='both']:hover,
   [data-transparent-color-scheme='both']:focus-within {
-    :is(.header__underlay-open, .header__underlay-closed) {
-      --color-scheme-top-row: var(--color-background);
-    }
+  :is(.header__underlay-open, .header__underlay-closed) {
+  --color-scheme-top-row: var(--color-background);
+  }
   }
 
   /* When bottom row has transparent background, make underlay inherit colors from header component */
@@ -633,1023 +631,1023 @@
   [data-transparent-color-scheme='bottom']:focus-within,
   [data-transparent-color-scheme='both']:hover,
   [data-transparent-color-scheme='both']:focus-within {
-    :is(.header__underlay-open, .header__underlay-closed) {
-      --color-scheme-bottom-row: var(--color-background);
-    }
+  :is(.header__underlay-open, .header__underlay-closed) {
+  --color-scheme-bottom-row: var(--color-background);
+  }
   }
 
   [data-submenu-overlap-bottom-row] {
-    .header__underlay-open {
-      background: linear-gradient(
-        var(--color-scheme-top-row) 0 var(--top-row-height),
-        var(--color-submenu) var(--top-row-height) 100%
-      );
-    }
+  .header__underlay-open {
+  background: linear-gradient(
+  var(--color-scheme-top-row) 0 var(--top-row-height),
+  var(--color-submenu) var(--top-row-height) 100%
+  );
+  }
 
-    .header__row--bottom {
-      z-index: var(--layer-lowest);
-    }
+  .header__row--bottom {
+  z-index: var(--layer-lowest);
+  }
   }
 
   /* End Underlays ================ */
 
   .header__row {
-    /* The account component uses a different color scheme, but we need to override it to inherit the color of the header row */
-    --color-account-icon: var(--color-foreground);
+  /* The account component uses a different color scheme, but we need to override it to inherit the color of the header row */
+  --color-account-icon: var(--color-foreground);
 
-    position: relative;
+  position: relative;
 
-    /* Overwrite color from color scheme, background is controlled by the underlays */
-    background-color: transparent;
+  /* Overwrite color from color scheme, background is controlled by the underlays */
+  background-color: transparent;
 
-    &:has(.mega-menu__list:hover),
-    &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'])),
-    &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
-      /* Only elevate the row when the submenu is open to avoid overlapping other elevated content */
-      z-index: var(--layer-heightened);
-    }
+  &:has(.mega-menu__list:hover),
+  &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'])),
+  &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
+  /* Only elevate the row when the submenu is open to avoid overlapping other elevated content */
+  z-index: var(--layer-heightened);
+  }
   }
 
   .header__row--top:not(.divider--page-width),
   .header__row--top.divider--page-width .header__columns,
   .header__row--bottom {
-    border-bottom: var(--border-bottom-width) solid var(--color-border);
+  border-bottom: var(--border-bottom-width) solid var(--color-border);
   }
 
   @media screen and (max-width: 749px) {
-    .header__row--top:not(.divider--page-width),
-    .header__row--top.divider--page-width .header__columns {
-      border-bottom-width: var(--border-bottom-width-mobile);
-    }
+  .header__row--top:not(.divider--page-width),
+  .header__row--top.divider--page-width .header__columns {
+  border-bottom-width: var(--border-bottom-width-mobile);
+  }
   }
 
   #header-component[data-menu-style='drawer'] .header__row--top:not(.divider--page-width),
   #header-component[data-menu-style='drawer'] .header__row--top.divider--page-width .header__columns {
-    border-bottom-width: var(--border-bottom-width-mobile);
+  border-bottom-width: var(--border-bottom-width-mobile);
   }
 
   .header__row.divider--page-width:not(.section--page-width) .header__columns {
-    @media screen and (min-width: 750px) {
-      padding-inline-start: 0;
-      padding-inline-end: 0;
-      margin-inline-start: var(--page-margin);
-      margin-inline-end: var(--page-margin);
-    }
+  @media screen and (min-width: 750px) {
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  margin-inline-start: var(--page-margin);
+  margin-inline-end: var(--page-margin);
+  }
   }
 
   .header__column {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
-    @media screen and (max-width: 749px) {
-      display: contents;
-    }
+  /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
+  @media screen and (max-width: 749px) {
+  display: contents;
+  }
   }
 
   .header__column--left,
   .header__column--center {
-    gap: var(--gap-xl);
-    grid-area: left;
+  gap: var(--gap-xl);
+  grid-area: left;
   }
 
   .header__column--center {
-    justify-content: center;
-    grid-area: center;
+  justify-content: center;
+  grid-area: center;
 
-    header-menu:only-child .overflow-menu::part(list) {
-      justify-content: center;
-    }
+  header-menu:only-child .overflow-menu::part(list) {
+  justify-content: center;
+  }
   }
 
   .header__column--right {
-    gap: var(--gap-xl);
-    justify-content: flex-end;
-    grid-area: right;
+  gap: var(--gap-xl);
+  justify-content: flex-end;
+  grid-area: right;
 
-    .overflow-menu::part(list) {
-      justify-content: flex-end;
-    }
+  .overflow-menu::part(list) {
+  justify-content: flex-end;
+  }
   }
 
   .header__columns {
-    /* Three column layout */
-    --header-left: 1fr;
-    --header-center: auto;
-    --header-right: 1fr;
-    --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
+  /* Three column layout */
+  --header-left: 1fr;
+  --header-center: auto;
+  --header-right: 1fr;
+  --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
 
-    /* Mobile layout */
-    --header-mobile-bookend: 44px;
+  /* Mobile layout */
+  --header-mobile-bookend: 44px;
 
-    display: grid;
-    grid-template-areas: 'left center right';
-    grid-gap: var(--gap-xl);
-    grid-template-columns: var(--header-template-columns);
+  display: grid;
+  grid-template-areas: 'left center right';
+  grid-gap: var(--gap-xl);
+  grid-template-columns: var(--header-template-columns);
 
-    /* If menu is in center column */
-    &:has(.header__column--center header-menu) {
-      --header-center: auto;
-      --header-left: minmax(max-content, 1fr);
-      --header-right: minmax(max-content, 1fr);
-    }
+  /* If menu is in center column */
+  &:has(.header__column--center header-menu) {
+  --header-center: auto;
+  --header-left: minmax(max-content, 1fr);
+  --header-right: minmax(max-content, 1fr);
+  }
 
-    /* If there is no center column, make the column the menu is in grow eagerly */
-    &:where(:not(:has(.header__column--center))) {
-      @media screen and (min-width: 750px) {
-        --header-template-columns: var(--header-left) var(--header-right);
+  /* If there is no center column, make the column the menu is in grow eagerly */
+  &:where(:not(:has(.header__column--center))) {
+  @media screen and (min-width: 750px) {
+  --header-template-columns: var(--header-left) var(--header-right);
 
-        grid-template-areas: 'left right';
-      }
+  grid-template-areas: 'left right';
+  }
 
-      /* If the header-menu is in the right column */
-      &:has(.header__column--right header-menu) {
-        --header-right: auto;
-        --header-left: minmax(max-content, 1fr);
-      }
+  /* If the header-menu is in the right column */
+  &:has(.header__column--right header-menu) {
+  --header-right: auto;
+  --header-left: minmax(max-content, 1fr);
+  }
 
-      /* If the header-menu is in the left column */
-      &:has(.header__column--left header-menu) {
-        --header-left: auto;
-        --header-right: minmax(max-content, 1fr);
-      }
-    }
+  /* If the header-menu is in the left column */
+  &:has(.header__column--left header-menu) {
+  --header-left: auto;
+  --header-right: minmax(max-content, 1fr);
+  }
+  }
 
-    @media screen and (max-width: 749px) {
-      --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr
-        var(--header-mobile-bookend) var(--header-mobile-bookend);
+  @media screen and (max-width: 749px) {
+  --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr
+  var(--header-mobile-bookend) var(--header-mobile-bookend);
 
-      grid-template-areas: 'leftA leftB center rightA rightB';
-      grid-column: span 3;
-      column-gap: 0;
-      align-items: center;
-      padding-block: 0;
-      padding-inline: 0 var(--padding-3xs);
+  grid-template-areas: 'leftA leftB center rightA rightB';
+  grid-column: span 3;
+  column-gap: 0;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: 0 var(--padding-3xs);
 
-      .header-logo {
-        grid-area: center;
-      }
+  .header-logo {
+  grid-area: center;
+  }
 
-      &:not(:has(header-actions)) .search-action {
-        grid-area: leftB;
-      }
+  &:not(:has(header-actions)) .search-action {
+  grid-area: leftB;
+  }
 
-      &:not(:has(shopify-account)) .search-action {
-        grid-area: rightA;
-      }
+  &:not(:has(shopify-account)) .search-action {
+  grid-area: rightA;
+  }
 
-      .search-action {
-        grid-area: leftB;
-      }
+  .search-action {
+  grid-area: leftB;
+  }
 
-      header-actions {
-        grid-area: rightB;
-      }
-    }
+  header-actions {
+  grid-area: rightB;
+  }
+  }
   }
 
   /* not ideal but we need to duplicate these styles for when touch comes into play
-    We could avoid the duplication using js to set the data-menu-style attribute on small screens instead of using @media queries */
+  We could avoid the duplication using js to set the data-menu-style attribute on small screens instead of using @media queries */
   #header-component[data-menu-style='drawer'] .header__columns {
-    --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr
-      var(--header-mobile-bookend) var(--header-mobile-bookend);
+  --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr
+  var(--header-mobile-bookend) var(--header-mobile-bookend);
 
-    grid-template-areas: 'leftA leftB center rightA rightB';
-    grid-column: span 3;
-    column-gap: 0;
-    align-items: center;
-    padding-block: 0;
-    padding-inline: 0 var(--padding-3xs);
+  grid-template-areas: 'leftA leftB center rightA rightB';
+  grid-column: span 3;
+  column-gap: 0;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: 0 var(--padding-3xs);
 
-    .header-logo {
-      grid-area: center;
-    }
+  .header-logo {
+  grid-area: center;
+  }
 
-    &:not(:has(header-actions)) .search-action {
-      grid-area: leftB;
-    }
+  &:not(:has(header-actions)) .search-action {
+  grid-area: leftB;
+  }
 
-    &:not(:has(shopify-account)) .search-action {
-      grid-area: rightA;
-    }
+  &:not(:has(shopify-account)) .search-action {
+  grid-area: rightA;
+  }
 
-    .search-action {
-      grid-area: leftB;
-    }
+  .search-action {
+  grid-area: leftB;
+  }
 
-    header-actions {
-      grid-area: rightB;
-    }
+  header-actions {
+  grid-area: rightB;
+  }
   }
 
   /* Single column layout if there are no columns within */
   .header__columns:not(:has(.header__column)) {
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
   }
 
   /* Check for hover support to avoid unnecessary expensive recalculations when tapping on mobile */
   @media (hover: hover) {
-    /* Column-specific dimming effect when any interactive element is hovered
-        Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
-    .header__column:has(header-menu:hover),
-    .header__column:has(.header-actions__action:hover),
-    .header__column:has(.header__icon--menu:hover) {
-      header-menu:not(:hover),
-      .header-actions__action:not(:hover),
-      .header__icon--menu:not(:hover) {
-        opacity: var(--opacity-subdued-text);
-        transition: opacity var(--animation-speed) var(--animation-easing);
-      }
-    }
+  /* Column-specific dimming effect when any interactive element is hovered
+  Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
+  .header__column:has(header-menu:hover),
+  .header__column:has(.header-actions__action:hover),
+  .header__column:has(.header__icon--menu:hover) {
+  header-menu:not(:hover),
+  .header-actions__action:not(:hover),
+  .header__icon--menu:not(:hover) {
+  opacity: var(--opacity-subdued-text);
+  transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+  }
   }
 
   /* Ensure smooth transitions for all interactive elements */
   header-menu,
   .header-actions__action,
   .header__icon--menu {
-    transition: opacity var(--animation-speed) var(--animation-easing);
+  transition: opacity var(--animation-speed) var(--animation-easing);
   }
 
   /* Header action button styles */
   .header-actions__action {
-    --button-color: var(--color-foreground);
-    color: var(--button-color);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
+  --button-color: var(--color-foreground);
+  color: var(--button-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
 
-    &:hover {
-      --button-color: var(--color-foreground);
-    }
+  &:hover {
+  --button-color: var(--color-foreground);
+  }
   }
 
   .header-actions__action:not(.account-button) .svg-wrapper {
-    height: var(--button-size);
-    width: var(--button-size);
+  height: var(--button-size);
+  width: var(--button-size);
   }
 
   .header-actions__action:not(.account-button) svg {
-    width: var(--icon-size-md);
-    height: var(--icon-size-md);
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
   }
 
   .header:has(#Details-menu-drawer-container[open]) {
-    contain: style;
+  contain: style;
   }
 
   .header.header--compact {
-    --header-padding: var(--padding-2xs);
+  --header-padding: var(--padding-2xs);
   }
 
   .header__columns {
-    --padding-block-start: var(--header-padding);
-    --padding-block-end: var(--header-padding);
+  --padding-block-start: var(--header-padding);
+  --padding-block-end: var(--header-padding);
   }
 
   .header:not(.header--compact) .header__row--bottom {
-    --header-padding: var(--padding-xs);
+  --header-padding: var(--padding-xs);
   }
 
   .header--collapse-row-paddings {
-    .header__row--top .header__columns {
-      --padding-block-end: 0px;
-    }
+  .header__row--top .header__columns {
+  --padding-block-end: 0px;
+  }
 
-    .header__row--bottom .header__columns {
-      --padding-block-start: 0px;
-    }
+  .header__row--bottom .header__columns {
+  --padding-block-start: 0px;
+  }
   }
 
   /* When the header is transparent, add a margin to a potential header-section below it */
   .header-section:has(.header[transparent]) + .shopify-section {
-    margin-top: var(--header-height);
+  margin-top: var(--header-height);
   }
 
   /* When the header is transparent, and when there is no header-section below it, offset the first main-section with
-     * the height of the header
-     */
+  * the height of the header
+  */
 
   main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
-    &.spacing-style,
-    .spacing-style {
-      --section-top-offset: calc(var(--header-height) * var(--transparent-header-offset-boolean));
+  &.spacing-style,
+  .spacing-style {
+  --section-top-offset: calc(var(--header-height) * var(--transparent-header-offset-boolean));
 
-      /* Any nested sections should not be offset */
-      :is(.spacing-style, .inherit-spacing) {
-        --section-top-offset: 0px;
-      }
-    }
+  /* Any nested sections should not be offset */
+  :is(.spacing-style, .inherit-spacing) {
+  --section-top-offset: 0px;
+  }
+  }
 
-    /* Make sticky content immediately stick to the top of the page */
-    .sticky-content {
-      margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
-    }
+  /* Make sticky content immediately stick to the top of the page */
+  .sticky-content {
+  margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
+  }
   }
 
   /* Optimize layout performance for hidden menus */
   .header-menu .menu-list__submenu {
-    content-visibility: auto;
-    contain-intrinsic-size: 0px 500px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0px 500px;
   }
 
   /* Force visibility when open/animating and in overflow submenu to prevent layout issues */
   .header-menu details[open] .menu-list__submenu,
   .header-menu .menu-list__submenu[data-active],
   .header-menu .menu-list__list-item[slot='overflow'] .menu-list__submenu {
-    content-visibility: visible;
+  content-visibility: visible;
   }
 
   /* Dropdown Localization Styles */
   .dropdown-localization__button {
-    display: flex;
-    position: relative;
-    align-items: center;
-    gap: 4px;
-    font-family: var(--menu-localization-font);
-    font-size: var(--menu-localization-font-size);
-    font-weight: var(--menu-top-level-font-weight);
-    padding-inline: var(--padding-2xs);
-    margin-inline: calc(-1 * var(--padding-2xs));
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--menu-localization-font);
+  font-size: var(--menu-localization-font-size);
+  font-weight: var(--menu-top-level-font-weight);
+  padding-inline: var(--padding-2xs);
+  margin-inline: calc(-1 * var(--padding-2xs));
   }
 
   .dropdown-localization__button .svg-wrapper.icon-caret {
-    height: var(--icon-size-xs);
-    width: var(--icon-size-xs);
-    right: var(--margin-xs);
-    top: calc(50% - var(--padding-2xs));
-    flex-shrink: 0;
-    transition: transform var(--animation-speed) var(--animation-easing);
+  height: var(--icon-size-xs);
+  width: var(--icon-size-xs);
+  right: var(--margin-xs);
+  top: calc(50% - var(--padding-2xs));
+  flex-shrink: 0;
+  transition: transform var(--animation-speed) var(--animation-easing);
   }
 
   .dropdown-localization__button .icon-flag {
-    width: var(--menu-localization-font-size, var(--icon-size-sm));
-    height: var(--menu-localization-font-size, var(--icon-size-sm));
-    clip-path: circle(50%); /* stylelint-disable-line */
-    background-position: center;
-    background-size: cover;
-    margin-inline-end: 4px;
-    position: relative;
+  width: var(--menu-localization-font-size, var(--icon-size-sm));
+  height: var(--menu-localization-font-size, var(--icon-size-sm));
+  clip-path: circle(50%); /* stylelint-disable-line */
+  background-position: center;
+  background-size: cover;
+  margin-inline-end: 4px;
+  position: relative;
   }
 
   .dropdown-localization__button .icon-flag::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 var(--size-shadow) var(--color-shadow);
-    border-radius: 50%;
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 var(--size-shadow) var(--color-shadow);
+  border-radius: 50%;
   }
 
   .dropdown-localization__button[aria-expanded='true'] .icon-caret svg {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
   }
 
   .dropdown-localization__button,
   .dropdown-localization__button:hover {
-    box-shadow: none;
-    background-color: transparent;
-    border-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+  border-color: transparent;
   }
 
   dropdown-localization-component .localization-form__list {
-    max-height: 20.5rem;
+  max-height: 20.5rem;
   }
 
   .localization-wrapper {
-    position: fixed;
-    z-index: var(--layer-raised);
-    border-radius: var(--style-border-radius-popover);
-    transition-property: display, opacity, translate;
-    transition-duration: 0.3s;
-    transition-timing-function: var(--ease-out-quad);
-    transition-behavior: allow-discrete;
-    translate: 0 20px;
-    opacity: 0;
+  position: fixed;
+  z-index: var(--layer-raised);
+  border-radius: var(--style-border-radius-popover);
+  transition-property: display, opacity, translate;
+  transition-duration: 0.3s;
+  transition-timing-function: var(--ease-out-quad);
+  transition-behavior: allow-discrete;
+  translate: 0 20px;
+  opacity: 0;
   }
 
   .localization-wrapper:not([hidden]) {
-    translate: 0 0;
-    opacity: 1;
+  translate: 0 0;
+  opacity: 1;
   }
 
   @starting-style {
-    .localization-wrapper:not([hidden]) {
-      translate: 0 20px;
-      opacity: 0;
-    }
+  .localization-wrapper:not([hidden]) {
+  translate: 0 20px;
+  opacity: 0;
+  }
   }
 
   dropdown-localization-component {
-    position: relative;
-    background-color: transparent;
+  position: relative;
+  background-color: transparent;
   }
 
   dropdown-localization-component .country-filter {
-    position: relative;
-    padding: 8px;
+  position: relative;
+  padding: 8px;
   }
 
   dropdown-localization-component .country-filter__input {
-    border: none;
+  border: none;
   }
 
   dropdown-localization-component .localization-form__list-item {
-    margin-inline: 8px;
+  margin-inline: 8px;
   }
 
   dropdown-localization-component .localization-wrapper {
-    box-shadow: var(--shadow-popover);
-    border: var(--style-border-popover);
-    background-color: var(--color-background);
-    max-height: 27.5rem;
-    position: absolute;
-    top: calc(100% + 10px);
-    z-index: calc(var(--layer-header-menu) + 1);
+  box-shadow: var(--shadow-popover);
+  border: var(--style-border-popover);
+  background-color: var(--color-background);
+  max-height: 27.5rem;
+  position: absolute;
+  top: calc(100% + 10px);
+  z-index: calc(var(--layer-header-menu) + 1);
   }
 
   dropdown-localization-component .localization-wrapper.right-bound {
-    right: 0;
-    left: unset;
+  right: 0;
+  left: unset;
   }
 
   dropdown-localization-component .localization-wrapper.left-bound {
-    left: -8px;
-    right: unset;
+  left: -8px;
+  right: unset;
   }
 
   /* Additional specificity due to dropdown-localization-component getting a low score */
   dropdown-localization-component .language-selector.language-selector {
-    padding: 10px 8px 10px 16px;
+  padding: 10px 8px 10px 16px;
   }
 
   dropdown-localization-component .localization-form__currency {
-    width: max-content;
-    opacity: 0;
-    visibility: hidden;
-    transition: none;
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
   }
 
   dropdown-localization-component .localization-form__select:hover {
-    background-color: rgb(var(--color-primary-hover-rgb) / var(--opacity-8));
+  background-color: rgb(var(--color-primary-hover-rgb) / var(--opacity-8));
   }
 
   dropdown-localization-component
-    :is(
-      .localization-form__list-item:hover,
-      .localization-form__list-item[aria-selected='true'],
-      .localization-form__list-item[aria-current='true']
-    )
-    .localization-form__currency {
-    opacity: 1;
-    color: var(--color-foreground-muted);
-    transition: opacity var(--animation-speed-slow) var(--animation-easing);
-    visibility: visible;
+  :is(
+  .localization-form__list-item:hover,
+  .localization-form__list-item[aria-selected='true'],
+  .localization-form__list-item[aria-current='true']
+  )
+  .localization-form__currency {
+  opacity: 1;
+  color: var(--color-foreground-muted);
+  transition: opacity var(--animation-speed-slow) var(--animation-easing);
+  visibility: visible;
   }
 
   .dropdown-localization .language-selector:where(:not(.top-shadow)) {
-    font-weight: var(--menu-top-level-font-weight);
+  font-weight: var(--menu-top-level-font-weight);
   }
 
   .dropdown-localization:not(dropdown-localization-component) .language-selector {
-    font-family: var(--menu-localization-font);
-    font-size: var(--menu-localization-font-size);
+  font-family: var(--menu-localization-font);
+  font-size: var(--menu-localization-font-size);
   }
-{% endstylesheet %}
+  {% endstylesheet %}
 
-{% unless request.design_mode %}
+  {% unless request.design_mode %}
   <script type="module">
-    import { hydrate } from '@theme/section-hydration';
-    const url = new URL(window.location.href);
-    url.searchParams.delete('page');
-    hydrate('{{ section.id }}', url);
+  import { hydrate } from '@theme/section-hydration';
+  const url = new URL(window.location.href);
+  url.searchParams.delete('page');
+  hydrate('{{ section.id }}', url);
   </script>
-{% endunless %}
+  {% endunless %}
 
-{% schema %}
-{
+  {% schema %}
+  {
   "name": "t:names.header",
   "tag": "header",
   "class": "header-section",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:content.logo"
-    },
-    {
-      "type": "select",
-      "id": "logo_position",
-      "label": "t:settings.position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "center",
-          "label": "t:options.center"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "header",
-      "content": "t:content.menu"
-    },
-    {
-      "type": "select",
-      "id": "menu_position",
-      "label": "t:settings.position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "center",
-          "label": "t:options.center"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "select",
-      "id": "menu_row",
-      "label": "t:settings.row",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top"
-    },
-    {
-      "type": "header",
-      "content": "t:content.customer_account"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:content.manage_customer_accounts"
-    },
-    {
-      "type": "link_list",
-      "id": "customer_account_menu",
-      "label": "t:settings.menu",
-      "default": "customer-account-main-menu"
-    },
-    {
-      "type": "header",
-      "content": "t:content.search"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_search",
-      "label": "t:settings.search_icon",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "search_position",
-      "label": "t:settings.search_position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "right",
-      "visible_if": "{{ section.settings.show_search }}"
-    },
-    {
-      "type": "select",
-      "id": "search_row",
-      "label": "t:settings.search_row",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top",
-      "visible_if": "{{ section.settings.show_search }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.localization"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_country",
-      "label": "t:settings.country_region",
-      "info": "t:info.manage_countries_regions",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "country_selector_style",
-      "label": "t:settings.flag",
-      "default": true,
-      "visible_if": "{{ section.settings.show_country }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_language",
-      "label": "t:settings.language_selector",
-      "info": "t:info.manage_languages",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "localization_font",
-      "label": "t:settings.font",
-      "options": [
-        {
-          "value": "heading",
-          "label": "t:options.heading"
-        },
-        {
-          "value": "subheading",
-          "label": "t:options.subheading"
-        },
-        {
-          "value": "body",
-          "label": "t:options.body"
-        },
-        {
-          "value": "accent",
-          "label": "t:options.accent"
-        }
-      ],
-      "default": "heading",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "select",
-      "id": "localization_font_size",
-      "label": "t:settings.size",
-      "options": [
-        {
-          "value": "0.625rem",
-          "label": "10px"
-        },
-        {
-          "value": "0.75rem",
-          "label": "12px"
-        },
-        {
-          "value": "0.875rem",
-          "label": "14px"
-        },
-        {
-          "value": "1rem",
-          "label": "16px"
-        },
-        {
-          "value": "1.125rem",
-          "label": "18px"
-        }
-      ],
-      "default": "1rem"
-    },
-    {
-      "type": "select",
-      "id": "localization_position",
-      "label": "t:settings.position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:options.left"
-        },
-        {
-          "value": "right",
-          "label": "t:options.right"
-        }
-      ],
-      "default": "right",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "select",
-      "id": "localization_row",
-      "label": "t:settings.row",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:options.top"
-        },
-        {
-          "value": "bottom",
-          "label": "t:options.bottom"
-        }
-      ],
-      "default": "top",
-      "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_height",
-      "label": "t:settings.height",
-      "options": [
-        {
-          "value": "compact",
-          "label": "t:options.compact"
-        },
-        {
-          "value": "standard",
-          "label": "t:options.standard"
-        }
-      ],
-      "default": "standard"
-    },
-    {
-      "type": "select",
-      "id": "enable_sticky_header",
-      "label": "t:settings.sticky_header",
-      "options": [
-        {
-          "value": "always",
-          "label": "t:options.always"
-        },
-        {
-          "value": "scroll-up",
-          "label": "t:options.on_scroll_up"
-        },
-        {
-          "value": "never",
-          "label": "t:options.never"
-        }
-      ],
-      "default": "always"
-    },
-    {
-      "type": "range",
-      "id": "divider_width",
-      "label": "t:settings.divider_thickness",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "select",
-      "id": "divider_size",
-      "label": "t:settings.divider_width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "range",
-      "id": "border_width",
-      "label": "t:settings.border_width",
-      "min": 0,
-      "max": 5,
-      "step": 0.5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.utilities"
-    },
-    {
-      "type": "select",
-      "id": "actions_display_style",
-      "label": "t:settings.actions_display_style",
-      "info": "t:info.actions_display_style",
-      "options": [
-        {
-          "value": "icon",
-          "label": "t:options.icons"
-        },
-        {
-          "value": "text",
-          "label": "t:options.text"
-        }
-      ],
-      "default": "icon"
-    },
-    {
-      "type": "select",
-      "id": "actions_font_size",
-      "label": "t:settings.size",
-      "options": [
-        {
-          "value": "0.75rem",
-          "label": "12px"
-        },
-        {
-          "value": "0.875rem",
-          "label": "14px"
-        },
-        {
-          "value": "1rem",
-          "label": "16px"
-        },
-        {
-          "value": "1.125rem",
-          "label": "18px"
-        }
-      ],
-      "default": "0.875rem",
-      "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
-    },
-    {
-      "type": "select",
-      "id": "actions_font",
-      "label": "t:settings.font",
-      "options": [
-        {
-          "value": "heading",
-          "label": "t:options.heading"
-        },
-        {
-          "value": "subheading",
-          "label": "t:options.subheading"
-        },
-        {
-          "value": "body",
-          "label": "t:options.body"
-        },
-        {
-          "value": "accent",
-          "label": "t:options.accent"
-        }
-      ],
-      "default": "body",
-      "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
-    },
-    {
-      "type": "select",
-      "id": "actions_text_case",
-      "label": "t:settings.case",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:options.default"
-        },
-        {
-          "value": "uppercase",
-          "label": "t:options.uppercase"
-        }
-      ],
-      "default": "none",
-      "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.colors"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_top",
-      "label": "t:settings.default",
-      "default": "primary"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_bottom",
-      "label": "t:settings.bottom_row",
-      "default": "primary",
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_transparent",
-      "label": "t:settings.inverse",
-      "default": "primary",
-      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.home_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_home",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "home_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_home }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.product_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_product",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "product_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_product }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.collection_page"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header_collection",
-      "label": "t:settings.transparent_background",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "collection_color_scheme",
-      "label": "t:settings.color_scheme",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:options.default"
-        },
-        {
-          "value": "inverse",
-          "label": "t:options.inverse"
-        }
-      ],
-      "default": "default",
-      "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
-    }
+  {
+  "type": "header",
+  "content": "t:content.logo"
+  },
+  {
+  "type": "select",
+  "id": "logo_position",
+  "label": "t:settings.position",
+  "options": [
+  {
+  "value": "left",
+  "label": "t:options.left"
+  },
+  {
+  "value": "center",
+  "label": "t:options.center"
+  },
+  {
+  "value": "right",
+  "label": "t:options.right"
+  }
+  ],
+  "default": "center"
+  },
+  {
+  "type": "header",
+  "content": "t:content.menu"
+  },
+  {
+  "type": "select",
+  "id": "menu_position",
+  "label": "t:settings.position",
+  "options": [
+  {
+  "value": "left",
+  "label": "t:options.left"
+  },
+  {
+  "value": "center",
+  "label": "t:options.center"
+  },
+  {
+  "value": "right",
+  "label": "t:options.right"
+  }
+  ],
+  "default": "left"
+  },
+  {
+  "type": "select",
+  "id": "menu_row",
+  "label": "t:settings.row",
+  "options": [
+  {
+  "value": "top",
+  "label": "t:options.top"
+  },
+  {
+  "value": "bottom",
+  "label": "t:options.bottom"
+  }
+  ],
+  "default": "top"
+  },
+  {
+  "type": "header",
+  "content": "t:content.customer_account"
+  },
+  {
+  "type": "paragraph",
+  "content": "t:content.manage_customer_accounts"
+  },
+  {
+  "type": "link_list",
+  "id": "customer_account_menu",
+  "label": "t:settings.menu",
+  "default": "customer-account-main-menu"
+  },
+  {
+  "type": "header",
+  "content": "t:content.search"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_search",
+  "label": "t:settings.search_icon",
+  "default": true
+  },
+  {
+  "type": "select",
+  "id": "search_position",
+  "label": "t:settings.search_position",
+  "options": [
+  {
+  "value": "left",
+  "label": "t:options.left"
+  },
+  {
+  "value": "right",
+  "label": "t:options.right"
+  }
+  ],
+  "default": "right",
+  "visible_if": "{{ section.settings.show_search }}"
+  },
+  {
+  "type": "select",
+  "id": "search_row",
+  "label": "t:settings.search_row",
+  "options": [
+  {
+  "value": "top",
+  "label": "t:options.top"
+  },
+  {
+  "value": "bottom",
+  "label": "t:options.bottom"
+  }
+  ],
+  "default": "top",
+  "visible_if": "{{ section.settings.show_search }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.localization"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_country",
+  "label": "t:settings.country_region",
+  "info": "t:info.manage_countries_regions",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "country_selector_style",
+  "label": "t:settings.flag",
+  "default": true,
+  "visible_if": "{{ section.settings.show_country }}"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_language",
+  "label": "t:settings.language_selector",
+  "info": "t:info.manage_languages",
+  "default": true
+  },
+  {
+  "type": "select",
+  "id": "localization_font",
+  "label": "t:settings.font",
+  "options": [
+  {
+  "value": "heading",
+  "label": "t:options.heading"
+  },
+  {
+  "value": "subheading",
+  "label": "t:options.subheading"
+  },
+  {
+  "value": "body",
+  "label": "t:options.body"
+  },
+  {
+  "value": "accent",
+  "label": "t:options.accent"
+  }
+  ],
+  "default": "heading",
+  "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
+  },
+  {
+  "type": "select",
+  "id": "localization_font_size",
+  "label": "t:settings.size",
+  "options": [
+  {
+  "value": "0.625rem",
+  "label": "10px"
+  },
+  {
+  "value": "0.75rem",
+  "label": "12px"
+  },
+  {
+  "value": "0.875rem",
+  "label": "14px"
+  },
+  {
+  "value": "1rem",
+  "label": "16px"
+  },
+  {
+  "value": "1.125rem",
+  "label": "18px"
+  }
+  ],
+  "default": "1rem"
+  },
+  {
+  "type": "select",
+  "id": "localization_position",
+  "label": "t:settings.position",
+  "options": [
+  {
+  "value": "left",
+  "label": "t:options.left"
+  },
+  {
+  "value": "right",
+  "label": "t:options.right"
+  }
+  ],
+  "default": "right",
+  "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
+  },
+  {
+  "type": "select",
+  "id": "localization_row",
+  "label": "t:settings.row",
+  "options": [
+  {
+  "value": "top",
+  "label": "t:options.top"
+  },
+  {
+  "value": "bottom",
+  "label": "t:options.bottom"
+  }
+  ],
+  "default": "top",
+  "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.appearance"
+  },
+  {
+  "type": "select",
+  "id": "section_width",
+  "label": "t:settings.width",
+  "options": [
+  {
+  "value": "page-width",
+  "label": "t:options.page"
+  },
+  {
+  "value": "full-width",
+  "label": "t:options.full"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "section_height",
+  "label": "t:settings.height",
+  "options": [
+  {
+  "value": "compact",
+  "label": "t:options.compact"
+  },
+  {
+  "value": "standard",
+  "label": "t:options.standard"
+  }
+  ],
+  "default": "standard"
+  },
+  {
+  "type": "select",
+  "id": "enable_sticky_header",
+  "label": "t:settings.sticky_header",
+  "options": [
+  {
+  "value": "always",
+  "label": "t:options.always"
+  },
+  {
+  "value": "scroll-up",
+  "label": "t:options.on_scroll_up"
+  },
+  {
+  "value": "never",
+  "label": "t:options.never"
+  }
+  ],
+  "default": "always"
+  },
+  {
+  "type": "range",
+  "id": "divider_width",
+  "label": "t:settings.divider_thickness",
+  "min": 0,
+  "max": 5,
+  "step": 0.5,
+  "unit": "px",
+  "default": 0,
+  "visible_if": "{{ section.settings.menu_row == ' b ottom' or section.settings.localization_row == ' b ottom' or section.settings.search_row == ' b ottom' }}"
+  },
+  {
+  "type": "select",
+  "id": "divider_size",
+  "label": "t:settings.divider_width",
+  "options": [
+  {
+  "value": "page-width",
+  "label": "t:options.page"
+  },
+  {
+  "value": "full-width",
+  "label": "t:options.full"
+  }
+  ],
+  "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == ' b ottom' or section.settings.localization_row == ' b ottom' or section.settings.search_row == ' b ottom' }}"
+  },
+  {
+  "type": "range",
+  "id": "border_width",
+  "label": "t:settings.border_width",
+  "min": 0,
+  "max": 5,
+  "step": 0.5,
+  "unit": "px",
+  "default": 0
+  },
+  {
+  "type": "header",
+  "content": "t:content.utilities"
+  },
+  {
+  "type": "select",
+  "id": "actions_display_style",
+  "label": "t:settings.actions_display_style",
+  "info": "t:info.actions_display_style",
+  "options": [
+  {
+  "value": "icon",
+  "label": "t:options.icons"
+  },
+  {
+  "value": "text",
+  "label": "t:options.text"
+  }
+  ],
+  "default": "icon"
+  },
+  {
+  "type": "select",
+  "id": "actions_font_size",
+  "label": "t:settings.size",
+  "options": [
+  {
+  "value": "0.75rem",
+  "label": "12px"
+  },
+  {
+  "value": "0.875rem",
+  "label": "14px"
+  },
+  {
+  "value": "1rem",
+  "label": "16px"
+  },
+  {
+  "value": "1.125rem",
+  "label": "18px"
+  }
+  ],
+  "default": "0.875rem",
+  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  },
+  {
+  "type": "select",
+  "id": "actions_font",
+  "label": "t:settings.font",
+  "options": [
+  {
+  "value": "heading",
+  "label": "t:options.heading"
+  },
+  {
+  "value": "subheading",
+  "label": "t:options.subheading"
+  },
+  {
+  "value": "body",
+  "label": "t:options.body"
+  },
+  {
+  "value": "accent",
+  "label": "t:options.accent"
+  }
+  ],
+  "default": "body",
+  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  },
+  {
+  "type": "select",
+  "id": "actions_text_case",
+  "label": "t:settings.case",
+  "options": [
+  {
+  "value": "none",
+  "label": "t:options.default"
+  },
+  {
+  "value": "uppercase",
+  "label": "t:options.uppercase"
+  }
+  ],
+  "default": "none",
+  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.colors"
+  },
+  {
+  "type": "color_scheme",
+  "id": "color_scheme_top",
+  "label": "t:settings.default",
+  "default": "primary"
+  },
+  {
+  "type": "color_scheme",
+  "id": "color_scheme_bottom",
+  "label": "t:settings.bottom_row",
+  "default": "primary",
+  "visible_if": "{{ section.settings.menu_row == ' b ottom' or section.settings.localization_row == ' b ottom' or section.settings.search_row == ' b ottom' }}"
+  },
+  {
+  "type": "color_scheme",
+  "id": "color_scheme_transparent",
+  "label": "t:settings.inverse",
+  "default": "primary",
+  "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.home_page"
+  },
+  {
+  "type": "checkbox",
+  "id": "enable_transparent_header_home",
+  "label": "t:settings.transparent_background",
+  "default": false
+  },
+  {
+  "type": "select",
+  "id": "home_color_scheme",
+  "label": "t:settings.color_scheme",
+  "options": [
+  {
+  "value": "default",
+  "label": "t:options.default"
+  },
+  {
+  "value": "inverse",
+  "label": "t:options.inverse"
+  }
+  ],
+  "default": "default",
+  "visible_if": "{{ section.settings.enable_transparent_header_home }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.product_page"
+  },
+  {
+  "type": "checkbox",
+  "id": "enable_transparent_header_product",
+  "label": "t:settings.transparent_background",
+  "default": false
+  },
+  {
+  "type": "select",
+  "id": "product_color_scheme",
+  "label": "t:settings.color_scheme",
+  "options": [
+  {
+  "value": "default",
+  "label": "t:options.default"
+  },
+  {
+  "value": "inverse",
+  "label": "t:options.inverse"
+  }
+  ],
+  "default": "default",
+  "visible_if": "{{ section.settings.enable_transparent_header_product }}"
+  },
+  {
+  "type": "header",
+  "content": "t:content.collection_page"
+  },
+  {
+  "type": "checkbox",
+  "id": "enable_transparent_header_collection",
+  "label": "t:settings.transparent_background",
+  "default": false
+  },
+  {
+  "type": "select",
+  "id": "collection_color_scheme",
+  "label": "t:settings.color_scheme",
+  "options": [
+  {
+  "value": "default",
+  "label": "t:options.default"
+  },
+  {
+  "value": "inverse",
+  "label": "t:options.inverse"
+  }
+  ],
+  "default": "default",
+  "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
+  }
   ],
   "presets": []
-}
-{% endschema %}
+  }
+  {% endschema%}
