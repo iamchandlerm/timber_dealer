@@ -1,0 +1,238 @@
+[33mcommit 9deb80f42b9289fbf7f9dddb6b66a3fe4fe530af[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtext[m[33m, [m[1;31morigin/text[m[33m)[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Sat Jun 27 14:41:46 2026 +0800
+
+    pull update all
+
+[33mcommit 52cc7c102507082e3a091a346081c057aa12b77f[m[33m ([m[1;31morigin/horizon/mike[m[33m, [m[1;32mhorizon/mike[m[33m)[m
+Merge: c9cdfe5 cf950c0
+Author: Chandler <43693948+iamchandlerm@users.noreply.github.com>
+Date:   Fri Jun 26 14:04:33 2026 +0800
+
+    Horizon/mike hotfix
+    
+    Horizon/mike hotfix
+
+[33mcommit c9cdfe5ff58c956aba3a5ef555eaac7dbbe17df9[m
+Merge: c1ad9f4 8ccf573
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Thu Jun 25 09:17:04 2026 +0800
+
+    Merge branch 'horizon/mike' of https://github.com/iamchandlerm/timber_dealer into horizon/mike
+
+[33mcommit cf950c01f448b80a0b61d1a257c762bf4bd909a4[m[33m ([m[1;31morigin/horizon/mike-hotfix[m[33m)[m
+Author: Sightless <chandlerdavem@gmail.com>
+Date:   Wed Jun 24 16:10:53 2026 +0800
+
+    base branch merge
+
+[33mcommit 8ccf5734f06900ce2d3885ea6b8134b1b08d4fa5[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Wed Jun 24 08:02:52 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit c1ad9f42462f73f28518b21dd82ac2004c33de81[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 24 15:48:09 2026 +0800
+
+    hot fix completed all call outs
+
+[33mcommit e91e06ea84c16695019df4137ecc1f4f16cd5700[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 24 12:22:11 2026 +0800
+
+    hot fix created new file for copied section implementation
+
+[33mcommit 99c5cfa6adf64fbdd7caf370ddf681a9d0745d6b[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Fri Jun 19 21:28:22 2026 +0800
+
+    hotfix to overall section align items and content..
+
+[33mcommit e61185c42091e306d01e35467f71bdb5a576d07b[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Fri Jun 19 12:28:21 2026 +0800
+
+    hot fix to all section alignment and all
+
+[33mcommit e000248826a5e4ac0efcbbb2369a1b895123b72e[m[33m ([m[1;32mmain[m[33m)[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 18:41:16 2026 +0800
+
+    added quick fix (justify items) to product page
+
+[33mcommit b4baa879d18ce3e5741248a2ba42e5ec46b3523d[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 18:19:02 2026 +0800
+
+    created the last section reference from figma to shopify
+
+[33mcommit 44f8040ffa35b0c40be9b5267f34f339e232f037[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 13:32:30 2026 +0800
+
+    edited new layer on the theme
+
+[33mcommit 12b13edcb3d147dafc14f21deb4f90070be5fafc[m
+Merge: 7549798 1f54670
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 10:56:48 2026 +0800
+
+    pull request merge
+
+[33mcommit 1f546706a05d61f17cf1ddba4344c2885c2ee9f8[m
+Merge: 515ef46 4f276f6
+Author: Chandler <43693948+iamchandlerm@users.noreply.github.com>
+Date:   Wed Jun 17 10:50:39 2026 +0800
+
+    replace banner file and rename new copy
+    
+    replace banner file and rename new copy
+
+[33mcommit 4f276f6e7b0fe2687b83059fa6d33f05d76009e1[m[33m ([m[1;31morigin/horizon/mike-banner[m[33m, [m[1;32mhorizon/mike-banner[m[33m)[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 10:49:26 2026 +0800
+
+    replace banner file and rename new copy
+
+[33mcommit 515ef4635fb8730616c89db15ab4f3da2f04c485[m
+Merge: d9dcb40 d9aa09b
+Author: Chandler <43693948+iamchandlerm@users.noreply.github.com>
+Date:   Wed Jun 17 10:47:03 2026 +0800
+
+    Horizon/mike banner
+    
+    Horizon/mike banner
+
+[33mcommit d9aa09b95c4af4ac45af12b6ee8e36ba0fc94587[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Wed Jun 17 10:44:10 2026 +0800
+
+    update banner copy
+
+[33mcommit 75497989ad907e91e1e3cd07a4911ee53e7646aa[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Tue Jun 16 19:34:43 2026 +0800
+
+    trying new implementation to slider that will render different slider based on user options
+
+[33mcommit ac4c338a4fe41ffe81cc405005cd97e07dedee80[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Tue Jun 16 15:05:52 2026 +0800
+
+    added new function to my slider able to change what type of pagination required
+
+[33mcommit 2e361796c791d1a1cc1b3ba887e2c95dfcba24dd[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Tue Jun 16 11:53:23 2026 +0800
+
+    added new section db-bulk-product-section.liquid. last section on figma
+
+[33mcommit 61107b7348e16645eb6f1e2d365454fe3061b4e8[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Tue Jun 16 10:17:07 2026 +0800
+
+    restructuing css to all dc-section.liquid
+
+[33mcommit d9dcb400c4411dd6eddbf04330eb43b25c237165[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Mon Jun 15 14:56:57 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit f755e40cf1756c2c0e1404f3604428790c3b6174[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Mon Jun 15 22:34:02 2026 +0800
+
+    finally banner update with proper format based on chandler's example section
+
+[33mcommit ef6e361e1da6616d1ebcf50505c66a11bfb3d71c[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Mon Jun 15 12:38:13 2026 +0800
+
+    added new branch
+
+[33mcommit 840c1012d6db18f698094d2e439f667f260151a1[m
+Merge: e7ea173 06daa9f
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Mon Jun 15 12:33:13 2026 +0800
+
+    update local
+
+[33mcommit e7ea173af2c370a837a8fa09c755cddf32a46bb2[m
+Author: MichaelAngelo-Khel-ops <michael1118salonga@gmail.com>
+Date:   Mon Jun 15 12:28:22 2026 +0800
+
+    save
+
+[33mcommit 06daa9fff4225caca83d84dc8d630b96c13ff994[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Fri Jun 12 03:55:43 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 1df2b9442add285982538f1dbe4a326a1fbb8758[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Thu Jun 11 04:42:55 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 5f652868e6f3402ec81f4e9807585783e81fe6a8[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Thu Jun 11 04:41:16 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit d4690c5c18397371ed0410262ea25ec46a466ce0[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Thu Jun 11 04:36:04 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 1d2245e9856589446f9393acc95ab4d895460fea[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Wed Jun 10 16:01:27 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 4ec1bfe5f720aeddd135328e9b9be372ff26e687[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Wed Jun 10 15:58:11 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit da0c01dc68fd580f380a01654651925afc7c8dd0[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Wed Jun 10 06:25:25 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 0335b39ee0f59684f0ed736f0293cea15a3b2218[m
+Author: shopify[bot] <79544226+shopify[bot]@users.noreply.github.com>
+Date:   Wed Jun 10 06:22:58 2026 +0000
+
+    Update from Shopify for theme Horizon | Mike
+    
+    Committed from shop: Timber Dealers
+
+[33mcommit 3cb890f74900b0d03546e1280ab0c10ae549270e[m
+Author: shopify[bot

@@ -1,0 +1,74 @@
+[33m9deb80f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtext[m[33m, [m[1;31morigin/text[m[33m)[m pull update all
+[33m52cc7c1[m[33m ([m[1;31morigin/horizon/mike[m[33m, [m[1;32mhorizon/mike[m[33m)[m Horizon/mike hotfix
+[33mc9cdfe5[m Merge branch 'horizon/mike' of https://github.com/iamchandlerm/timber_dealer into horizon/mike
+[33mcf950c0[m[33m ([m[1;31morigin/horizon/mike-hotfix[m[33m)[m base branch merge
+[33m8ccf573[m Update from Shopify for theme Horizon | Mike
+[33mc1ad9f4[m hot fix completed all call outs
+[33me91e06e[m hot fix created new file for copied section implementation
+[33m99c5cfa[m hotfix to overall section align items and content..
+[33me61185c[m hot fix to all section alignment and all
+[33me000248[m[33m ([m[1;32mmain[m[33m)[m added quick fix (justify items) to product page
+[33mb4baa87[m created the last section reference from figma to shopify
+[33m44f8040[m edited new layer on the theme
+[33m12b13ed[m pull request merge
+[33m1f54670[m replace banner file and rename new copy
+[33m4f276f6[m[33m ([m[1;31morigin/horizon/mike-banner[m[33m, [m[1;32mhorizon/mike-banner[m[33m)[m replace banner file and rename new copy
+[33m515ef46[m Horizon/mike banner
+[33md9aa09b[m update banner copy
+[33m7549798[m trying new implementation to slider that will render different slider based on user options
+[33mac4c338[m added new function to my slider able to change what type of pagination required
+[33m2e36179[m added new section db-bulk-product-section.liquid. last section on figma
+[33m61107b7[m restructuing css to all dc-section.liquid
+[33md9dcb40[m Update from Shopify for theme Horizon | Mike
+[33mf755e40[m finally banner update with proper format based on chandler's example section
+[33mef6e361[m added new branch
+[33m840c101[m update local
+[33me7ea173[m save
+[33m06daa9f[m Update from Shopify for theme Horizon | Mike
+[33m1df2b94[m Update from Shopify for theme Horizon | Mike
+[33m5f65286[m Update from Shopify for theme Horizon | Mike
+[33md4690c5[m Update from Shopify for theme Horizon | Mike
+[33m1d2245e[m Update from Shopify for theme Horizon | Mike
+[33m4ec1bfe[m Update from Shopify for theme Horizon | Mike
+[33mda0c01d[m Update from Shopify for theme Horizon | Mike
+[33m0335b39[m Update from Shopify for theme Horizon | Mike
+[33m3cb890f[m Update from Shopify for theme Horizon | Mike
+[33m51808af[m Update from Shopify for theme Horizon | Mike
+[33me959411[m finally finished a section that has a complete accessories for the clients to costomize the section items!!
+[33md1fe4bb[m Update from Shopify for theme Horizon | Mike
+[33ma8af3f3[m Update from Shopify for theme Horizon | Mike
+[33mc25274a[m Update from Shopify for theme Horizon | Mike
+[33m5667798[m Update from Shopify for theme Horizon | Mike
+[33mea2fcdf[m Update from Shopify for theme Horizon | Mike
+[33m20045f0[m Update from Shopify for theme Horizon | Mike
+[33ma27f057[m Update from Shopify for theme Horizon | Mike
+[33mf9c37b5[m Update from Shopify for theme Horizon | Mike
+[33m915e9e6[m Update from Shopify for theme Horizon | Mike
+[33m8d7053f[m Update from Shopify for theme Horizon | Mike
+[33mebb3e07[m Update from Shopify for theme Horizon | Mike
+[33m7e6a501[m Update from Shopify for theme Horizon | Mike
+[33m851317a[m Update from Shopify for theme Horizon | Mike
+[33me5a20ad[m Update from Shopify for theme Horizon | Mike
+[33m27a5b9b[m Update from Shopify for theme Horizon | Mike
+[33md03064c[m Update from Shopify for theme Horizon | Mike
+[33m1fe7c90[m Update from Shopify for theme Horizon | Mike
+[33mcd8ccd4[m Update from Shopify for theme Horizon | Mike
+[33m5106882[m Update from Shopify for theme Horizon | Mike
+[33m50d6e7f[m Update from Shopify for theme Horizon | Mike
+[33m452d360[m Update from Shopify for theme Horizon | Mike
+[33mb83f00d[m Update from Shopify for theme Horizon | Mike
+[33m0695aff[m Merge branch 'horizon/mike' of https://github.com/iamchandlerm/timber_dealer into horizon/mike
+[33m4ba482b[m new changes
+[33ma993a18[m Update from Shopify for theme Horizon | Mike
+[33m157a135[m Update from Shopify for theme Horizon | Mike
+[33m1be3228[m added a db-list-info.liquid for info banner below the hero banner.
+[33mbe92300[m Update from Shopify for theme Horizon | Mike
+[33m47cef07[m Update from Shopify for theme Horizon | Mike
+[33medd9cbc[m Merge branch 'horizon/mike' of https://github.com/iamchandlerm/timber_dealer into horizon/mike
+[33me52146d[m finished hero section with pagination and text
+[33m503cd2a[m Update from Shopify for theme Horizon | Mike
+[33m91b35f6[m competed the hero banner, added a custom.css file, added a splide slider for the hero banner section, end!
+[33m576843f[m ahhhhh swiper isnt working as fk
+[33m631d17a[m first commit added a db-hero-banner.liquid - not sure if its working
+[33m4a8360c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32magents/swiper-undefined-error-fix[m[33m)[m Shopify push
+[33mc47eb11[m first commit
