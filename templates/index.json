@@ -28,13 +28,6 @@
             "description": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!"
           }
         },
-        "slider_eAXccc": {
-          "type": "slider",
-          "settings": {
-            "title": "",
-            "description": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!"
-          }
-        },
         "slider_fAjKNt": {
           "type": "slider",
           "settings": {
@@ -47,7 +40,6 @@
       "block_order": [
         "slider_9BpPtw",
         "slider_k9znqg",
-        "slider_eAXccc",
         "slider_fAjKNt"
       ],
       "name": "DB Banner",
