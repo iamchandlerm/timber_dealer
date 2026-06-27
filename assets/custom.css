@@ -28,3 +28,22 @@ button{
     border: none;
     text-transform: uppercase;
 }
+
+
+/* header update css file */
+
+.db-header__overall-header{
+    height: 114px;
+}
+
+.db-button-layer button{
+    width: 20px;
+}
+
+button.button-unstyled.header-actions__action {
+    display: flex;
+    align-items: center;
+}
+header-actions{
+    align-items: center;
+}

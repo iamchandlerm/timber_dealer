@@ -382,13 +382,13 @@
     {% assign content = content | strip %}
     {% if content != blank %}
       <div
-        class="{{ class | strip }}"
+        class="{{ class | strip }} db-header__overall-header"
         ref="headerRowTop"
         {%- if style != blank -%}
           style="{{ style | strip }}"
         {%- endif -%}
       >
-        <div class="header__columns spacing-style">
+        <div class="header__columns spacing-style db-header__main-columns">
           {{ content }}
         </div>
       </div>
@@ -660,7 +660,7 @@
     position: relative;
 
     /* Overwrite color from color scheme, background is controlled by the underlays */
-    background-color: transparent;
+    background-color:  #292733;
 
     &:has(.mega-menu__list:hover),
     &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'])),
@@ -700,6 +700,7 @@
   .header__column {
     display: flex;
     align-items: center;
+    justify-content: end;
 
     /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
     @media screen and (max-width: 749px) {
@@ -724,7 +725,7 @@
 
   .header__column--right {
     gap: var(--gap-xl);
-    justify-content: flex-end;
+    justify-content: flex-start;
     grid-area: right;
 
     .overflow-menu::part(list) {
@@ -737,7 +738,7 @@
     --header-left: 1fr;
     --header-center: auto;
     --header-right: 1fr;
-    --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
+    --header-template-columns: repeat(3,auto);
 
     /* Mobile layout */
     --header-mobile-bookend: 44px;
