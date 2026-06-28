@@ -1,0 +1,174 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: #C20502 !important;  
+}
+
+#shopify-section-{{ section.id }} .db-icon-text-wrapper {
+    display: flex;
+    margin: auto;
+    gap: 54px;
+  }
+
+  #shopify-section-{{ section.id }} .db-icon-text-card {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    width: 184px;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .db-icon-text-card__image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .db-icon-text-card__title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF !important;
+    text-align: center;
+    line-height: 118.5%;
+
+  }
+
+
+</style>
+
+<div id="{{ section.settings.custom_id }}" class="db-iconlist section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} spacing-style gap-style">
+
+
+  <div class="db-icon-text-wrapper">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'icon' %}
+            <a
+            href="{{ block.settings.link }}"
+            class="db-icon-text-card"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.icon %}
+              <img
+                src="{{ block.settings.icon | image_url }}"
+                alt="{{ block.settings.text }}"
+                class="db-icon-text-card__image">
+            {% endif %}
+  
+            <div class="db-icon-text-card__title">
+              {{ block.settings.text }}
+            </div>
+          </a>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "DB Iconlist",
+    "settings": [
+      {
+        "type": "text",
+        "id": "custom_id",
+        "label": "Custom ID"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 40
+      },
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "Width",
+        "options": [
+          {
+            "value": "full-width",
+            "label": "Full width"
+          }, 
+          {
+            "value": "page-width",
+            "label": "Page width"
+          }
+        ],
+        "default": "full-width"
+      }, {
+        "type": "select",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "secondary",
+            "label": "Secondary"
+          },
+          {
+            "value": "accent",
+            "label": "Accent"
+          }, {
+            "value": "base-100",
+            "label": "Base"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "icon",
+        "name": "icon Card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Icon Title",
+            "default": "<p>Quick links</p>"
+          }, 
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "DB Iconlist"
+      }
+    ]
+  }
+{% endschema %}

@@ -43,12 +43,12 @@
     color: white;
   }
 
-  .db-banner,
-  .db-banner__content {
+  #shopify-section-{{ section.id }} .db-banner,
+  #shopify-section-{{ section.id }} .db-banner__content {
     height: 100%;
   }
 
-  .db-banner__text {
+  #shopify-section-{{ section.id }} .db-banner__text {
     display: flex;
     flex-direction: column;
     width: 717px;
@@ -60,23 +60,26 @@
     align-items: flex-end;
   }
 
-  .db-banner__title,
-  .db-banner__description {
+  #shopify-section-{{ section.id }} .db-banner__title,
+  #shopify-section-{{ section.id }} .db-banner__description {
     text-align: right;
     margin: 0;
     color: #292733 !important;
   }
 
-  .db-banner__title {
+  #shopify-section-{{ section.id }} .db-banner__title {
     font-size: 49px;
+    line-height: 105.5%;
   }
 
-  .db-banner__description {
+  #shopify-section-{{ section.id }} .db-banner__description {
     font-size: 16px;
     width: 516px;
+    font-family: "Poppins", sans-serif !important;
+    line-height: auto;
   }
   
-  .swiper-scrollbar {
+  #shopify-section-{{ section.id }} .swiper-scrollbar {
     opacity: 1 !important;
     display: flex !important;
     position: absolute  !important;
@@ -88,7 +91,7 @@
     border-radius: 0 !important;
   }
 
-  .swiper-scrollbar-drag {
+  #shopify-section-{{ section.id }} .swiper-scrollbar-drag {
     background: #c20502 !important;
     border-radius: 0 !important;
   }
@@ -118,6 +121,7 @@
           </div>
           <div class="swiper-scrollbar"></div>
         </div>
+
     {% endcase %}
   </div>
 </div>
@@ -212,11 +216,13 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
-          }, {
+          }, 
+          {
             "type": "richtext",
             "id": "title",
             "label": "Title"
-          }, {
+          }, 
+          {
             "type": "textarea",
             "id": "description",
             "label": "Description",
