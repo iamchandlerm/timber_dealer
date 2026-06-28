@@ -47,3 +47,46 @@ button.button-unstyled.header-actions__action {
 header-actions{
     align-items: center;
 }
+
+
+.header-logo__image-container img .header-logo__image{
+    --header-logo-image-width: 97px;
+    --header-logo-image-height: 75px;
+  }
+
+  span.menu-list__link-title{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    padding: 0;
+  }
+  .overflow-menu li + li{
+    margin-left: 16px;
+  }
+  a.menu-list__link.menu-list__link--active span{
+    color: #C20502;
+  }
+
+  a.size-style.spacing-style.header-logo {
+    margin-right: 11px;
+  }  
+
+  .header__columns.spacing-style.db-header__main-columns {
+    gap: 50px;
+    }   
+
+    .svg-wrapper, .account-button__icon, .account-button__text{
+        color: #fff;
+        height: 24px;
+        width: 24px;
+    }
+
+    svg.account-button__icon{
+        color: #fff;
+    }
+    .db-button-layer button{
+        width: 30px;
+    }

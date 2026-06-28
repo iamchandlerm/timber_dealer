@@ -738,7 +738,7 @@
     --header-left: 1fr;
     --header-center: auto;
     --header-right: 1fr;
-    --header-template-columns: repeat(3,auto);
+    --header-template-columns: auto
 
     /* Mobile layout */
     --header-mobile-bookend: 44px;
@@ -746,7 +746,7 @@
     display: grid;
     grid-template-areas: 'left center right';
     grid-gap: var(--gap-xl);
-    grid-template-columns: var(--header-template-columns);
+    grid-template-columns: auto
 
     /* If menu is in center column */
     &:has(.header__column--center header-menu) {
@@ -1114,6 +1114,10 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* custom css in this section */
+
+
 {% endstylesheet %}
 
 {% unless request.design_mode %}
