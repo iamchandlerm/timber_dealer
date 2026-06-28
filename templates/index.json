@@ -51,6 +51,57 @@
         "layout": "slider"
       }
     },
+    "db_iconlist_Tgpnht": {
+      "type": "db-iconlist",
+      "blocks": {
+        "icon_NTBqtA": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/logo-1.png",
+            "text": "<p>BUILDING<br/>MATERIALS</p>",
+            "link": ""
+          }
+        },
+        "icon_rMhdDn": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/logo-2.png",
+            "text": "<p>FLOORING<br/>TIMBER</p>",
+            "link": ""
+          }
+        },
+        "icon_n9pY4K": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/logo-3.png",
+            "text": "<p>DECKING<br/>TIMBER</p>",
+            "link": ""
+          }
+        },
+        "icon_RerBtt": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/logo-4.png",
+            "text": "<p>FENCING<br/>TIMBER</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_NTBqtA",
+        "icon_rMhdDn",
+        "icon_n9pY4K",
+        "icon_RerBtt"
+      ],
+      "name": "DB Iconlist",
+      "settings": {
+        "custom_id": "",
+        "padding_top": 54,
+        "padding_bottom": 62,
+        "section_width": "full-width",
+        "color_scheme": "none"
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -248,6 +299,7 @@
   },
   "order": [
     "db_hero_banner_B6F9bB",
+    "db_iconlist_Tgpnht",
     "product_list_fa6P9H"
   ]
 }
