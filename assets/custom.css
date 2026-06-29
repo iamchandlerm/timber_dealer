@@ -97,3 +97,20 @@ header-actions{
         display: flex;
         align-items: center;
     }
+
+    .header-actions__action:not(.account-button) .svg-wrapper{
+        width: max-content;
+        height: max-content;
+    }
+
+    .header-actions__action shopify-account {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    span.svg-wrapper{
+        width: max-content;
+        height: max-content;
+    }

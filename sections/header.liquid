@@ -724,7 +724,7 @@
   }
 
   .header__column--right {
-    gap: 0;
+    gap: 8px;
     justify-content: flex-start;
     grid-area: right;
 
@@ -885,13 +885,13 @@
   }
 
   .header-actions__action:not(.account-button) .svg-wrapper {
-    height: var(--button-size);
-    width: var(--button-size);
+    height: max-content;
+    width: max-content;
   }
 
   .header-actions__action:not(.account-button) svg {
-    width: var(--icon-size-md);
-    height: var(--icon-size-md);
+    width: 26px;
+    height: 26px;
   }
 
   .header:has(#Details-menu-drawer-container[open]) {
