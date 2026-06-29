@@ -68,6 +68,7 @@ header-actions{
   }
   a.menu-list__link.menu-list__link--active span{
     color: #C20502;
+    font-weight: 600;
   }
 
   a.size-style.spacing-style.header-logo {
