@@ -59,7 +59,7 @@
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
-        "pagination": "true"
+        "pagination": "progressbar"
       }
     },
     "db_list_info_LWjQpR": {
@@ -122,7 +122,8 @@
           "settings": {
             "second_button": "ENQUIRE NOW",
             "second_button_color": "#ffffff",
-            "second_button_bg_color": "#c20502"
+            "second_button_bg_color": "#c20502",
+            "second_button_width": "191"
           }
         },
         "first_logo_aJeAXB": {
@@ -251,9 +252,11 @@
         "first_section_image": "shopify://shop_images/image_26.png",
         "first_section_image_position": "left",
         "first_content_position": "right",
+        "first_gap": 0,
         "second_color": "",
         "second_section_image_position": "left",
-        "second_content_position": "center"
+        "second_content_position": "center",
+        "second_gap": 0
       }
     },
     "db_product_showcase_ErJMxH": {
@@ -322,7 +325,8 @@
           "settings": {
             "second_button": "Shop now",
             "second_button_color": "#c20502",
-            "second_button_bg_color": "#ffffff"
+            "second_button_bg_color": "#ffffff",
+            "second_button_width": "191"
           }
         },
         "first_text_i7mQM6": {
@@ -344,7 +348,8 @@
           "settings": {
             "first_button": "SHOP NOW",
             "first_button_color": "#c20502",
-            "first_button_bg_color": "#ffffff"
+            "first_button_bg_color": "#ffffff",
+            "first_button_width": "191"
           }
         }
       },
@@ -423,6 +428,15 @@
         "overlay_color": "rgba(0,0,0,0)",
         "opacity": 5
       }
+    },
+    "db_product_showcase_giNfPe": {
+      "type": "db-product-showcase",
+      "name": "db product showcase",
+      "settings": {
+        "section_width": "full",
+        "color_scheme": "",
+        "featured_product": "timber"
+      }
     }
   },
   "order": [
@@ -434,6 +448,7 @@
     "db_product_showcase_ErJMxH",
     "db_order_now_section_kCgTAU",
     "db_cover_banner_Fin3MQ",
-    "db_headline_section_za6eKg"
+    "db_headline_section_za6eKg",
+    "db_product_showcase_giNfPe"
   ]
 }

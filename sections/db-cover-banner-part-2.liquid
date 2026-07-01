@@ -189,6 +189,9 @@
 
     <div class="db-cover-banner-two__logo db-cover-banner-two__content-left--width db-cover-banner-two__content--{{section.settings.first_items_position}}" style="--content-width: {{section.settings.first_items_width}}px">
       <!-- Logo content goes here -->
+
+      {% content_for 'blocks' %}
+
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'first_logo' %}
@@ -390,6 +393,7 @@
       }
     ],
     "blocks": [
+
       {
         "type": "first_logo",
         "name": "first logo",

@@ -1,13 +1,13 @@
 {% assign selected_product = section.settings.featured_product %}
 
 <style>
-  #shopify-section-{{ section.id }} {
+  #db-section-{{section.id}} {
     width: 100%;
     height: 100%;
     padding-top: 50px;
   }
 
-  .db-product-showcase__content {
+  #db-section-{{section.id}} .db-product-showcase__content {
     width: 1187px;
     height: 100%;
     grid-column: 1;
@@ -15,12 +15,12 @@
     justify-self: center;
   }
 
-  .db-product-showcase__content-header {
+  #db-section-{{section.id}} .db-product-showcase__content-header {
     text-align: center;
     margin-bottom: 50px;
   }
 
-  .db-product-showcase__content-items {
+  #db-section-{{section.id}} .db-product-showcase__content-items {
     display: flex;
     gap: 30px;
 
@@ -28,14 +28,14 @@
     height: 100%;
   }
 
-  .db-product-showcase__product-image {
+  #db-section-{{section.id}} .db-product-showcase__product-image {
     width: 100%;
-    height: 225px;
+    height: 282px;
     object-fit: contain;
     background-color: #F5F5F5;
   }
 
-  .db-product-showcase__product-container {
+  #db-section-{{section.id}} .db-product-showcase__product-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -46,19 +46,19 @@
     transition: 0.4s ease;
   }
 
-  .db-product-showcase__product-info {
+  #db-section-{{section.id}} .db-product-showcase__product-info {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  .db-product-showcase__product-info p {
+  #db-section-{{section.id}} .db-product-showcase__product-info p {
     color: #888888;
     font-size: 16px;
     font-family: 'Poppins'
     , sans-serif;
   }
 
-  .db-product-showcase__heading {
+  #db-section-{{section.id}} .db-product-showcase__heading {
     font-size: 20px;
     font-family: "Roboto Slab";
     color: #292733;
@@ -66,25 +66,24 @@
     width: 100%;
   }
 
-  .db-product-showcase__heading--red {
+  #db-section-{{section.id}} .db-product-showcase__heading--red {
     color: #C20502;
   }
 
-  .db-product-showcase__product-container:hover {
+  #db-section-{{section.id}} .db-product-showcase__product-container:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     transform: scale(1.03);
   }
 
-  .db-product-showcase__content-items a {
+  #db-section-{{section.id}} .db-product-showcase__content-items a {
     height: fit-content;
     width: 100%;
   }
 
 </style>
 
-<div id="shopify-section-{{section.id}}" class="
+<div id="db-section-{{section.id}}" class="
     db-product-showcase
-    section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
     gap-style
   ">
