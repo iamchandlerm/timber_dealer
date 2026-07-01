@@ -28,18 +28,18 @@
   padding: 10px;
   transition: 0.4s ease;
 
-  #db-section-{{section.id}} .db-bulk-products__product-address {
+  .db-bulk-products__product-address {
     font-size: 16px;
     font-family: 'Roboto Slab';
     color: #888888;
   }
 
-  #db-section-{{section.id}} .db-bluk-products__product-name {
+  .db-bluk-products__product-name {
     font-size: 20px;
     font-family: 'Roboto Slab';
     font-weight: bold;
   }
-  #db-section-{{section.id}} .db-bulk-products__product-price {
+  .db-bulk-products__product-price {
     font-size: 20px;
     font-family: 'Poppins';
     font-weight: bold;
@@ -170,8 +170,7 @@
               <a href="{{ variant.url }}">
                 <div class="db-bulk-products__product">
                   {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-bulk-products__product-image' }}
-                  <p class="db-bulk-products__product-address">
-                    {{ variant.metafields.custom.location }}</p>
+                  <p class="db-bulk-products__product-address">Aukland</p>
                   <h2 class="db-bluk-products__product-name">{{ variant.title }}</h2>
                   <p class="db-bulk-products__product-price">{{ variant.price | money }}</p>
                 </div>
