@@ -11,36 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "header_announcements_9jGBFp": {
-      "type": "header-announcements",
-      "blocks": {
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -58,7 +28,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu",
+            "menu": "menu-do",
             "color_scheme": "",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
@@ -81,6 +51,7 @@
         "logo_position": "left",
         "menu_position": "left",
         "menu_row": "top",
+        "customer_account_menu": "menu-do",
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
@@ -97,6 +68,10 @@
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
         "color_scheme_top": "scheme-1",
         "color_scheme_bottom": "",
         "color_scheme_transparent": "scheme-6",
@@ -110,7 +85,6 @@
     }
   },
   "order": [
-    "header_announcements_9jGBFp",
     "header_section"
   ]
 }
