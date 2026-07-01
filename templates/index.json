@@ -9,40 +9,31 @@
  */
 {
   "sections": {
-    "db_hero_banner_bpDPyi": {
+    "db_hero_banner_Y3dkkR": {
       "type": "db-hero-banner",
       "blocks": {
-        "image_slider_taKCGx": {
+        "image_slider_MN9kpH": {
           "type": "image_slider",
           "settings": {
-            "slide_image": "shopify://shop_images/Rectangle_2.png",
+            "slide_image": "shopify://shop_images/Rectangle_2_49be2f76-a0b1-45ff-ab36-3bbf8ff0bd98.png",
             "slide_text": "<p>QUALITY TIMBER IN </p><p>AUCKLAND </p><p>LOWER PRICES</p>",
             "paragraph": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
             "text_alignment": "right"
           }
         },
-        "image_slider_QnfEQy": {
+        "image_slider_yRE8f6": {
           "type": "image_slider",
           "settings": {
-            "slide_image": "shopify://shop_images/Rectangle_2.png",
+            "slide_image": "shopify://shop_images/Rectangle_2_49be2f76-a0b1-45ff-ab36-3bbf8ff0bd98.png",
             "slide_text": "<p>QUALITY TIMBER IN </p><p>AUCKLAND </p><p>LOWER PRICES</p>",
             "paragraph": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
             "text_alignment": "right"
           }
         },
-        "image_slider_WxUBPT": {
+        "image_slider_y4Y9X3": {
           "type": "image_slider",
           "settings": {
-            "slide_image": "shopify://shop_images/Rectangle_2.png",
-            "slide_text": "<p>QUALITY TIMBER IN </p><p>AUCKLAND </p><p>LOWER PRICES</p>",
-            "paragraph": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
-            "text_alignment": "right"
-          }
-        },
-        "image_slider_QLqUkY": {
-          "type": "image_slider",
-          "settings": {
-            "slide_image": "shopify://shop_images/Rectangle_2.png",
+            "slide_image": "shopify://shop_images/Rectangle_2_49be2f76-a0b1-45ff-ab36-3bbf8ff0bd98.png",
             "slide_text": "<p>QUALITY TIMBER IN </p><p>AUCKLAND </p><p>LOWER PRICES</p>",
             "paragraph": "Welcome to Timber Dealers – a small, independent, family-owned and operated timber supplier in Auckland (East Tamaki), committed to bringing you quality timber at lower prices!",
             "text_alignment": "right"
@@ -50,16 +41,15 @@
         }
       },
       "block_order": [
-        "image_slider_taKCGx",
-        "image_slider_QnfEQy",
-        "image_slider_WxUBPT",
-        "image_slider_QLqUkY"
+        "image_slider_MN9kpH",
+        "image_slider_yRE8f6",
+        "image_slider_y4Y9X3"
       ],
-      "name": "hero banner:",
+      "name": "hero banner: copy",
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
-        "pagination": "true"
+        "pagination": "progressbar"
       }
     },
     "db_list_info_LWjQpR": {
@@ -122,7 +112,8 @@
           "settings": {
             "second_button": "ENQUIRE NOW",
             "second_button_color": "#ffffff",
-            "second_button_bg_color": "#c20502"
+            "second_button_bg_color": "#c20502",
+            "second_button_width": "191"
           }
         },
         "first_logo_aJeAXB": {
@@ -251,9 +242,11 @@
         "first_section_image": "shopify://shop_images/image_26.png",
         "first_section_image_position": "left",
         "first_content_position": "right",
+        "first_gap": 0,
         "second_color": "",
         "second_section_image_position": "left",
-        "second_content_position": "center"
+        "second_content_position": "center",
+        "second_gap": 0
       }
     },
     "db_product_showcase_ErJMxH": {
@@ -322,7 +315,8 @@
           "settings": {
             "second_button": "Shop now",
             "second_button_color": "#c20502",
-            "second_button_bg_color": "#ffffff"
+            "second_button_bg_color": "#ffffff",
+            "second_button_width": "191"
           }
         },
         "first_text_i7mQM6": {
@@ -344,7 +338,8 @@
           "settings": {
             "first_button": "SHOP NOW",
             "first_button_color": "#c20502",
-            "first_button_bg_color": "#ffffff"
+            "first_button_bg_color": "#ffffff",
+            "first_button_width": "191"
           }
         }
       },
@@ -432,10 +427,59 @@
         "color_scheme": "",
         "featured_product": "timber"
       }
+    },
+    "db_bulk_product_section_UVVGHB": {
+      "type": "db-bulk-product-section",
+      "blocks": {
+        "product_items_cPjdpL": {
+          "type": "product_items",
+          "settings": {
+            "heading": "Products",
+            "selected_product": "timber",
+            "max_products": 8
+          }
+        },
+        "product_items_NVBzWF": {
+          "type": "product_items",
+          "settings": {
+            "heading": "Products",
+            "selected_product": "timber",
+            "max_products": 8
+          }
+        },
+        "product_items_WTmjMm": {
+          "type": "product_items",
+          "settings": {
+            "heading": "Products",
+            "selected_product": "timber",
+            "max_products": 8
+          }
+        },
+        "product_items_JicQ6d": {
+          "type": "product_items",
+          "settings": {
+            "heading": "Bulk Products",
+            "selected_product": "",
+            "max_products": 8
+          }
+        }
+      },
+      "block_order": [
+        "product_items_cPjdpL",
+        "product_items_NVBzWF",
+        "product_items_WTmjMm",
+        "product_items_JicQ6d"
+      ],
+      "name": "huge product page",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "pagination": "bullets"
+      }
     }
   },
   "order": [
-    "db_hero_banner_bpDPyi",
+    "db_hero_banner_Y3dkkR",
     "db_list_info_LWjQpR",
     "db_cover_banner_a3HPet",
     "db_headline_section_W7fqDQ",
@@ -444,6 +488,7 @@
     "db_order_now_section_kCgTAU",
     "db_cover_banner_Fin3MQ",
     "db_headline_section_za6eKg",
-    "db_product_showcase_giNfPe"
+    "db_product_showcase_giNfPe",
+    "db_bulk_product_section_UVVGHB"
   ]
 }
