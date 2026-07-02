@@ -4,14 +4,13 @@
     height: 741px;
   }
 
-
-  .db-banner__image--item {
+  .db-banner .db-banner__image--item {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .db-banner__content {
+  .db-banner .db-banner__content {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -22,11 +21,13 @@
     align-items: center;
   }
 
-  .db-banner__content-items {
+  .db-banner .db-banner__content-items {
     max-width: 516px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .db-banner__paragraph {
+  .db-banner .db-banner__paragraph {
     margin-top: 17px;
     font-family: 'Poppins'
     , sans-serif;
@@ -34,28 +35,28 @@
     width: 100%;
   }
 
-  .db-banner__content h1 p {
+  .db-banner .db-banner__content h1 p {
     font-size: 49px;
     font-family: "Roboto slab"
     , serif;
     line-height: 1.05;
   }
 
-  .swiper-slide--left {
+  .db-banner .swiper-slide--left {
     justify-content: start;
     .db-banner__content-items {
       text-align: left;
     }
   }
 
-  .swiper-slide--center {
+  .db-banner .swiper-slide--center {
     justify-content: center;
     .db-banner__content-items {
       text-align: center;
     }
   }
 
-  .swiper-slide--right {
+  .db-banner .swiper-slide--right {
     justify-content: end;
     .db-banner__content-items {
       text-align: right;
@@ -76,11 +77,61 @@
     }
   }
 
+    /* media querry  responsive */
 
+  @media (max-width: 768px) {
+    .db-banner {
+      height: max-content;
+    }
+
+    .db-banner .db-banner__image--item {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .db-banner .db-banner__content {
+      padding: 0 20px;
+    }
+
+    .db-banner__content-items {
+      align-items: end;
+    }
+    .db-banner .db-banner__content h1 p {
+      font-size: 35px;
+    }
+    .db-banner .db-banner__paragraph{
+      font-size: 14px;
+      width: 50%;
+    }
+
+    .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
+      bottom: 40px;
+      right: 23px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .db-banner .db-banner__content h1 p {
+      font-size: 25px;
+    }
+    .db-banner__content-items {
+    padding-top: 5%;
+    }
+    .db-banner .db-banner__paragraph{
+      font-size: 12px;
+      width: 60%;
+      margin-top: 10px;
+    } 
+    .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal{
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
 </style>
 
 <div
-  id="{{section.id}}"
+  id="db-hero-banner-{{section.id}}"
   class="
     db-banner
     section section--{{ section.settings.section_width }}

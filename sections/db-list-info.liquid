@@ -1,24 +1,27 @@
 <style>
-  #shopify-section-{{ section.id }} {
+  .db-list-info{
+    padding
+  }
+
+  #db-list-info-{{section.id}}{
+    background-color: {{ section.settings.background_color }};
+    padding: 5%;
     height: 303px;
     width: 100%;
     display: grid;
     align-items: center;
     justify-items: center;
-    background-color: {{ section.settings.background_color }};
-
   }
-  .db-list-info__content-wrapper {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
+  .db-list-info .db-list-info__content-wrapper {
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     gap: 54px;
     align-items: center;
     height: 100%;
-
   }
-  .db-list-info__image-content {
+  .db-list-info .db-list-info__image-content {
     position: relative;
     width: 120px;
     height: 120px;
@@ -28,14 +31,14 @@
     align-items: center;
     background-color: rgb(255, 255, 255);
   }
-  .db-list-info__image,
+  .db-list-info .db-list-info__image,
   .placeholder-image {
-    width: 70px;
-    height: 70px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     z-index: 1;
   }
-  .db-list-info__item {
+  .db-list-info .db-list-info__item {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -43,7 +46,7 @@
     justify-content: center;
     gap: 13px;
   }
-  .db-list-info__label {
+  .db-list-info  .db-list-info__label {
     width: 184px;
     height: 55px;
     padding: 0 10px;
@@ -54,13 +57,38 @@
     line-height: 1.18;
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    #db-list-info-{{section.id}}{
+      height: max-content;
+    }
+
+    .db-list-info .db-list-info__content-wrapper {
+      width: 100%;
+      height: max-content;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 45px;
+      justify-items: center;
+    }
+    .db-list-info__item{
+        width: calc(50% - 45px);
+      }
+  }
+
+  @media (max-width: 480px) {
+    .db-list-info .db-list-info__content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .db-list-info__item{
+        width: 100%;
+      }
+  }
 </style>
 
-<div id="shopify-section-{{section.id}}" class="
+<div id="db-list-info-{{section.id}}" class="
     db-list-info
-    section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
-    gap-style
   ">
   <div class="db-list-info__content-wrapper">
     {% for block in section.blocks %}
