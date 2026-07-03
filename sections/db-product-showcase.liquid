@@ -8,11 +8,12 @@
   }
 
   #db-section-{{section.id}} .db-product-showcase__content {
-    width: 1187px;
+    width: 100%;
     height: 100%;
     grid-column: 1;
     align-self: center;
     justify-self: center;
+    padding : 0 50px;
   }
 
   #db-section-{{section.id}} .db-product-showcase__content-header {
@@ -63,7 +64,7 @@
     font-family: "Roboto Slab";
     color: #292733;
     height: 52px;
-    width: 100%;
+    width: 90%;
   }
 
   #db-section-{{section.id}} .db-product-showcase__heading--red {
@@ -78,6 +79,38 @@
   #db-section-{{section.id}} .db-product-showcase__content-items a {
     height: fit-content;
     width: 100%;
+  }
+
+  @media (max-width:1024px) {
+    #db-section-{{section.id}} .db-product-showcase__heading{
+      font-size: 14px;
+      height: 25px;
+    }
+  }
+
+  @media (max-width: 768px){
+    #db-section-{{section.id}} .db-product-showcase__product-image{
+      height: 180px;
+    }
+    #db-section-{{section.id}} .db-product-showcase__heading{
+      height: 40px;
+      font-size: 12px;
+    }
+    #db-section-{{section.id}} .db-product-showcase__price{
+      font-size: 14px;
+      height: 25px;
+    }
+  }
+
+  @media (max-width: 480px){
+    #db-section-{{section.id}} .db-product-showcase__content-items{
+      flex-direction: column;
+      gap: 20px;
+    }
+    #db-section-{{section.id}} .db-product-showcase__product-info{
+      align-items: center;
+      text-align: center;
+    }
   }
 
 </style>
@@ -113,7 +146,7 @@
 
                 <h2 class="db-product-showcase__heading">{{ variant.title }}</h2>
 
-                <h2 class="db-product-showcase__heading db-product-showcase__heading--red">{{ variant.price | money }}</h2>
+                <h2 class="db-product-showcase__heading db-product-showcase__heading--red db-product-showcase__price">{{ variant.price | money }}</h2>
               </div>
 
             </div>
