@@ -80,16 +80,14 @@
   background-color: #fff;
   padding: 5px;
 }
-#db-section-{{section.id}} span .swiper-pagination-bullet {
-  margin: 0;
-}
+
 #db-section-{{section.id}} .db-arrows,
 #db-section-{{section.id}} .swiper-pagination-bullet {
   cursor: pointer;
   height: 40px;
   width: 40px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 350;
 }
 #db-section-{{section.id}} .db-pagination__first {
   border-radius: 8px 0 0 8px;
@@ -103,17 +101,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
   font-size: 25px;
-  margin: 0 7px;
+  margin: 0;
 }
 
-#db-section-{{section.id}}.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+#db-section-{{section.id}} .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
   --swiper-pagination-bullet-horizontal-gap: 7px;
   position: relative;
   font-size: 20px;
   font-family: 'Poppins';
   font-weight: bold;
   justify-content: center;
-  gap: 7px;
   width: auto;
   top: initial;
   left: initial;
@@ -122,6 +119,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  .swiper-pagination-bullet {
+  margin: 0;
+}
 }
 #db-section-{{section.id}} .swiper-pagination-bullet-active {
   background-color: #C20502;
@@ -144,6 +144,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+  #db-section-{{section.id}} .db-bulk-products__content {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  #db-section-{{section.id}} .db-bulk-products__content {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 50px;
+  }
 }
 </style>
 
