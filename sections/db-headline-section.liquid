@@ -14,7 +14,7 @@
     object-fit: cover;
     position: absolute;
   }
-  #shopify-section-{{ section.id }}
+  #db-headline-section-{{section.id}}
   .db-headline-section__overlay {
     height: 100%;
     width: 100%;
@@ -60,13 +60,37 @@
     width: 178px;
     font-weight: 500;
   }
+
+  @media (max-width: 768px){
+    .db-headline-section__content{
+      padding: 0 60px;
+    }
+    .db-headline-section__heading {
+      font-size: 30px;
+      width: 450px;
+    }
+    .db-headline-section__block--content{
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px){
+    .db-headline-section__content{
+      padding: 0 60px;
+    }
+    .db-headline-section__heading {
+      font-size: 30px;
+      width: 275px;
+    }
+    .db-headline-section__block--content{
+      width: 100%;
+    }
+  }
 </style>
 
-<div id="shopify-section-{{section.id}}" class="
+<div id="db-headline-section-{{section.id}}" class="
     db-headline-section
-    section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
-    gap-style
   ">
   {% if section.settings.background_image != blank %}
     {{ section.settings.background_image

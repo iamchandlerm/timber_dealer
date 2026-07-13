@@ -160,14 +160,42 @@
     justify-content: end;
   }
 
+  @media screen and (max-width: 1024px){
+    .db-cover-banner-two__content--main--left .db-cover-banner-two__logo{
+      padding-left: 100px;
+    }
+  }
+
+  @media screen and (max-width: 768px){
+
+    .db-cover-banner-two__logo.db-cover-banner-two__content-left--width.db-cover-banner-two__content--left,
+    .db-cover-banner-two__inquire-content.db-cover-banner-two__content-right--width.db-cover-banner-two__content--left
+    {
+      align-items: center;
+      padding: 0;
+    }
+    .db-cover-banner-two__inquire-text{
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 480px){
+    .db-cover-banner-two{
+      grid-template-columns: 1fr;
+      grid-template-areas: "main" "inquire";
+    }
+    h2 .db-cover-banner-two__inquire-heading .bd-cover-banner-two--text-color{
+      font-size: 24px;
+      text-align: center;
+    }
+    .db-cover-banner-two__content-left--width,.db-cover-banner-two__content-right--width {
+      width: 100%;
+    }
+  }
+
 
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // const
-  });
-</script>
 
 <div id="shopify-section-{{section.id}}" class="
     db-cover-banner-two
@@ -189,6 +217,9 @@
 
     <div class="db-cover-banner-two__logo db-cover-banner-two__content-left--width db-cover-banner-two__content--{{section.settings.first_items_position}}" style="--content-width: {{section.settings.first_items_width}}px">
       <!-- Logo content goes here -->
+
+      {% content_for 'blocks' %}
+
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'first_logo' %}
@@ -390,6 +421,7 @@
       }
     ],
     "blocks": [
+
       {
         "type": "first_logo",
         "name": "first logo",

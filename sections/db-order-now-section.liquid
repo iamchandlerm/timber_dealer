@@ -96,11 +96,47 @@
   text-align: right;
 }
 
+@media (max-width: 1024px) {
+  .db-order-now-section {
+    height: 400px;
+  }
+  .db-order-now__header h1 {
+    font-size: 24px;
+  }
+  .order-now-section__content__items{
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 768px){
+  .order-now-section__content_wrapper{
+    padding:0;
+  }
+  
+}
+
+@media (max-width: 480px){  
+
+
+   .db-order-now__header h1 {
+     font-size: 16px;
+     width: 130px;
+   }
+   .db-order-now__button button{
+    height: 50px;
+    width: 100px;
+    font-size: 12px;
+   }
+   .db-order-now-section{
+    margin: 0;
+    height: 350px;
+   }
+}
+
 </style>
 
 <div id="shopify-section-{{section.id}}" class="
     db-order-now-section
-    section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
     gap-style
   ">

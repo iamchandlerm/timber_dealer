@@ -18,6 +18,7 @@
     width: 100%;
     height: 100%;
   }
+
   .db-item-showcase--first_item {
     grid-area: first;
     .db-item-showcase__background--color {
@@ -56,7 +57,7 @@
   }
 
   .db-item-showcase__items-contents {
-    width: 33%;
+    width: 38%;
     display: flex;
     gap: 24px;
     flex-direction: column;
@@ -170,16 +171,119 @@
     }
   }
 
-  @media (min-width: 1441px) {
-    .db-item-showcase__items-contents {}
-}
+  @media (max-width: 1024px) {
+    .db-item-showcase__second_heading--width {
+      --second-heading-width: 350px;
+    }
+    .bd-item-showcase__bg-image {
+      width: 450px;
+      height: auto;
+    }
+    .db-item-showcase__items-contents{
+      width: 42%;
+      .db-item-showcase__first_heading--width{
+        width: 250px;
+      }
+      .db-item-showcase__second_heading--width{
+      width: 250px;
+    }
+    }
+
+  }
+
+  @media (max-width: 768px) {
+
+    .db-item-showcase--second_item{
+      padding: 0 0 50px 0;
+    }
+    .db-item-showcase__second_heading--width{
+      width: 200px;
+      font-size: 24px;
+    }
+    .db-item-showcase__image-container{
+      width: 250px;
+      height: 200px;
+    }
+
+    .db-item-showcase__background_image{
+      width: 60%;
+      height: auto;
+      bottom: 0;
+      left: 0;
+    }
+    .bd-item-showcase__bg-image{
+      width: 100%;
+      height: auto;
+    }
+    .db-item-showcase{
+      height: 100%;
+    }
+
+    .db-item-showcase__items--right{
+      padding-right: 20px;
+    }
+
+    .db-item-showcase__button button{
+      width: 100px;
+      font-size: 14px;
+      height: 50px;
+    }
+    .db-item-showcase__items-contents{
+      width: 45%;
+      .db-item-showcase__first_heading--width{
+      font-size: 24px;
+      width: 200px;
+      }
+    }
+    .db-item-showcase__text{
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 480px){
+    .db-item-showcase{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "first"
+        "second";
+      height: 100%;
+    }
+
+    .db-item-showcase__items-contents .db-item-showcase__first_heading--width {
+    width: 100%;
+   }
+
+   .db-item-showcase__button button{
+    width: 100%;
+    font-size: 14px;
+    height: 50px;
+   }
+   .db-item-showcase__second_heading--width{
+    width: 100%;
+   }
+   .bd-item-showcase__bg-image{
+    width: 100%;
+    height: auto;
+   }
+   .db-item-showcase__background_image{
+    width: 45%;
+   }
+   .db-item-showcase--first_item .db-item-showcase__items{
+    padding: 40px 40px 30px 30px;
+   }
+   .db-item-showcase--first_item .db-item-showcase__heading{
+    font-size: 19px;
+   }
+
+   .db-item-showcase__items-contents{
+    width: 40%;
+   }
+  }
 </style>
 
 <div id="shopify-section-{{section.id}}" class="
     db-item-showcase
-    section section--{{ section.settings.section_width }}
     color-{{ section.settings.color_scheme }}
-    gap-style
   ">
   <div class="db-item-showcase__content db-item-showcase--first_item">
     <div class="db-item-showcase__background">

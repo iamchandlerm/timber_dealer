@@ -1,16 +1,16 @@
 <style>
-  #{{section.id}}
+  #db-section-{{section.id}}
 {
   margin-top: 100px;
 }
-img.db-bulk-products__product-image {
+#db-section-{{section.id}} img.db-bulk-products__product-image {
   width: 282px;
   height: 285px;
   position: relative;
   background-color: #F5F5F5;
 }
 
-.db-bulk-products__content {
+#db-section-{{section.id}} .db-bulk-products__content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 41px;
@@ -20,7 +20,7 @@ img.db-bulk-products__product-image {
   justify-items: center;
 }
 
-.db-bulk-products__product {
+#db-section-{{section.id}} .db-bulk-products__product {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -47,7 +47,7 @@ img.db-bulk-products__product-image {
   }
 }
 
-.db-bulk-products__heading {
+#db-section-{{section.id}} .db-bulk-products__heading {
   width: 377px;
   color: #000;
   font-size: 64px;
@@ -59,19 +59,19 @@ img.db-bulk-products__product-image {
 
 }
 
-.db-bulk-products__container {
+#db-section-{{section.id}} .db-bulk-products__container {
   width: 100%;
 }
 
-.swiper-wrapper .swiper-slide {
+#db-section-{{section.id}} .swiper-wrapper .swiper-slide {
   background-color: #fff;
 }
 
-.db_pagination {
+#db-section-{{section.id}} .db_pagination {
   padding: 40px 0;
 }
 
-.swiper-pagination-bullet {
+#db-section-{{section.id}} .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   border-radius: 0;
@@ -80,40 +80,37 @@ img.db-bulk-products__product-image {
   background-color: #fff;
   padding: 5px;
 }
-span .swiper-pagination-bullet {
-  margin: 0;
-}
-.db-arrows,
-.swiper-pagination-bullet {
+
+#db-section-{{section.id}} .db-arrows,
+#db-section-{{section.id}} .swiper-pagination-bullet {
   cursor: pointer;
   height: 40px;
   width: 40px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 350;
 }
-.db-pagination__first {
+#db-section-{{section.id}} .db-pagination__first {
   border-radius: 8px 0 0 8px;
 }
-.db-pagination__last {
+#db-section-{{section.id}} .db-pagination__last {
   border-radius: 0 8px 8px 0;
 }
 
 
-.db-arrows {
+#db-section-{{section.id}} .db-arrows {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
   font-size: 25px;
-  margin: 0 7px;
+  margin: 0;
 }
 
-.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+#db-section-{{section.id}} .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
   --swiper-pagination-bullet-horizontal-gap: 7px;
   position: relative;
   font-size: 20px;
   font-family: 'Poppins';
   font-weight: bold;
   justify-content: center;
-  gap: 7px;
   width: auto;
   top: initial;
   left: initial;
@@ -122,33 +119,58 @@ span .swiper-pagination-bullet {
   align-items: center;
   justify-content: center;
   text-align: center;
+  .swiper-pagination-bullet {
+  margin: 0;
 }
-.swiper-pagination-bullet-active {
+}
+#db-section-{{section.id}} .swiper-pagination-bullet-active {
   background-color: #C20502;
   color: #fff;
   text-align: center;
 }
 
-.db-bulk-products__product:hover {
+#db-section-{{section.id}} .db-bulk-products__product:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   transform: scale(1.03);
 }
 
-.db-bulk-products__content a {
+#db-section-{{section.id}} .db-bulk-products__content a {
   height: fit-content;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 
-.db_pagination {
+#db-section-{{section.id}} .db_pagination {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 1024px) {
+  #db-section-{{section.id}} .db-bulk-products__content {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  #db-section-{{section.id}} .db-bulk-products__content {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #db-section-{{section.id}} .db-bulk-products__content {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 20px;
+  }
+}
 </style>
 
 <div
-  id="{{section.id}}"
+  id="db-section-{{section.id}}"
   class="
     db-bulk-product
     section section--{{ section.settings.section_width }}
@@ -170,8 +192,7 @@ span .swiper-pagination-bullet {
               <a href="{{ variant.url }}">
                 <div class="db-bulk-products__product">
                   {{ variant.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'db-bulk-products__product-image' }}
-                  <p class="db-bulk-products__product-address">
-                    {{ variant.metafields.custom.location }}</p>
+                  <p class="db-bulk-products__product-address">Aukland</p>
                   <h2 class="db-bluk-products__product-name">{{ variant.title }}</h2>
                   <p class="db-bulk-products__product-price">{{ variant.price | money }}</p>
                 </div>

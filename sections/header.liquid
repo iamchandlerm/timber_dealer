@@ -382,13 +382,13 @@
     {% assign content = content | strip %}
     {% if content != blank %}
       <div
-        class="{{ class | strip }}"
+        class="{{ class | strip }} db-header__overall-header"
         ref="headerRowTop"
         {%- if style != blank -%}
           style="{{ style | strip }}"
         {%- endif -%}
       >
-        <div class="header__columns spacing-style">
+        <div class="header__columns spacing-style db-header__main-columns">
           {{ content }}
         </div>
       </div>
@@ -435,6 +435,13 @@
 
   #header-component :is(.header-menu, .dropdown-localization) {
     display: none;
+  }
+
+  @media screen and (max-width: 1440px){
+    .header__column .header__drawer, .header__column .search-action{
+        justify-content: center;
+    }
+
   }
 
   @media screen and (min-width: 750px) {
@@ -660,7 +667,7 @@
     position: relative;
 
     /* Overwrite color from color scheme, background is controlled by the underlays */
-    background-color: transparent;
+    background-color:  #292733;
 
     &:has(.mega-menu__list:hover),
     &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'])),
@@ -700,6 +707,7 @@
   .header__column {
     display: flex;
     align-items: center;
+    justify-content: end;
 
     /* on mobile, header__column nodes are ignored to create a new grid-template-area based on all visible content */
     @media screen and (max-width: 749px) {
@@ -723,8 +731,8 @@
   }
 
   .header__column--right {
-    gap: var(--gap-xl);
-    justify-content: flex-end;
+    gap: 8px;
+    justify-content: flex-start;
     grid-area: right;
 
     .overflow-menu::part(list) {
@@ -737,7 +745,7 @@
     --header-left: 1fr;
     --header-center: auto;
     --header-right: 1fr;
-    --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
+    --header-template-columns: auto
 
     /* Mobile layout */
     --header-mobile-bookend: 44px;
@@ -745,7 +753,7 @@
     display: grid;
     grid-template-areas: 'left center right';
     grid-gap: var(--gap-xl);
-    grid-template-columns: var(--header-template-columns);
+    grid-template-columns: auto
 
     /* If menu is in center column */
     &:has(.header__column--center header-menu) {
@@ -884,13 +892,13 @@
   }
 
   .header-actions__action:not(.account-button) .svg-wrapper {
-    height: var(--button-size);
-    width: var(--button-size);
+    height: max-content;
+    width: max-content;
   }
 
   .header-actions__action:not(.account-button) svg {
-    width: var(--icon-size-md);
-    height: var(--icon-size-md);
+    width: 26px;
+    height: 26px;
   }
 
   .header:has(#Details-menu-drawer-container[open]) {
@@ -1113,6 +1121,10 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* custom css in this section */
+
+
 {% endstylesheet %}
 
 {% unless request.design_mode %}
